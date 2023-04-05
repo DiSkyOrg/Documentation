@@ -24,7 +24,7 @@ Let's create a modal with a title, and a single text input:
     
     # And then we add a text input to it
     
-    set {_modal} to new short text input with id "description" named "Description" # (1)
+    set {_input} to new short text input with id "description" named "Description" # (1)
     set placeholder of {_input} to "Input whatever you want here ..."
     
     set minimum range of {_input} to 1 # Minimum length of the input
