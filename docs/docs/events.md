@@ -119,10 +119,30 @@ Fired when any bot join a new guild.
     event-guild
     event-bot
     ```
-=== "Retrieve Values"
+
+## On Bot Leave Event
+
+|Since|v4.11.1|class:version|
+|Cancellable|No|class:version|
+
+Fired when any bot leave a guild.
+
+=== "Patterns"
 
     ```applescript
-    
+    bot [guild] (leave|left) [seen by %-string%]
+    ```
+=== "Examples"
+
+    ```applescript
+    on bot guild leave:
+    	broadcast "%event-bot% left %event-guild%"
+    ```
+=== "Event Values"
+
+    ```applescript
+    event-guild
+    event-bot
     ```
 
 ## On Shutdown Event
