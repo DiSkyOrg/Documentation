@@ -117,6 +117,7 @@ The volume **must** be between 0 and 1000 (both inclusive). Any negative or bigg
 | Skip the current track, by returning and removing the next track from the queue.        | `skip in event-guild and store it in {_track}` |
 | Pause the player, without changing the queue nor the playing track.                     | `pause in event-guild`                         |
 | Resume the paused track, without changing the queue nor the playing track               | `resume in event-guild`                        |
+| Stop the track that's playing                                                           | `stop the track of event-guild`                |
 
 ## Track Events
 
@@ -251,6 +252,14 @@ discord command play <string>:
         # We connect the bot if it's not already connected
         if {_willHaveToConnect} is true:
             connect event-bot to {_channel}
+
+discord command stop:
+    prefixes: !
+    trigger:
+        stop the track of event-guild
+		disconnect from event-guild
+		reply with "**Stopped the track** bye bye! :wave:"
+
 
 discord command skip:
     prefixes: !
