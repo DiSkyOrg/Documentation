@@ -1,7 +1,7 @@
 # 🎵 LavaPlayer
 
 !!! success
-    This documentation page includes all the elements from the module **[LavaPlayer](../../modules/webhooks/)**.
+    This documentation page includes all the elements from the module **[LavaPlayer](../../modules/lavaplayer/)**.
 
 ## Load Local Track
 
