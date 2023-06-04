@@ -38,3 +38,26 @@ The **Category** is a concrete type that represents a category in Discord. It ca
 ### `privatechannel` (extends [`channel`](#channel))
 
 The **PrivateChannel** type is the base type for all channels that are private, and is used to represent a channel in Discord. For instance, it can be a private text channel, or a private voice channel.
+
+### `memberflag`
+
+This type is used to represent a flag of a member. This was introduced in Discord recently, therefore old members may not have any flag.
+
+You can check the [member flags expression](expressions.md#) for getting/adding flags to a member. **Some flags cannot be added manually!**
+
+=== "`did rejoin`"
+    The Member has left and rejoined the guild
+
+    !!! warning "This flag **is not** modifiable"
+=== "`complete onboarding`"
+    The Member has completed the onboarding process
+    
+    !!! warning "This flag **is not** modifiable"
+=== "`bypasses verification`"
+    The Member has bypassed the verification step
+    
+    !!! success "This flag **is** modifiable"
+=== "`started onboarding`"
+    The Member has started the onboarding process
+
+    !!! warning "This flag **is not** modifiable"

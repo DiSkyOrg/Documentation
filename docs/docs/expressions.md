@@ -1538,6 +1538,59 @@ This expression cannot be changed.
     news channel (with|from) [the] id %string% [(with|using) [the] bot [(named|with name)] %-bot%]
     ```
 
+## Attachment Duration
+
+|Since|v4.12.0|class:version|
+|Return Type|timespan|class:version|
+
+Get the duration of the voice message attachment. You should check before if the attachment is an audio file using the [`attachment is audio`](conditions.md#is-attachment-audio) expression.
+
+!!! note
+This expression will only work with **voice message audio**, and not all audio files!
+
+=== "Examples"
+
+    ```applescript
+    discord command vocal [<string>]:
+    prefixes: !
+    trigger:
+        retrieve message with id arg-1 in event-channel and store it in {_msg}
+        loop {_msg}'s attachments:
+            set {_att} to loop-value
+            if {_att} is audio:
+                reply with "It's %duration of {_att}% long!"
+                stop
+        
+        reply with "This message is not a voice message!"
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [discord] duration of %attachment%
+    %attachment%'[s] [discord] duration
+    ```
+
+## Member Flags
+
+|Since|v4.12.0|class:version|
+|Return Type|memberflags|class:version|
+
+Get or change [member flags](types.md#memberflag) of a specific member. **Some of these flags cannot be added/removed manually!**
+
+=== "Examples"
+
+    ```applescript
+    set {_flags::*} to member flags of event-member
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [all] [the] [member] [discord] flag[s] of %member%
+    [all] [the] %member%'[s] [discord] flag[s]
+    ```
+
 ## Get Role
 
 |Since|v4.0.0|class:version|
@@ -2699,6 +2752,29 @@ No description provided.
     ```applescript
     [the] title of %embedbuilder%
     %embedbuilder%'[s] title
+    ```
+
+## Embed URL
+
+|Since|v4.12.0|class:version|
+|Return Type|string|class:version|
+
+Get or change the URL of this embed. The Discord client mostly only uses this property in combination with the title for a clickable Hyperlink.
+If multiple embeds in a message use the same URL, the Discord client will merge them into a single embed and aggregate images into a gallery view.
+
+!!! warning
+    This is different from the [EmbedTitleURL](#embedtitleurl) property: this one can be used even if there's **no title yet**, while the other one can only be used if **there's a title**!
+
+=== "Examples"
+
+    ```applescript
+    set embed url of embed to "https://disky.me/"
+    ```
+=== "Patterns"
+
+    ```applescript
+    [the] embed url of %embedbuilder%
+    %embedbuilder%'[s] embed url
     ```
 
 ## EmbedTitleURL

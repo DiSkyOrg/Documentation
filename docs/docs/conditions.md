@@ -70,6 +70,35 @@ Check if a member has a specific role.
     %member% (doesn't|does not|do not|don't) have discord [role] %role%
     ```
 
+## Is Attachment Audio
+
+|Since|v4.12.0|class:version|
+
+Check if the specified attachement is an **audio file** (aka a vocal message).
+If it is, you'll be able to use [`duration of attachment`](expressions.md#attachment-duration) expression.
+
+=== "Examples"
+
+    ```applescript
+    discord command vocal [<string>]:
+    prefixes: !
+    trigger:
+        retrieve message with id arg-1 in event-channel and store it in {_msg}
+        loop {_msg}'s attachments:
+            set {_att} to loop-value
+            if {_att} is audio:
+                reply with "It's %duration of {_att}% long!"
+                stop
+        
+        reply with "This message is not a voice message!"
+    ```
+=== "Patterns"
+
+    ```applescript
+    %attachment% (is|are) [an] audio
+    %attachment% (isn't|is not|aren't|are not) [an] audio
+    ```
+
 ## User is Bot
 
 |Since|v4.0.0|class:version|
@@ -92,7 +121,7 @@ Check either the provided user is a discord bot or not.
 
 |Since|v4.0.0|class:version|
 
-Check either a message(related event come from a guild or from private messages.
+Check either a message related event come from a guild or from private messages.
 This condition work with every event where a message is sent / received.
 === "Examples"
 
