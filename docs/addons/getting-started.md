@@ -74,7 +74,7 @@ public final class MyAddon extends JavaPlugin {
 		
         SkriptAddon addon = Skript.registerAddon(this);//(1)!
 		
-        addon.loadClasses("...");//(2)!
+        addon.loadClasses("my.addon", "elements");//(2)!
 		
     }
 	
@@ -82,4 +82,105 @@ public final class MyAddon extends JavaPlugin {
 ```
 
 1. This line registers the addon. *tbh, I don't know what it does, but it's needed to register elements*
-2. This line loads the classes. You can specify a package name, or a list of classes. If you don't specify anything, it'll load all the classes in the package of the main class.
+2. This line loads the classes. The first argument is the package where your plugin is, and the second one is the package where your elements are.
+
+We can now start creating elements! 🎉
+
+!!! tip "Organization"
+    In order to keep your project organized, I recommend you to follow these rules (although they're not mandatory):
+
+    * Group your elements by types (e.g. one package for `effects`, one for `conditions`, etc.)
+    * Use the adequate prefix for an element's class:
+
+        | Element | Prefix |
+        |---------|--------|
+        | Effect  | `Eff`  |
+        | Condition | `Cond` |
+        | Expression | `Expr` |
+        | Property | `Prop` |
+        | Event | `Evt` |
+
+    For instance:
+
+    ```
+    my
+    └── addon
+        ├── effects
+        │   └── EffMyEffect.java
+        ├── conditions
+        │   └── CondMyCondition.java
+        ├── expressions
+        │   └── ExprMyExpression.java
+        ├── properties
+        │   └── PropMyProperty.java
+        └── events
+            └── EvtMyEvent.java
+    ```
+
+## How does it work?
+
+You may have read `effect` or `condition` in the previous section. But what are they? How do they work? Let's see that!
+
+### Elements
+
+Skript language is based on different **elements** on different. For instance, this following code:
+
+```applescript
+on chat:
+    if player is op:
+        send "Hello there!" to player
+```
+
+... can be unpacked as such:
+
+=== "Event"
+    ### `on chat:`
+
+    Although we usually call them *events*, they're actually **triggers** (such as when you create a command). Without that, there's no way to run Skript code! They'll be the base for any other code.
+
+    > In this example, the trigger is `on chat:`. It'll run the code below when a player sends a message in the chat.
+
+=== "Expression"
+    ### `player` and `"Hello there!"`
+
+    **Expressions** are the values that will be used by the effect. They can be anything, from a string, to a player, to a location.
+
+    !!! info
+    There's two main type of expression:
+
+        - **Literal** expressions are the ones that __**never**__ change, whatever the event or context is. e.g. `"Hello There!"`.
+        - **Contextual** expressions are the ones that __**can**__ change, depending on the event or context. e.g. `player` or a variable.
+
+    > Here, we have two expressions: `"Hello there!"` and `player`. The first one is a literal expression, and the second one is a contextual expression, that'll be "replace" by the player that triggered the event.
+
+=== "Condition"
+    ### `if player is op:`
+    
+    **Conditions** are the tests that will be executed before the effects. They can be anything, from checking if a player is an operator, to checking if a player is in a specific region.
+
+    > Here, we have a condition: `player is op`. It'll check if the player that triggered the event is an operator.
+
+    !!! info
+        Although all conditions starts with the `if` keyword, you can omit if if you want.
+
+=== "Effect"
+    ### `send "Hello there!" to player`
+
+    **Effects** are the actions that will be executed when the trigger is called. They can be anything, from sending a message to a player, to spawning a firework.
+
+    !!! note
+        Effects usually (~95% of the time) take **expressions** as arguments, for specific behaviors!
+
+    > Here, we have an effect: `send "Hello there!" to player`. It'll send the message `Hello there!` to the player that triggered the event.
+
+---
+
+Sooo, after your reading, here's a small recap:
+
+* All script code has to be in a **trigger** (event).
+* **Expressions** are the values that will be used by the effect. They can also be contextual, and will be replaced by the value they represent.
+* **Conditions** are the tests that will be executed before the effects.
+* **Effects** are the actions that will be executed when the trigger is called.
+* **Elements** are the base of Skript code. They can be a trigger, an expression, a condition or an effect.
+
+Now, you have a better knowledge on how to create elements! Use the sidebar to choose the element you want to create.
