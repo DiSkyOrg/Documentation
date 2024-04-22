@@ -1,0 +1,73 @@
+site_name: DiSky Wiki
+theme:
+  name: material
+  icon:
+    logo: simple/discord
+  palette:
+    scheme: slate
+    primary: orange
+    accent: amber
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.expand
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+    - search.share
+repo_url: https://github.com/DiSkyOrg/DiSky
+
+markdown_extensions:
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.extra
+  - attr_list
+  - md_in_html
+
+extra_css:
+  - stylesheets/main.css
+
+extra:
+  status:
+    new: 'Recently added'
+    deprecated: 'Deprecated'
+
+plugins:
+  - search
+  - include_dir_to_nav
+  - badges
+  - macros:
+      include_dir: macros
+      j2_block_start_string: "[[[%"
+      j2_block_end_string: "%]]]"
+      j2_variable_start_string: "[[["
+      j2_variable_end_string: "]]]"
+
+nav:
+  - '📦 Wiki':
+      - README.md
+      - 'Basic Stuff': basic-stuff
+      - 'Getting Started':
+          - '1️⃣ Installation': getting-started/0-installation.md
+          - '2️⃣ Bot Creation': getting-started/1-bot-creation.md
+          - '3️⃣ Bot Loading': getting-started/2-bot-loading.md
+          - '❓ Frequently Asked Questions (FAQ)': getting-started/faq.md
+      - 'Advanced Stuff': advanced-stuff
+  - '⚙️ Modules': modules
+  - '📚 Documentation': docs
+  - '🖼️ SkImage2': skimage
+  - '✨ Create an Addon':
+      - addons/getting-started.md
+  - '📖 BooSK': boosk
