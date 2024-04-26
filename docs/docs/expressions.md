@@ -11,7 +11,7 @@ icon: material/check-all
 ## Discord Command Argument
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Works same as Skript's command argument. You can specify the argument number or the argument type (in case there's only one user or member for example) to get the selected value.
 === "Examples"
@@ -33,7 +33,7 @@ Works same as Skript's command argument. You can specify the argument number or 
 ## Used Alias
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Return the used alias in a discord command trigger section.
 It can only be used here, and will throw an error if not.
@@ -51,16 +51,18 @@ It can only be used here, and will throw an error if not.
 ## Used Argument
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Return the plain formatter of the discord command's argument
 You should however use (arg-1) for example which will return the argument value directly.
 This is intended to be for test purpose only, and therefore only return a String formatted containing every used arguments.
+
 === "Examples"
 
     ```applescript
     No examples provided.
     ```
+
 === "Patterns"
 
     ```applescript
@@ -70,7 +72,7 @@ This is intended to be for test purpose only, and therefore only return a String
 ## Used Prefix
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Return the used prefix in a discord command trigger section.
 === "Examples"
@@ -87,7 +89,7 @@ Return the used prefix in a discord command trigger section.
 ## ExprArgumentChoices
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|slashchoice|class:version|
+[[[ macros.return_type('slashchoice') ]]]
 
 No description provided.
 === "Examples"
@@ -105,7 +107,7 @@ No description provided.
 ## Sub-command Groups
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|slashcommandgroup|class:version|
+[[[ macros.return_type('slashcommandgroup') ]]]
 
 Represent every sub-slash-command groups a slash command have.
 You can add sub-slash-commands to a group, then add this group into the base slash command.
@@ -124,7 +126,7 @@ You can add sub-slash-commands to a group, then add this group into the base sla
 ## Group / Command Sub-Commands
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|subslashcommand|class:version|
+[[[ macros.return_type('subslashcommand') ]]]
 
 Represent every sub-slash-command a slash-command or a group have.
 You can add sub-slash-commands to a group or a core slash-command, then add this group into the base slash command.
@@ -143,7 +145,7 @@ You can add sub-slash-commands to a group or a core slash-command, then add this
 ## New Button
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|button|class:version|
+[[[ macros.return_type('button') ]]]
 
 Create a new button with an ID and some optional options. It can be either enabled or disabled, and either link or action. If the button is a link-type, then the ID will be the URL that the user will be redirect to.
 === "Examples"
@@ -160,7 +162,7 @@ Create a new button with an ID and some optional options. It can be either enabl
 ## New Components Row
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|row|class:version|
+[[[ macros.return_type('row') ]]]
 
 Create a new (empty) components row.
 You can add either max 5 buttons or one dropdown to it.
@@ -179,7 +181,7 @@ A single message can hold 5 components rows.
 ## New Dropdown Option
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|selectoption|class:version|
+[[[ macros.return_type('selectoption') ]]]
 
 Create a new dropdown option with different properties.
 This is a predefined option holding a string value. It can only be used in string dropdowns.
@@ -200,7 +202,7 @@ Description and emote are optional.
 ## Command Localization
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Represents the localization of the name or the description of a slash/sub command.
 You can add **Locale Data** (check for expression) to them.
@@ -221,7 +223,7 @@ Documentation: https://docs.disky.me/advanced-stuff/slash-commands#using-localiz
 ## PropOptions
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 No description provided.
 === "Examples"
@@ -239,7 +241,7 @@ No description provided.
 ## Selected Entities
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 The list of the selected entities, in the current entity dropdown update event.
 === "Examples"
@@ -256,7 +258,7 @@ The list of the selected entities, in the current entity dropdown update event.
 ## Selected Values
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 The list of the selected values' IDs, in the current dropdown update event.
 === "Examples"
@@ -273,7 +275,7 @@ The list of the selected values' IDs, in the current dropdown update event.
 ## Emoji / Emote
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|emote|class:version|
+[[[ macros.return_type('emote') ]]]
 
 Get an emoji or an emote from its name, ID or unicode.
 - An emoji is discord-side only, can be used everywhere, and don't have any attached guild.
@@ -296,7 +298,7 @@ Get an emoji or an emote from its name, ID or unicode.
 ## Last DiSky Exception
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Return the last occurred DiSky or Discord exception in the current event.
 This expression is event-based, means you cannot get the last error that happened on another event.
@@ -315,7 +317,7 @@ Once this has been called, it will remove the returned value from the errors lis
 ## BotGuilds
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|guild|class:version|
+[[[ macros.return_type('guild') ]]]
 
 No description provided.
 === "Examples"
@@ -333,7 +335,7 @@ No description provided.
 ## ExprPresence
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|activity|class:version|
+[[[ macros.return_type('activity') ]]]
 
 No description provided.
 === "Examples"
@@ -354,7 +356,7 @@ No description provided.
 ## ChannelChannels
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|textchannel|class:version|
+[[[ macros.return_type('textchannel') ]]]
 
 No description provided.
 === "Examples"
@@ -372,7 +374,7 @@ No description provided.
 ## Voice Channel Members
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|member|class:version|
+[[[ macros.return_type('member') ]]]
 
 The list of members that are connected to this actual voice channel.
 === "Examples"
@@ -391,7 +393,7 @@ The list of members that are connected to this actual voice channel.
 ## Threads of Channel / Guild
 
 [[[ macros.required_version('4.0.0, 4.4.4 (threads of forum channel)') ]]]
-|Return Type|threadchannel|class:version|
+[[[ macros.return_type('threadchannel') ]]]
 
 Gets the threads of a specific forum/text channel or a guild.
 === "Examples"
@@ -409,7 +411,7 @@ Gets the threads of a specific forum/text channel or a guild.
 ## NewCategoryAction
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|channelaction|class:version|
+[[[ macros.return_type('channelaction') ]]]
 
 No description provided.
 === "Examples"
@@ -426,7 +428,7 @@ No description provided.
 ## NewNewsChannel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|channelaction|class:version|
+[[[ macros.return_type('channelaction') ]]]
 
 No description provided.
 === "Examples"
@@ -443,7 +445,7 @@ No description provided.
 ## NewStageChannel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|channelaction|class:version|
+[[[ macros.return_type('channelaction') ]]]
 
 No description provided.
 === "Examples"
@@ -460,7 +462,7 @@ No description provided.
 ## NewTextAction
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|channelaction|class:version|
+[[[ macros.return_type('channelaction') ]]]
 
 No description provided.
 === "Examples"
@@ -477,7 +479,7 @@ No description provided.
 ## NewVoiceAction
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|channelaction|class:version|
+[[[ macros.return_type('channelaction') ]]]
 
 No description provided.
 === "Examples"
@@ -494,7 +496,7 @@ No description provided.
 ## Discord Members of Guild / Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|member|class:version|
+[[[ macros.return_type('member') ]]]
 
 Returns a list of members.
 For Message text-related channel & category, it returns members with permission to view the channel
@@ -517,7 +519,7 @@ For threads & posts, it returns the members who are in the thread. You can add o
 ## Guild / Member Roles
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|role|class:version|
+[[[ macros.return_type('role') ]]]
 
 Represent the roles that a guild or a member currently have.
 Can be changed, SET and ADD ChangeMode can be used when passing a member.
@@ -539,7 +541,7 @@ To modify guild's roles, check delete and create role effects.
 ## Last Embed
 
 [[[ macros.required_version('1.0') ]]]
-|Return Type|embedbuilder|class:version|
+[[[ macros.return_type('embedbuilder') ]]]
 
 This expression returns the last generated embed using the embed builder.
 === "Examples"
@@ -556,7 +558,7 @@ This expression returns the last generated embed using the embed builder.
 ## Guild Boosters
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|member|class:version|
+[[[ macros.return_type('member') ]]]
 
 Represent the current members booster of the guild.
 === "Examples"
@@ -574,7 +576,7 @@ Represent the current members booster of the guild.
 ## All Guild Guild Channels
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|guildchannel|class:version|
+[[[ macros.return_type('guildchannel') ]]]
 
 Get every guild channel in the guild, including text, voice, stage, news, and thread channels.
 === "Examples"
@@ -592,7 +594,7 @@ Get every guild channel in the guild, including text, voice, stage, news, and th
 ## Guild News Channels
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|newschannel|class:version|
+[[[ macros.return_type('newschannel') ]]]
 
 Gets all news channels of a guild.
 === "Examples"
@@ -610,7 +612,7 @@ Gets all news channels of a guild.
 ## All Guild Scheduled Events
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|scheduledevent|class:version|
+[[[ macros.return_type('scheduledevent') ]]]
 
 Returns all scheduled events of a guild.
 === "Examples"
@@ -628,7 +630,7 @@ Returns all scheduled events of a guild.
 ## All Guild Stage Channels
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|stagechannel|class:version|
+[[[ macros.return_type('stagechannel') ]]]
 
 Returns all stage channels of a guild.
 === "Examples"
@@ -646,7 +648,7 @@ Returns all stage channels of a guild.
 ## All Guild Text Channels
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|textchannel|class:version|
+[[[ macros.return_type('textchannel') ]]]
 
 Returns all text channels of a guild.
 === "Examples"
@@ -664,7 +666,7 @@ Returns all text channels of a guild.
 ## Guild Voice Channels
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|voicechannel|class:version|
+[[[ macros.return_type('oicechannel') ]]]
 
 Gets all voice channels of a guild.
 === "Examples"
@@ -682,7 +684,7 @@ Gets all voice channels of a guild.
 ## Message Attachment
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|attachment|class:version|
+[[[ macros.return_type('attachment') ]]]
 
 Get every attachment as custom object of a message
 === "Examples"
@@ -700,7 +702,7 @@ Get every attachment as custom object of a message
 ## Message Embeds
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|embedbuilder|class:version|
+[[[ macros.return_type('embedbuilder') ]]]
 
 Get every embeds of a specific messages. Keep in mind only webhook are allowed to send more than one embed!
 === "Examples"
@@ -718,7 +720,7 @@ Get every embeds of a specific messages. Keep in mind only webhook are allowed t
 ## Message Text Channels
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|textchannel|class:version|
+[[[ macros.return_type('textchannel') ]]]
 
 Get every mentioned text channels in a message.
 === "Examples"
@@ -736,7 +738,7 @@ Get every mentioned text channels in a message.
 ## Message Emotes
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|emote|class:version|
+[[[ macros.return_type('emote') ]]]
 
 Get every mentioned emotes in a message.
 This will only return custom emote, and will therefore not include discord emotes.
@@ -755,7 +757,7 @@ This will only return custom emote, and will therefore not include discord emote
 ## Message Mentioned Members
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|member|class:version|
+[[[ macros.return_type('member') ]]]
 
 Get every mentioned members in a message. If the message doesn't come from a guild it will return an empty array!
 === "Examples"
@@ -773,7 +775,7 @@ Get every mentioned members in a message. If the message doesn't come from a gui
 ## Message Mentioned Roles
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|role|class:version|
+[[[ macros.return_type('role') ]]]
 
 Get every mentioned Roles in a message. If the message doesn't come from a guild it will return an empty array!
 === "Examples"
@@ -791,7 +793,7 @@ Get every mentioned Roles in a message. If the message doesn't come from a guild
 ## Message Mentioned Users
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|user|class:version|
+[[[ macros.return_type('user') ]]]
 
 Get every mentioned users in a message.
 === "Examples"
@@ -809,7 +811,7 @@ Get every mentioned users in a message.
 ## Message Voice Channels
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|voicechannel|class:version|
+[[[ macros.return_type('oicechannel') ]]]
 
 Get every mentioned voice channels in a message.
 === "Examples"
@@ -827,7 +829,7 @@ Get every mentioned voice channels in a message.
 ## Message Reactions
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|emote|class:version|
+[[[ macros.return_type('emote') ]]]
 
 Get every reactions of a message.
 Because of Discord's limitation, we cannot get which user reacted with which reaction, you'll have to count them yourself.
@@ -846,7 +848,7 @@ Because of Discord's limitation, we cannot get which user reacted with which rea
 ## NewRoleAction
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|roleaction|class:version|
+[[[ macros.return_type('roleaction') ]]]
 
 No description provided.
 === "Examples"
@@ -863,7 +865,7 @@ No description provided.
 ## Get Tag
 
 [[[ macros.required_version('4.4.4') ]]]
-|Return Type|forumtag|class:version|
+[[[ macros.return_type('forumtag') ]]]
 
 Get a tag from a forum channel using its name.
 === "Examples"
@@ -880,7 +882,7 @@ Get a tag from a forum channel using its name.
 ## New Forum Tag
 
 [[[ macros.required_version('4.4.4') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Create a new forum tag with a specific name & optional emoji.
 You can also specify if the tag is 'moderate' or not.
@@ -900,7 +902,7 @@ You can also specify if the tag is 'moderate' or not.
 ## Post / Forum Tags
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Get all tags of a forum channel or a thread channel.
 You can also add or remove tags from a thread channel using this expression.
@@ -920,7 +922,7 @@ You must add the tag to the forum itself before adding it to the post.
 ## Parent Channel of Thread
 
 [[[ macros.required_version('4.13.0') ]]]
-|Return Type|guildchannel|class:version|
+[[[ macros.return_type('guildchannel') ]]]
 
 Get the parent channel of a thread channel. It can return a text, news or forum channel.
 
@@ -939,7 +941,7 @@ Get the parent channel of a thread channel. It can return a text, news or forum 
 ## User Badges
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Represent every badges' name a user have.
 This does not and cannot contain any intro-related badges (nitro membership or nitro boosting), it need OAuth2 to be enabled.
@@ -958,7 +960,7 @@ This does not and cannot contain any intro-related badges (nitro membership or n
 ## User Mutual Guilds
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|guild|class:version|
+[[[ macros.return_type('guild') ]]]
 
 Represent every guild that the bot and the user have in common.
 === "Examples"
@@ -976,7 +978,7 @@ Represent every guild that the bot and the user have in common.
 ## Last Row Builder
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|row|class:version|
+[[[ macros.return_type('row') ]]]
 
 Represents the last row builder created within a section.
 === "Examples"
@@ -993,7 +995,7 @@ Represents the last row builder created within a section.
 ## Row Builder Components
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Components of a row builder
 See also: 'Create (rich) Message'
@@ -1012,7 +1014,7 @@ See also: 'Create (rich) Message'
 ## Last Message Builder
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|messagecreatebuilder|class:version|
+[[[ macros.return_type('messagecreatebuilder') ]]]
 
 Represents the last message builder created within a section.
 === "Examples"
@@ -1029,7 +1031,7 @@ Represents the last message builder created within a section.
 ## Message Builder Attachments
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Attachments of a message builder
 Supports SkImage's images if the addon is installed.
@@ -1049,7 +1051,7 @@ See also: 'Create (rich) Message'
 ## Message Builder Embeds
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|embedbuilder|class:version|
+[[[ macros.return_type('embedbuilder') ]]]
 
 Embeds of a message builder
 See also: 'Create (rich) Message'
@@ -1068,7 +1070,7 @@ See also: 'Create (rich) Message'
 ## Message Builder Component Rows
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Component rows of a message builder
 See also: 'Creator Components Row'
@@ -1087,7 +1089,7 @@ See also: 'Creator Components Row'
 ## New Message Command
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Create a new message command, to be updated on discord later.
 This will create a context command of MESSAGE type.
@@ -1106,7 +1108,7 @@ Once created, you can execute it by right-clicking on a message, then going in '
 ## New Option Choice
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|slashchoice|class:version|
+[[[ macros.return_type('slashchoice') ]]]
 
 Create a new slash command option choice with an unique name and a string or number value.
 Choices are only available for STRING, NUMBER and INTEGER slash command option type.
@@ -1125,7 +1127,7 @@ Of course, the provided value type must be compatible with the option type (you 
 ## New Slash Command
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Create a new Slash Command builder, where you'll be able to add options, subcommands, etc...
 For a more detailed guide, take a look at [this tutorial](../advanced-stuff/slash-commands.md).
@@ -1145,7 +1147,7 @@ For a more detailed guide, take a look at [this tutorial](../advanced-stuff/slas
 ## ExprNewSlashOption
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|slashoption|class:version|
+[[[ macros.return_type('slashoption') ]]]
 
 No description provided.
 === "Examples"
@@ -1162,7 +1164,7 @@ No description provided.
 ## New User Command
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Create a new user command, to be updated on discord later.
 This will create a context command of USER type.
@@ -1181,7 +1183,7 @@ Once created, you can execute it by right-clicking on a user, then going in 'App
 ## New Dropdown
 
 [[[ macros.required_version('4.6.0') ]]]
-|Return Type|dropdown|class:version|
+[[[ macros.return_type('dropdown') ]]]
 
 Create a new dropdown menu with different properties.
 There's two type of dropdown available:
@@ -1207,7 +1209,7 @@ There's two type of dropdown available:
 ## ExprNewInput
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|textinput|class:version|
+[[[ macros.return_type('textinput') ]]]
 
 No description provided.
 === "Examples"
@@ -1225,7 +1227,7 @@ No description provided.
 ## ExprNewModal
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|modal|class:version|
+[[[ macros.return_type('modal') ]]]
 
 No description provided.
 === "Examples"
@@ -1242,7 +1244,7 @@ No description provided.
 ## Modal Component Value / Values
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Get the current value(s) of a sent component, currently only working in modals with text input & select menus.
 You have to precise what type of component you are trying to get, either 'textinput' or 'dropdown'.
@@ -1261,7 +1263,7 @@ You have to precise what type of component you are trying to get, either 'textin
 ## New Locale Data
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Returns the a new locale data for the given locale and the given value.
 You have to provide the locale using its code (list can be found here: https://discord.com/developers/docs/reference#locales) and the value to set.
@@ -1280,7 +1282,7 @@ Documentation: https://docs.disky.me/advanced-stuff/slash-commands#using-localiz
 ## Target Message
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|message|class:version|
+[[[ macros.return_type('message') ]]]
 
 Represent the target message in a message command event.
 It basically represent the message that was clicked on.
@@ -1298,7 +1300,7 @@ It basically represent the message that was clicked on.
 ## Slash Command Argument
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Represents a slash command argument.
 The name is the ID used when defining the slash command.
@@ -1320,7 +1322,7 @@ The type should be the same used when defining the argument in the command.
 ## Slash Command Argument
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 Represents a slash command argument.
 The name is the ID used when defining the slash command.
@@ -1342,7 +1344,7 @@ The type should be the same used when defining the argument in the command.
 ## Current Argument
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 The current argument being completed.
 === "Examples"
@@ -1359,7 +1361,7 @@ The current argument being completed.
 ## Target User
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|user|class:version|
+[[[ macros.return_type('user') ]]]
 
 Represent the target user in a user command event.
 It basically represent the user that was clicked on.
@@ -1377,7 +1379,7 @@ It basically represent the user that was clicked on.
 ## Get Audio Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|audiochannel|class:version|
+[[[ macros.return_type('audiochannel') ]]]
 
 This is an utility expression.
 It will returns an Audio Channel out of the provided ID.
@@ -1397,7 +1399,7 @@ This expression cannot be changed.
 ## Get Bot / Bot Named X
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|bot|class:version|
+[[[ macros.return_type('bot') ]]]
 
 Get a cached bot from DiSky using its unique name.
 If the desired bot does not exist or is not loaded yet, this expression will return none.
@@ -1417,7 +1419,7 @@ This expression cannot be changed.
 ## Get Category
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|category|class:version|
+[[[ macros.return_type('category') ]]]
 
 Get a category from a guild using its unique ID.
 Categories are global on discord, means different categories cannot have the same ID.
@@ -1436,7 +1438,7 @@ This expression cannot be changed.
 ## Get Channel
 
 [[[ macros.required_version('4.4.2') ]]]
-|Return Type|channel|class:version|
+[[[ macros.return_type('channel') ]]]
 
 A generic expression to get any channel from its ID.
 This can return a text, private, news, voice, category, stage, thread or post channel.
@@ -1454,7 +1456,7 @@ This can return a text, private, news, voice, category, stage, thread or post ch
 ## Get Forum Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|forumchannel|class:version|
+[[[ macros.return_type('forumchannel') ]]]
 
 Get a forum channel from a guild using its unique ID.
 Channels are global on discord, means different forum channels cannot have the same ID.
@@ -1473,7 +1475,7 @@ This expression cannot be changed.
 ## Get Guild
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|guild|class:version|
+[[[ macros.return_type('guild') ]]]
 
 Get a guild from a guild using its unique ID.
 This expression cannot be changed.
@@ -1491,7 +1493,7 @@ This expression cannot be changed.
 ## Get Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|guildchannel|class:version|
+[[[ macros.return_type('guildchannel') ]]]
 
 Get a channel from a guild using its unique ID.
 Channels are global on discord, means different channels cannot have the same ID.
@@ -1510,7 +1512,7 @@ This expression cannot be changed.
 ## Get Member
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|member|class:version|
+[[[ macros.return_type('member') ]]]
 
 Get a cached member from its unique ID
 This expression could return null, according to if the actual member was cached or not.
@@ -1530,7 +1532,7 @@ This expression cannot be changed
 ## Get Message Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 This is an utility expression.
 It will returns a Message Channel (text, news or thread) out of the provided ID.
@@ -1549,7 +1551,7 @@ This expression cannot be changed.
 ## Get News Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|newschannel|class:version|
+[[[ macros.return_type('newschannel') ]]]
 
 Get a news channel from a guild using its unique ID.
 Channels are global on discord, means different channels cannot have the same ID.
@@ -1568,7 +1570,7 @@ This expression cannot be changed.
 ## Attachment Duration
 
 [[[ macros.required_version('4.12.0') ]]]
-|Return Type|timespan|class:version|
+[[[ macros.return_type('timespan') ]]]
 
 Get the duration of the voice message attachment. You should check before if the attachment is an audio file using the [`attachment is audio`](conditions.md#is-attachment-audio) expression.
 
@@ -1601,7 +1603,7 @@ This expression will only work with **voice message audio**, and not all audio f
 ## Member Flags
 
 [[[ macros.required_version('4.12.0') ]]]
-|Return Type|memberflags|class:version|
+[[[ macros.return_type('memberflags') ]]]
 
 Get or change [member flags](types.md#memberflag) of a specific member. **Some of these flags cannot be added/removed manually!**
 
@@ -1621,7 +1623,7 @@ Get or change [member flags](types.md#memberflag) of a specific member. **Some o
 ## Get Role
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|role|class:version|
+[[[ macros.return_type('role') ]]]
 
 Get a role from a guild using its unique ID.
 Role are global on discord, means two role from two different guild could never have the same ID.
@@ -1640,7 +1642,7 @@ This expression cannot be changed.
 ## Get Scheduled Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|scheduledevent|class:version|
+[[[ macros.return_type('scheduledevent') ]]]
 
 Get a scheduled event from a guild using its unique ID.
 Scheduled events are global on discord, means different scheduled events cannot have the same ID.
@@ -1659,7 +1661,7 @@ This expression cannot be changed.
 ## Get Stage Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|stagechannel|class:version|
+[[[ macros.return_type('stagechannel') ]]]
 
 Get a stage channel from a guild using its unique ID.
 Channels are global on discord, means different channels cannot have the same ID.
@@ -1678,7 +1680,7 @@ This expression cannot be changed.
 ## Get Sticker
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|sticker|class:version|
+[[[ macros.return_type('sticker') ]]]
 
 Get a cached sticker from its per-guild name
 This expression is here to get a sticker from its name.
@@ -1698,7 +1700,7 @@ This expression cannot be changed
 ## Get Text Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|textchannel|class:version|
+[[[ macros.return_type('textchannel') ]]]
 
 Get a text channel from a guild using its unique ID.
 Channels are global on discord, means different text channels cannot have the same ID.
@@ -1717,7 +1719,7 @@ This expression cannot be changed.
 ## Get Thread Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|threadchannel|class:version|
+[[[ macros.return_type('threadchannel') ]]]
 
 Get a thread channel from a guild using its unique ID.
 Threads are global on discord, means different threads cannot have the same ID.
@@ -1736,7 +1738,7 @@ This expression cannot be changed.
 ## GetUser
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|textchannel|class:version|
+[[[ macros.return_type('textchannel') ]]]
 
 No description provided.
 === "Examples"
@@ -1753,7 +1755,7 @@ No description provided.
 ## User in Guild
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|member|class:version|
+[[[ macros.return_type('member') ]]]
 
 Get the member related to the specified user in a specific guild.
 Users are common to whole Discord, two user cannot have the same instance.
@@ -1773,7 +1775,7 @@ User can have multiple instance according to which guild they are in, therefore 
 ## Get Voice Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|voicechannel|class:version|
+[[[ macros.return_type('oicechannel') ]]]
 
 Get a voice channel from a guild using its unique ID.
 Channels are global on discord, means different channels cannot have the same ID.
@@ -1792,7 +1794,7 @@ This expression cannot be changed.
 ## Discord Permissions Of
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|permission|class:version|
+[[[ macros.return_type('permission') ]]]
 
 Get or change the permissions of a specific member or role in an optional channel.
 === "Examples"
@@ -1810,7 +1812,7 @@ Get or change the permissions of a specific member or role in an optional channe
 ## User Locale
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the language code defined as user-side client of Discord.
 Basically, return the language user's client is loaded in.
@@ -1829,7 +1831,7 @@ This expression only works in interactions event, and cannot be used outside of 
 ## Inline Rich Message Builder
 
 [[[ macros.required_version('4.4.1, 4.4.3 (component-only)') ]]]
-|Return Type|messagecreatebuilder|class:version|
+[[[ macros.return_type('messagecreatebuilder') ]]]
 
 Create a new rich message in one line only.
 WARNING: This could slow a lot the Skript's parsing time if used too many times!
@@ -1851,7 +1853,7 @@ You can also use the second pattern to send component-only messages.
 ## Logged User
 
 [[[ macros.required_version('4.11.0') ]]]
-|Return Type|user|class:version|
+[[[ macros.return_type('user') ]]]
 
 The user who triggered the log entry.
 === "Examples"
@@ -1869,7 +1871,7 @@ The user who triggered the log entry.
 ## Logged Guild
 
 [[[ macros.required_version('4.11.0') ]]]
-|Return Type|guild|class:version|
+[[[ macros.return_type('guild') ]]]
 
 The guild where the log entry has been triggered.
 === "Examples"
@@ -1887,7 +1889,7 @@ The guild where the log entry has been triggered.
 ## Logged ID
 
 [[[ macros.required_version('4.11.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 The ID of the log entry.
 === "Examples"
@@ -1905,7 +1907,7 @@ The ID of the log entry.
 ## Logged Action
 
 [[[ macros.required_version('4.11.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 The action type of the log entry.
 === "Examples"
@@ -1923,7 +1925,7 @@ The action type of the log entry.
 ## ExprMaxRange
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 No description provided.
 === "Examples"
@@ -1941,7 +1943,7 @@ No description provided.
 ## ExprMinRange
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 No description provided.
 === "Examples"
@@ -1959,7 +1961,7 @@ No description provided.
 ## ExprPlaceholder
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -1977,7 +1979,7 @@ No description provided.
 ## ExprRequireState
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|boolean|class:version|
+[[[ macros.return_type('boolean') ]]]
 
 No description provided.
 === "Examples"
@@ -1995,7 +1997,7 @@ No description provided.
 ## ExprValue
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2013,7 +2015,7 @@ No description provided.
 ## Color from Hex
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|color|class:version|
+[[[ macros.return_type('color') ]]]
 
 Get a color from a hexadecimal string.
 Do not include the # in the string.
@@ -2031,7 +2033,7 @@ Do not include the # in the string.
 ## ActivityEmote
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|emote|class:version|
+[[[ macros.return_type('emote') ]]]
 
 No description provided.
 === "Examples"
@@ -2049,7 +2051,7 @@ No description provided.
 ## ActivityText
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2067,7 +2069,7 @@ No description provided.
 ## ActivityType
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2085,7 +2087,7 @@ No description provided.
 ## ActivityURL
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2103,7 +2105,7 @@ No description provided.
 ## Attachments File Extension
 
 [[[ macros.required_version('1.7') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the file extension of an attachment.
 === "Examples"
@@ -2121,7 +2123,7 @@ Get the file extension of an attachment.
 ## Attachments File Name
 
 [[[ macros.required_version('1.7') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the file name of an attachment.
 === "Examples"
@@ -2139,7 +2141,7 @@ Get the file name of an attachment.
 ## Attachments URL
 
 [[[ macros.required_version('1.7') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the url of an attachment.
 === "Examples"
@@ -2157,7 +2159,7 @@ Get the url of an attachment.
 ## User / Bot / Guild Avatar
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Return the avatar URL of any user, guild or bot.
 This can be changed for guilds and bots only!
@@ -2177,7 +2179,7 @@ This can be changed for guilds and bots only!
 ## Ban Reason
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 The optional reason which say why the user of this ban was banned.
 === "Examples"
@@ -2195,7 +2197,7 @@ The optional reason which say why the user of this ban was banned.
 ## Ban User
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|user|class:version|
+[[[ macros.return_type('user') ]]]
 
 The user linked to this ban.
 === "Examples"
@@ -2213,7 +2215,7 @@ The user linked to this ban.
 ## BotName
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2231,7 +2233,7 @@ No description provided.
 ## BotPing
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 No description provided.
 === "Examples"
@@ -2249,7 +2251,7 @@ No description provided.
 ## BotPresence
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|activity|class:version|
+[[[ macros.return_type('activity') ]]]
 
 No description provided.
 === "Examples"
@@ -2267,7 +2269,7 @@ No description provided.
 ## EnumBotStatus
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|onlinestatus|class:version|
+[[[ macros.return_type('onlinestatus') ]]]
 
 No description provided.
 === "Examples"
@@ -2285,7 +2287,7 @@ No description provided.
 ## BotToken
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2303,7 +2305,7 @@ No description provided.
 ## BotUptime
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|timespan|class:version|
+[[[ macros.return_type('timespan') ]]]
 
 No description provided.
 === "Examples"
@@ -2321,7 +2323,7 @@ No description provided.
 ## Bot Self Member
 
 [[[ macros.required_version('4.9.0') ]]]
-|Return Type|member|class:version|
+[[[ macros.return_type('member') ]]]
 
 Get the self member instance of a bot, in a specific guild.
 === "Examples"
@@ -2340,7 +2342,7 @@ Get the self member instance of a bot, in a specific guild.
 ## ChannelBitrate
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 No description provided.
 === "Examples"
@@ -2358,7 +2360,7 @@ No description provided.
 ## Channel Jump URL
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Returns the jump-to URL for this channel.
 Clicking this URL in the Discord client will cause the client to jump to the specified channel.
@@ -2377,7 +2379,7 @@ Clicking this URL in the Discord client will cause the client to jump to the spe
 ## ChannelMaxUser
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 No description provided.
 === "Examples"
@@ -2395,7 +2397,7 @@ No description provided.
 ## ChannelName
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2413,7 +2415,7 @@ No description provided.
 ## ChannelNSFW
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|boolean|class:version|
+[[[ macros.return_type('boolean') ]]]
 
 No description provided.
 === "Examples"
@@ -2431,7 +2433,7 @@ No description provided.
 ## ChannelParent
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|category|class:version|
+[[[ macros.return_type('category') ]]]
 
 No description provided.
 === "Examples"
@@ -2449,7 +2451,7 @@ No description provided.
 ## ChannelPosition
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 No description provided.
 === "Examples"
@@ -2467,7 +2469,7 @@ No description provided.
 ## Voice Channel Status
 
 [[[ macros.required_version('4.13.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Represent the *temporary* status of a voice channel. Can be get, but also set with the following conditions:
 * If the bot is **connected** to the channel, with the `voice set status` permission
@@ -2492,7 +2494,7 @@ Represent the *temporary* status of a voice channel. Can be get, but also set wi
 ## ChannelRegion
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 No description provided.
 === "Examples"
@@ -2510,7 +2512,7 @@ No description provided.
 ## ChannelSlowmode
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 No description provided.
 === "Examples"
@@ -2528,7 +2530,7 @@ No description provided.
 ## ChannelTopic
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2546,7 +2548,7 @@ No description provided.
 ## Embed Color
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|color|class:version|
+[[[ macros.return_type('color') ]]]
 
 Get or change the color of an embed builder.
 The color input must come from Skript, and will be converted by DiSky.
@@ -2565,7 +2567,7 @@ The color input must come from Skript, and will be converted by DiSky.
 ## Creation Date
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|date|class:version|
+[[[ macros.return_type('date') ]]]
 
 Get the creation date (as Skript date) of any ISnowFlake entity, including, but not limited to:
 - Member
@@ -2590,7 +2592,7 @@ Get the creation date (as Skript date) of any ISnowFlake entity, including, but 
 ## Discord ID
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the unique long value (ID) that represent a discord entity.
 === "Examples"
@@ -2609,7 +2611,7 @@ Get the unique long value (ID) that represent a discord entity.
 ## Name of Discord Entity
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 This represents the current name of any discord entity that can hold one.
 You can change name of every entity except member and user by defining a new text.
@@ -2630,7 +2632,7 @@ Check for [nickname of member](#member-nickname) if you want to check / change c
 ## EmbedAuthor
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2648,7 +2650,7 @@ No description provided.
 ## EmbedAuthorIcon
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2666,7 +2668,7 @@ No description provided.
 ## EmbedAuthorURL
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2684,7 +2686,7 @@ No description provided.
 ## EmbedDescription
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2702,7 +2704,7 @@ No description provided.
 ## EmbedFooter
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2720,7 +2722,7 @@ No description provided.
 ## EmbedFooterIcon
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2738,7 +2740,7 @@ No description provided.
 ## EmbedImage
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2756,7 +2758,7 @@ No description provided.
 ## EmbedThumbnail
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2774,7 +2776,7 @@ No description provided.
 ## EmbedTimeStamp
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|date|class:version|
+[[[ macros.return_type('date') ]]]
 
 No description provided.
 === "Examples"
@@ -2792,7 +2794,7 @@ No description provided.
 ## EmbedTitle
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2810,7 +2812,7 @@ No description provided.
 ## Embed URL
 
 [[[ macros.required_version('4.12.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get or change the URL of this embed. The Discord client mostly only uses this property in combination with the title for a clickable Hyperlink.
 If multiple embeds in a message use the same URL, the Discord client will merge them into a single embed and aggregate images into a gallery view.
@@ -2833,7 +2835,7 @@ This is different from the [EmbedTitleURL](#embedtitleurl) property: this one ca
 ## EmbedTitleURL
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -2851,7 +2853,7 @@ No description provided.
 ## Emote Name
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the name of this emote.
 This, instead of 'discord name of %emote%' will return the name of an emote, and not an emoji.
@@ -2872,7 +2874,7 @@ You can change this property to change the emote's name itself.
 ## Emote Image URL
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the URL of this emote.
 Only emote have image URL, emoji are from Discord and will therefore return none here.
@@ -2892,7 +2894,7 @@ Only emote have image URL, emoji are from Discord and will therefore return none
 ## Channel of Scheduled Event
 
 [[[ macros.required_version('4.8.0') ]]]
-|Return Type|audiochannel|class:version|
+[[[ macros.return_type('audiochannel') ]]]
 
 Get the channel of a scheduled event.
 Can be null if the event is external. Will returns either a stage or voice channel.
@@ -2911,7 +2913,7 @@ Can be null if the event is external. Will returns either a stage or voice chann
 ## Cover of Scheduled Event
 
 [[[ macros.required_version('4.8.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the cover of a scheduled event.
 Links to a potentially heavily compressed image. You can append a size parameter to the URL if needed. Example: ?size=4096
@@ -2931,7 +2933,7 @@ This can returns null if no cover is set for the event.
 ## Creator of Scheduled Event
 
 [[[ macros.required_version('4.8.0') ]]]
-|Return Type|user|class:version|
+[[[ macros.return_type('user') ]]]
 
 Get the creator of a scheduled event.
 May return none if user has deleted their account, the User object is not cached or the event was created before Discord started keeping track of event creators on October 21st, 2021
@@ -2950,7 +2952,7 @@ May return none if user has deleted their account, the User object is not cached
 ## End date of Scheduled Event
 
 [[[ macros.required_version('4.8.0') ]]]
-|Return Type|date|class:version|
+[[[ macros.return_type('date') ]]]
 
 Get the end date of a scheduled event.
 Can be null if the event is made from a channel and not an external place.
@@ -2969,7 +2971,7 @@ Can be null if the event is made from a channel and not an external place.
 ## Location of Scheduled Event
 
 [[[ macros.required_version('4.8.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the location of a scheduled event.
 Returns the specified place if the event is external, or the audio channel's ID.
@@ -2988,7 +2990,7 @@ Returns the specified place if the event is external, or the audio channel's ID.
 ## Start date of Scheduled Event
 
 [[[ macros.required_version('4.8.0') ]]]
-|Return Type|date|class:version|
+[[[ macros.return_type('date') ]]]
 
 Get the start date of a scheduled event. Cannot be null.
 === "Examples"
@@ -3006,7 +3008,7 @@ Get the start date of a scheduled event. Cannot be null.
 ## Status of Scheduled Event
 
 [[[ macros.required_version('4.8.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the status of a scheduled event between:
 - Scheduled
@@ -3028,7 +3030,7 @@ Get the status of a scheduled event between:
 ## Type of Scheduled Event
 
 [[[ macros.required_version('4.8.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the type of a scheduled event.
 It can either be 'voice/stage instance' or 'external' according to the type of the event.
@@ -3047,7 +3049,7 @@ It can either be 'voice/stage instance' or 'external' according to the type of t
 ## Default Forum Emoji
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|emote|class:version|
+[[[ macros.return_type('emote') ]]]
 
 Represent the default emoji of a forum channel.
 It's the mote that is added automatically once a new post is created.
@@ -3067,7 +3069,7 @@ Can return none and can be changed.
 ## Tag Required
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|boolean|class:version|
+[[[ macros.return_type('boolean') ]]]
 
 Get a true/false value of the tag required state of a forum channel.
 This property can be changed, and we recommend the tag required condition for checks.
@@ -3086,7 +3088,7 @@ This property can be changed, and we recommend the tag required condition for ch
 ## Guild Of
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|guild|class:version|
+[[[ macros.return_type('guild') ]]]
 
 Return the guild of a specific entity.
 This can return null if the entity is not guild-based, like private message channel or message.
@@ -3106,7 +3108,7 @@ This can return null if the entity is not guild-based, like private message chan
 ## GuildAFKChannel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|voicechannel|class:version|
+[[[ macros.return_type('oicechannel') ]]]
 
 No description provided.
 === "Examples"
@@ -3124,7 +3126,7 @@ No description provided.
 ## GuildAFKTimeout
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 No description provided.
 === "Examples"
@@ -3142,7 +3144,7 @@ No description provided.
 ## GuildBanner
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -3160,7 +3162,7 @@ No description provided.
 ## Guild Boost Count
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 Represent how many people are boosting the guild currently.
 === "Examples"
@@ -3178,7 +3180,7 @@ Represent how many people are boosting the guild currently.
 ## Guild Booster Role
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|role|class:version|
+[[[ macros.return_type('role') ]]]
 
 Represent the booster role of this guild.
 Any member that got this role is actually a booster of the guild.
@@ -3197,7 +3199,7 @@ Any member that got this role is actually a booster of the guild.
 ## Everyone Role
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|role|class:version|
+[[[ macros.return_type('role') ]]]
 
 Represent the @everyone role of a guild.
 Even if it's not a real role, it share multiple properties such as permissions.
@@ -3216,7 +3218,7 @@ Even if it's not a real role, it share multiple properties such as permissions.
 ## Guild Verification Level
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Represent the verification level of the guild. It can either be:
 - None
@@ -3239,7 +3241,7 @@ Represent the verification level of the guild. It can either be:
 ## Invite Code
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Represent the unique invite code used in the Discord URL.
 === "Examples"
@@ -3257,7 +3259,7 @@ Represent the unique invite code used in the Discord URL.
 ## Invite Inviter
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|user|class:version|
+[[[ macros.return_type('user') ]]]
 
 Represent the user who created the invite.
 === "Examples"
@@ -3275,7 +3277,7 @@ Represent the user who created the invite.
 ## Invite Max Age
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 Represent the max age time this invite can be used.
 === "Examples"
@@ -3293,7 +3295,7 @@ Represent the max age time this invite can be used.
 ## Invite Max Uses
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 Represent the max amount of times this invite can be used.
 === "Examples"
@@ -3311,7 +3313,7 @@ Represent the max amount of times this invite can be used.
 ## Invite URL
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Represent the plain Discord URL that people have to click on in order to join the invite's guild.
 === "Examples"
@@ -3329,7 +3331,7 @@ Represent the plain Discord URL that people have to click on in order to join th
 ## Invite Uses
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 Represent the amount of times this invite has been used.
 === "Examples"
@@ -3347,7 +3349,7 @@ Represent the amount of times this invite has been used.
 ## Member Effective Name
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Simple way to get the effective name of a member in a guild:
 If the nickname is not set, it will return the [discord name of the member](#name-of-discord-entity).
@@ -3367,7 +3369,7 @@ If the nickname is not set, it will return the [discord name of the member](#nam
 ## Member Join Date
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|date|class:version|
+[[[ macros.return_type('date') ]]]
 
 Represent the skript's date of the member's join date.
 It cannot be changed.
@@ -3387,7 +3389,7 @@ This is a specific element of the bot, so it can be used in the bots event.
 ## Member Nickname
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Represent the member nickname. Can be none if the member doesn't have any nickname currently.
 Use [effective name](#member-effective-name) expression to get member's name of its nickname is not set.
@@ -3408,7 +3410,7 @@ Use [effective name](#member-effective-name) expression to get member's name of 
 ## MemberVoiceChannel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|audiochannel|class:version|
+[[[ macros.return_type('audiochannel') ]]]
 
 No description provided.
 === "Examples"
@@ -3426,7 +3428,7 @@ No description provided.
 ## Mention Tag
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the mention name of the discord entity.
 It will return the similar format that when you are doing @ (roles, users) or # (channels) followed by names.
@@ -3446,7 +3448,7 @@ It will return the similar format that when you are doing @ (roles, users) or # 
 ## Message User Author
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|user|class:version|
+[[[ macros.return_type('user') ]]]
 
 Get the user instance of the message's author. Can be null in case of the message was sent by a webhook.
 === "Examples"
@@ -3464,7 +3466,7 @@ Get the user instance of the message's author. Can be null in case of the messag
 ## Message/Webhook Channel
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|textchannel|class:version|
+[[[ macros.return_type('textchannel') ]]]
 
 Get the text channel were the message was sent. Can be null if it's in PM or not in guild!
 
@@ -3485,7 +3487,7 @@ Starting DiSky v4.15.0, this can also be used to get the channel of a [webhook](
 ## Message Content
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the raw (non formatted) content of a sent message.
 === "Examples"
@@ -3503,7 +3505,7 @@ Get the raw (non formatted) content of a sent message.
 ## Message Guild
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|guild|class:version|
+[[[ macros.return_type('guild') ]]]
 
 Get the guild where the message was sent. Can be null if it's in PM or not in guild!
 === "Examples"
@@ -3521,7 +3523,7 @@ Get the guild where the message was sent. Can be null if it's in PM or not in gu
 ## Message/Event Jump URL
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the jump URL of a specific message/scheduled event
 === "Examples"
@@ -3540,7 +3542,7 @@ Get the jump URL of a specific message/scheduled event
 ## Message Member Author
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|member|class:version|
+[[[ macros.return_type('member') ]]]
 
 Get the member instance of the message's author. Can be null if it's in PM or not in guild!
 === "Examples"
@@ -3558,7 +3560,7 @@ Get the member instance of the message's author. Can be null if it's in PM or no
 ## MessageReferenced
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|message|class:version|
+[[[ macros.return_type('message') ]]]
 
 No description provided.
 === "Examples"
@@ -3576,7 +3578,7 @@ No description provided.
 ## Profile Banner
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the profile banner URL. If the user doesn't have a custom banner, this will return none.
 Use the 'profile color' expression to get the color instead of the banner URL in that case!
@@ -3595,7 +3597,7 @@ Use the 'profile color' expression to get the color instead of the banner URL in
 ## Profile Color
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|color|class:version|
+[[[ macros.return_type('color') ]]]
 
 Get the profile color accent. If the user have a custom banner, this will return none.
 Use the 'profile banner' expression to get the avatar URL instead of the color accent in that case!
@@ -3614,7 +3616,7 @@ Use the 'profile banner' expression to get the avatar URL instead of the color a
 ## RoleColor
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|color|class:version|
+[[[ macros.return_type('color') ]]]
 
 No description provided.
 === "Examples"
@@ -3632,7 +3634,7 @@ No description provided.
 ## RoleName
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -3650,7 +3652,7 @@ No description provided.
 ## RolePosition
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 No description provided.
 === "Examples"
@@ -3668,7 +3670,7 @@ No description provided.
 ## Tag Emoji
 
 [[[ macros.required_version('4.4.4') ]]]
-|Return Type|emote|class:version|
+[[[ macros.return_type('emote') ]]]
 
 Gets the emoji of a forum tag. Can be null if the tag has no emoji.
 === "Examples"
@@ -3686,7 +3688,7 @@ Gets the emoji of a forum tag. Can be null if the tag has no emoji.
 ## User Discriminator
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Represent the four digit number after the # of a user's name.
 These, mixed with the user name itself, are unique.
@@ -3706,7 +3708,7 @@ This **DOES NOT** include the `#` char, so you have to add it yourself.
 ## Message Builder Content
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Text content of a message builder
 See also: 'Create (rich) Message'
@@ -3725,7 +3727,7 @@ See also: 'Create (rich) Message'
 ## Track Author
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Return the author of a specific track
 === "Examples"
@@ -3743,7 +3745,7 @@ Return the author of a specific track
 ## Track Duration
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|timespan|class:version|
+[[[ macros.return_type('timespan') ]]]
 
 Return the duration of a specific track
 === "Examples"
@@ -3761,7 +3763,7 @@ Return the duration of a specific track
 ## Track Identifier
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Return the unique identifier of a track
 === "Examples"
@@ -3779,7 +3781,7 @@ Return the unique identifier of a track
 ## Track Position
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|timespan|class:version|
+[[[ macros.return_type('timespan') ]]]
 
 Return the position of a specific track
 This property can be changed to move the current position of the track.
@@ -3800,7 +3802,7 @@ It will only accept timespan (e.g. '1 second', '25 minutes', etc...)!
 ## Track Thumbnail
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Return the thumbnail URL of a specific track
 === "Examples"
@@ -3818,7 +3820,7 @@ Return the thumbnail URL of a specific track
 ## ExprTrackTitle
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 No description provided.
 === "Examples"
@@ -3836,7 +3838,7 @@ No description provided.
 ## Track URL
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Return the YouTube URL of a track
 === "Examples"
@@ -3854,7 +3856,7 @@ Return the YouTube URL of a track
 ## ExprEventValues
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|object|class:version|
+[[[ macros.return_type('object') ]]]
 
 No description provided.
 === "Examples"

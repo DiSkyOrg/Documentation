@@ -12,10 +12,10 @@ dir_path = 'docs/docs'
 insert_string = '[[[% import \'macros.html\' as macros %]]]\n'
 
 # Define the pattern to be replaced
-pattern = re.compile(r'\|Since\|v(.+)\|class:version\|')
+pattern = re.compile(r'\|Return Type\|(.+)\|class:version\|')
 
 # Define the replacement string
-replacement = '[[[ macros.required_version(\'\g<1>\') ]]]'
+replacement = '[[[ macros.return_type(\'\g<1>\') ]]]'
 
 
 # Process each file in the directory
