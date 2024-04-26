@@ -1,4 +1,8 @@
-# 🕵️‍♂️ Logs Manipulation
+---
+icon: material/text-search
+---
+
+# Logs Manipulation
 
 [[[% import 'macros.html' as macros %]]]
 [[[ macros.required_version('4.11.0') ]]]

@@ -1,4 +1,8 @@
-# 💭 Advanced Messages
+---
+icon: material/message-bulleted
+---
+
+# Advanced Messages
 
 [[[% import 'macros.html' as macros %]]]
 

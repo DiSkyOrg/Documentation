@@ -1,4 +1,8 @@
-# 🎨 Graphics (2D)
+---
+icon: material/palette
+---
+
+# Graphics (2D)
 
 ## Understanding the allocation system
 

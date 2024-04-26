@@ -1,4 +1,8 @@
-# 🛡️ AutoMod
+---
+icon: material/shield-edit
+---
+
+# AutoMod
 
 AutoMod is a system implemented by Discord, helping administrators to moderate their servers, by filtering messages, status, names and more.
 

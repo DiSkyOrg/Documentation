@@ -1,4 +1,8 @@
-# 🎒 Events
+---
+icon: material/check-all
+---
+
+# Events
 
 [[[% import 'macros.html' as macros %]]]
 

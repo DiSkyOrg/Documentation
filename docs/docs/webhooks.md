@@ -1,4 +1,11 @@
-# 📥 Webhooks
+---
+icon: material/check-all
+---
+
+# Webhooks
+
+!!! danger "This is NOT for DiSky!"
+    This page is for the **Webhooks Module**, that is now **deprecated**. You can see the new [Webhooks](../basic-stuff/webhooks.md) page for the new way to use webhooks with DiSky.
 
 [[[% import 'macros.html' as macros %]]]
 

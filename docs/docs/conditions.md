@@ -1,4 +1,8 @@
-# 📕 Conditions
+---
+icon: material/check-all
+---
+
+# Conditions
 
 [[[% import 'macros.html' as macros %]]]
 

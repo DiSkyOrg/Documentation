@@ -1,4 +1,8 @@
-# 1️⃣ Installation
+---
+icon: material/numeric-1-box
+---
+
+# Installation
 
 You'll see here how to **install** DiSky correctly.
 

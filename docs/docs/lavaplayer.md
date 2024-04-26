@@ -1,4 +1,8 @@
-# 🎵 LavaPlayer
+---
+icon: material/check-all
+---
+
+# LavaPlayer
 
 [[[% import 'macros.html' as macros %]]]
 

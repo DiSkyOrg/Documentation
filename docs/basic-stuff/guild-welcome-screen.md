@@ -1,4 +1,8 @@
-# 🔱 Guild Welcome Screen
+---
+icon: material/page-previous
+---
+
+# Guild Welcome Screen
 
 You can change the screen displayed to new users through DiSky! Keep in mind that your server must have this feature enabled, otherwise it must be a community server!
 

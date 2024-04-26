@@ -1,4 +1,8 @@
-# 📊 Polls
+---
+icon: material/chart-bar
+---
+
+# Polls
 
 [[[% import 'macros.html' as macros %]]]
 [[[ macros.required_version('4.14.2') ]]]

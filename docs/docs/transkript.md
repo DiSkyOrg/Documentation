@@ -1,4 +1,8 @@
-# 📖 TranSkript
+---
+icon: material/check-all
+---
+
+# TranSkript
 
 [[[% import 'macros.html' as macros %]]]
 

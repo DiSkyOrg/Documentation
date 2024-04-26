@@ -1,4 +1,8 @@
-# 📺 Presence & Status
+---
+icon: material/television
+---
+
+# Presence & Status
 
 As a user, your bot will be able to have a custom **online status** and **presence.**
 

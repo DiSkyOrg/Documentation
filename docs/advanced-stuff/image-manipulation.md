@@ -1,4 +1,8 @@
-# 🖼️ Image Manipulation
+---
+icon: material/image
+---
+
+# Image Manipulation
 
 !!! danger "SkImage v2 is out!"
     SkImage v1 is outdated and is not recommended to be used!

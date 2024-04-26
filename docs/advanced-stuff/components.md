@@ -1,8 +1,9 @@
 ---
 status: new
+icon: material/button-cursor
 ---
 
-# 🧭 Components
+# Components
 
 [[[% import 'macros.html' as macros %]]]
 

@@ -1,4 +1,8 @@
-# ⛓️ Gateway Intents
+---
+icon: material/key-chain
+---
+
+# Gateway Intents
 
 It can be a weird terms, right? You've maybe heard of it before, but what does it mean? What does it do? How do I use it? Well, let's get into it!
 

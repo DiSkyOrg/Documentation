@@ -1,4 +1,8 @@
-# ⚙️ Bot Application Info
+---
+icon: material/file-document
+---
+
+# Bot Application Info
 
 [[[% import 'macros.html' as macros %]]]
 [[[ macros.required_version('4.14.3') ]]]

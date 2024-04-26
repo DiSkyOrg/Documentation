@@ -1,4 +1,8 @@
-# 📰 Gifs
+---
+icon: material/file-gif-box
+---
+
+# Gifs
 
 Gifs (Graphics Interchange Format) are animated images that can be created via SkImage. Basically, you'll add frames to a gif, and then save it.
 

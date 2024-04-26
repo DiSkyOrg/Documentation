@@ -1,4 +1,8 @@
-# 😁 Emojis
+---
+icon: material/sticker-emoji
+---
+
+# Emojis
 
 This guide will show you how to use and interact with emojis in your Discord bot using DiSky. 
 

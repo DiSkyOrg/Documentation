@@ -1,4 +1,8 @@
-# 💾 Modules
+---
+icon: material/view-module
+---
+
+# Modules
 
 !!! warning
     Modules are in beta! Any feedback is appreciated, from both users & developers!

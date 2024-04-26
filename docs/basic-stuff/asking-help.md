@@ -1,4 +1,8 @@
-# 🙋 Asking Help
+---
+icon: material/help-box-multiple
+---
+
+# Asking Help
 
 !!! danger
     We will only provide support for DiSky's latest **stable** version. If you're using an older version, please update to the latest version before asking for help.

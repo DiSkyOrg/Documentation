@@ -1,8 +1,9 @@
 ---
 status: deprecated
+icon: material/message-flash
 ---
 
-# 📐 Discord Commands
+# Discord Commands
 
 Discord Commands are the old way to provide user-to-bot interaction. They use the message's content, and DiSky parses it as you request when you're defining the command.
 

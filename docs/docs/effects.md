@@ -1,4 +1,8 @@
-# 📘 Effects
+---
+icon: material/check-all
+---
+
+# Effects
 
 [[[% import 'macros.html' as macros %]]]
 
@@ -322,6 +326,7 @@ An interaction can only be deferred once!
 [[[ macros.required_version('4.0.0') ]]]
 
 Destroy on Discord the wanted entity.
+
 === "Examples"
 
     ```applescript
@@ -331,7 +336,7 @@ Destroy on Discord the wanted entity.
 === "Patterns"
 
     ```applescript
-    destroy %guild/message/role/channel/emote%
+    destroy %guild/message/role/channel/emote/webhook%
     ```
 
 ## Edit Message
@@ -1048,4 +1053,71 @@ Can only be used in a 'modify welcome screen' section.
     ```applescript
     change [the] [welcome] screen description to %string%
     change [the] description of [the] [welcome] screen to %string%
+    ```
+
+## Register Webhook Client
+
+[[[ macros.required_version('4.15.0') ]]]
+
+Register a new webhook client with the specified name and URL. The name is only used for internal purposes and can be anything you want; it'll be used in other syntax to reference the registered webhook client.
+The URL should be a valid Discord webhook URL (containing both the ID and the token). More information & examples can be found on the [webhooks page](../basic-stuff/webhooks.md).
+
+=== "Examples"
+
+    See the [webhooks page](../basic-stuff/webhooks.md) for examples.
+
+=== "Patterns"
+
+    ```applescript
+    register [a] [new] webhook[s] [client] (in|using) [the] [bot] %bot% (with [the] name|named) %string% (and|with) [the] [webhook] url %string%
+    ```
+
+## Unregister Webhook Client
+
+[[[ macros.required_version('4.15.0') ]]]
+
+Unregister a webhook client with the specified name. This will remove the webhook client from the bot's memory, and it will no longer be usable in any further syntax.
+
+=== "Examples"
+
+    ```applescript
+    unregister client named "my-webhook"
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    unregister [the] [webhook] client (with [the] name|named) %string%
+    ```
+
+## Retrieve Webhooks
+
+[[[ macros.required_version('4.15.0') ]]]
+
+Retrieve all webhooks in a specific channel or guild. The output will be a list of webhook **clients**, which can be used in other webhook-related syntax.
+
+=== "Examples"
+
+    See the [webhooks page](../basic-stuff/webhooks.md) for examples.
+
+=== "Patterns"
+
+    ```applescript
+    retrieve [all] [discord] webhooks (of|from) [the] [(guild|channel)] %guild/textchannel% and store (them|the webhooks) in %~objects%
+    ```
+
+## Make Webhook Post Message
+
+[[[ macros.required_version('4.15.0') ]]]
+
+Make the specified webhook client post a message to its channel. More information & examples can be found on the [webhooks page](../basic-stuff/webhooks.md).
+
+=== "Examples"
+
+    See the [webhooks page](../basic-stuff/webhooks.md) for examples.
+
+=== "Patterns"
+
+    ```applescript
+    make [the] [webhook] client %string% (post|send) [the] [message] %string/messagecreatebuilder/embedbuilder/messagepollbuilder% [with [the] username %-string%] [[and] [with] [the] avatar [url] %-string%] [and store (it|the message) in %-~objects%]
     ```

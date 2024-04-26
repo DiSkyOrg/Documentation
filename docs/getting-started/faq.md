@@ -1,4 +1,8 @@
-# ❓ Frequently Asked Questions (FAQ)
+---
+icon: material/frequently-asked-questions
+---
+
+# Frequently Asked Questions (FAQ)
 
 This page contains answers to frequently asked questions about DiSky. If you have a question that is not answered here, please join [our Discord server](https://disky.me/discord)!
 

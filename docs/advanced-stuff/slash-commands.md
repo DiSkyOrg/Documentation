@@ -1,4 +1,8 @@
-# 📯 Slash Commands
+---
+icon: material/slash-forward-box
+---
+
+# Slash Commands
 
 [[[% import 'macros.html' as macros %]]]
 

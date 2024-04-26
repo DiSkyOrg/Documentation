@@ -1,4 +1,8 @@
-# 🎵 LavaPlayer
+---
+icon: material/music
+---
+
+# LavaPlayer
 
 LavaPlayer is a DiSky module that allows developers to implement music loading & playing with their bots.
 

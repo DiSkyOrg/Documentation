@@ -1,4 +1,8 @@
-# 3️⃣ Bot Loading
+---
+icon: material/numeric-3-box
+---
+
+# Bot Loading
 
 !!! warning
     You should check [**Bot Creation**](1-bot-creation.md) before if you haven't yet!

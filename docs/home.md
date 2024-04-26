@@ -1,4 +1,8 @@
-# 🚪 Home Page
+---
+icon: material/list-box
+---
+
+# Home Page
 
 Hey there! Welcome to the official **DiSky v4 Wiki**!
 

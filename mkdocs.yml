@@ -18,6 +18,7 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
+    - content.tooltips
 repo_url: https://github.com/DiSkyOrg/DiSky
 
 markdown_extensions:
@@ -35,6 +36,9 @@ markdown_extensions:
   - pymdownx.extra
   - attr_list
   - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 extra_css:
   - stylesheets/main.css
@@ -56,18 +60,29 @@ plugins:
       j2_variable_end_string: "]]]"
 
 nav:
-  - '📦 Wiki':
-      - README.md
-      - 'Basic Stuff': basic-stuff
+  - 'Wiki':
+      - 'Home': home.md
       - 'Getting Started':
-          - '1️⃣ Installation': getting-started/0-installation.md
-          - '2️⃣ Bot Creation': getting-started/1-bot-creation.md
-          - '3️⃣ Bot Loading': getting-started/2-bot-loading.md
-          - '❓ Frequently Asked Questions (FAQ)': getting-started/faq.md
+          - 'Installation': getting-started/0-installation.md
+          - 'Bot Creation': getting-started/1-bot-creation.md
+          - 'Bot Loading': getting-started/2-bot-loading.md
+          - 'Frequently Asked Questions (FAQ)': getting-started/faq.md
+      - 'Basic Stuff': basic-stuff
       - 'Advanced Stuff': advanced-stuff
-  - '⚙️ Modules': modules
-  - '📚 Documentation': docs
-  - '🖼️ SkImage2': skimage
-  - '✨ Create an Addon':
-      - addons/getting-started.md
-  - '📖 BooSK': boosk
+  - 'Modules': modules
+  - 'Documentation':
+      - 'Effects': docs/effects.md
+      - 'Events': docs/events.md
+      - 'Expressions': docs/expressions.md
+      - 'Conditions': docs/conditions.md
+      - 'Types': docs/types.md
+      - 'Sections': docs/sections.md
+      - 'Modules':
+          - 'LavaPlayer': docs/lavaplayer.md
+          - 'TranSkript': docs/transkript.md
+  - 'SkImage2': skimage
+  #- 'Create an Addon':
+  #    - addons/getting-started.md
+  - 'BooSK':
+      - 'Getting Started': boosk/getting-started.md
+      - 'Create a Book': boosk/create-a-book.md

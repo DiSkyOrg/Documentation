@@ -1,9 +1,10 @@
 ---
 search:
   boost: 2
+icon: material/check-all
 ---
 
-# 📗 Expressions
+# Expressions
 
 [[[% import 'macros.html' as macros %]]]
 
@@ -2601,8 +2602,8 @@ Get the unique long value (ID) that represent a discord entity.
 === "Patterns"
 
     ```applescript
-    [the] discord id of %channel/role/user/threadchannel/scheduledevent/member/sticker/message/dropdown/button/guild%
-    %channel/role/user/threadchannel/scheduledevent/member/sticker/message/dropdown/button/guild%'[s] discord id
+    [the] discord id of %channel/role/user/threadchannel/scheduledevent/member/sticker/message/dropdown/button/guild/webhook%
+    %channel/role/user/threadchannel/scheduledevent/member/sticker/message/dropdown/button/guild/webhook%'[s] discord id
     ```
 
 ## Name of Discord Entity
@@ -2610,9 +2611,10 @@ Get the unique long value (ID) that represent a discord entity.
 [[[ macros.required_version('4.0.0') ]]]
 |Return Type|string|class:version|
 
-This represent the current name of any discord entity that can hold one.
+This represents the current name of any discord entity that can hold one.
 You can change name of every entity except member and user by defining a new text.
-Check for 'nickname of member' if you want to check / change custom member's name.
+Check for [nickname of member](#member-nickname) if you want to check / change custom member's name.
+
 === "Examples"
 
     ```applescript
@@ -2621,8 +2623,8 @@ Check for 'nickname of member' if you want to check / change custom member's nam
 === "Patterns"
 
     ```applescript
-    [the] [the] discord name of %channel/user/member/sticker/scheduledevent/emote/threadchannel/role/guild%
-    %channel/user/member/sticker/scheduledevent/emote/threadchannel/role/guild%'[s] [the] discord name
+    [the] [the] discord name of %channel/user/member/sticker/scheduledevent/emote/threadchannel/role/guild/webhook%
+    %channel/user/member/sticker/scheduledevent/emote/threadchannel/role/guild/webhook%'[s] [the] discord name
     ```
 
 ## EmbedAuthor
@@ -3348,7 +3350,8 @@ Represent the amount of times this invite has been used.
 |Return Type|string|class:version|
 
 Simple way to get the effective name of a member in a guild:
-If the nickname is not set, it will return the discord name of the member, else its nickname.
+If the nickname is not set, it will return the [discord name of the member](#name-of-discord-entity).
+
 === "Examples"
 
     ```applescript
@@ -3387,7 +3390,8 @@ This is a specific element of the bot, so it can be used in the bots event.
 |Return Type|string|class:version|
 
 Represent the member nickname. Can be none if the member doesn't have any nickname currently.
-USe 'effective name' expression to get member's name of its nickname is not set.
+Use [effective name](#member-effective-name) expression to get member's name of its nickname is not set.
+
 === "Examples"
 
     ```applescript
@@ -3457,12 +3461,15 @@ Get the user instance of the message's author. Can be null in case of the messag
     %message%'[s] [discord] [message] (user|author|writer)
     ```
 
-## Message Text Channel
+## Message/Webhook Channel
 
 [[[ macros.required_version('4.0.0') ]]]
 |Return Type|textchannel|class:version|
 
 Get the text channel were the message was sent. Can be null if it's in PM or not in guild!
+
+Starting DiSky v4.15.0, this can also be used to get the channel of a [webhook](../basic-stuff/webhooks.md#manage-webhooks).
+
 === "Examples"
 
     ```applescript
@@ -3471,8 +3478,8 @@ Get the text channel were the message was sent. Can be null if it's in PM or not
 === "Patterns"
 
     ```applescript
-    [the] [discord] [message] [text]( |-)channel of %message%
-    %message%'[s] [discord] [message] [text]( |-)channel
+    [the] [discord] [(message|webhook)] [text]( |-)channel of %message/webhook%
+    %message/webhook%'[s] [discord] [(message|webhook)] [text]( |-)channel
     ```
 
 ## Message Content

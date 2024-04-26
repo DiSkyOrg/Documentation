@@ -1,4 +1,8 @@
-# 📜 Types
+---
+icon: material/check-all
+---
+
+# Types
 
 [[[% import 'macros.html' as macros %]]]
 
