@@ -89,11 +89,6 @@ plugins:
 #  - 'BooSK':
 #      - 'Getting Started': boosk/getting-started.md
 #      - 'Create a Book': boosk/create-a-book.md
-# re-organization with the following structure:
-# -> Messages (rich/normal messages, emojis, webhooks, wrapper, polls)
-# -> Interactions (components, slash commands, modals)
-# -> Bot (application, gateway intents, multiple bots, presence & status)
-# -> Guild (automod, logs, forums, welcome screen, forums)
 
 nav:
   - 'Wiki':
