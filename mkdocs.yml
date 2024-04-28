@@ -113,8 +113,8 @@ nav:
             - 'Simple Messages': messages/simple-messages.md
             - 'Advanced Messages': messages/advanced-messages.md
             - 'Emojis': messages/emojis.md
-            - 'Webhooks': messages/webhooks.md
             - 'Message Wrapper': messages/message-wrapper.md
+            - 'Webhooks': messages/webhooks.md
             - 'Polls': messages/polls.md
             - 'Discord Commands': messages/discord-commands.md
       - 'Guild':

@@ -43,22 +43,18 @@
 
 /* END mkdocs Badge elements (version) */
 
-.md-nav--primary .md-nav__link[href*="basic-stuff/webhooks"] svg {
+.md-nav--primary .md-nav__link[href*="messages/webhooks"] svg {
     color: limegreen;
 }
 
-.md-nav--primary .md-nav__link[href*="advanced-stuff/components"] svg {
+.md-nav--primary .md-nav__link[href*="interactions/components"] svg {
     color: limegreen;
 }
 
-.md-nav--primary .md-nav__link[href*="basic-stuff/polls"] svg {
+.md-nav--primary .md-nav__link[href*="messages/polls"] svg {
     color: limegreen;
 }
 
-.md-nav--primary .md-nav__link[href*="basic-stuff/discord-commands"] svg {
-    color: rgba(128, 128, 128, 0.75);
-}
-
-.md-nav--primary .md-nav__link[href*="advanced-stuff/image-manipulation"] svg {
+.md-nav--primary .md-nav__link[href*="messages/discord-commands"] svg {
     color: rgba(128, 128, 128, 0.75);
 }
