@@ -625,36 +625,41 @@ No description provided.
     retrieve [(all|every)] interested members (from|with|of|in) %scheduledevent% [(with|using) [the] [bot] %-bot%] and store (them|the interested members) in %-objects%
     ```
 
-## RetrieveInvite
+## Retrieve Invite
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve an invitation from a guild using its invite code/ID.
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve invite with id "000" from event-guild and store it in {_invite}
     ```
+
 === "Patterns"
 
     ```applescript
-    retrieve invite (with|from) id %string% (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (it|the invite) in %-object%
+    retrieve invite (with|from) id %string% (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (it|the invite) in %~objects%
     ```
 
-## RetrieveInvites
+## Retrieve Invites
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+
+Retrieve all invites from a specific guild.
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve invites of event-guild and store them in {_invites::*}
     ```
+
 === "Patterns"
 
     ```applescript
-    retrieve [(all|every)] invites (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the invites) in %-objects%
+    retrieve [all [of]] [the] invite[s] (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (it|them|the invites) in %~objects%
     ```
 
 ## Retrieve Logs
