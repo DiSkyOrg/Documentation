@@ -8,6 +8,38 @@ icon: material/check-all
 
 [[[% import 'macros.html' as macros %]]]
 
+## User's Avatar Decoration URL
+
+[[[ macros.required_version('4.15.0') ]]]
+[[[ macros.return_type('string') ]]]
+
+Get the URL of the user's avatar decoration URL. This will return none if the user doesn't have a decoration selected.
+
+=== "Examples"
+
+    ```applescript
+    discord command decorations [<user>]:
+        prefixes: ?
+        trigger:
+            set {_dec} to avatar decoration of arg-1
+            if {_dec} is not set:
+                reply with ":x: **Error:** You do not have an avatar decoration."
+                stop
+
+            make embed and store it in {_e}:
+                set title of embed to "Your avatar decoration"
+                set embed color of embed to orange
+                set image of embed to {_dec}
+            reply with {_e}
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [user] (decoration[s] avatar|avatar decoration[s]) of %user%
+    %user%'[s] [user] (decoration[s] avatar|avatar decoration[s])
+    ```
+
 ## Discord Command Argument
 
 [[[ macros.required_version('4.0.0') ]]]
