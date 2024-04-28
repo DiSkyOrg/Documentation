@@ -30,3 +30,24 @@ Once you have the application, there's several properties attached to it, such a
     - Terms of Service URL (`terms of service url of {_app}`)
     - Description (`application description of {_app}`)
     - Owner (`application owner of {_app}`)
+
+!!! example
+    Here's an example of how to retrieve the application info of a bot:
+
+    ```applescript
+    discord command app:
+        prefixes:!
+        trigger:
+            retrieve application info of event-bot and store it in {_app}
+    
+            add "**Application Information of `%discord name of {_app}%`:**" to {_m::*}
+            add "- **ID:** `%discord id of {_app}%`" to {_m::*}
+            add "- **Owner:** %mention tag of application owner of {_app}%" to {_m::*}
+            add "- **Avatar:** %avatar url of {_app}%" to {_m::*}
+            
+            add "- **Description:** %application description of {_app}%" to {_m::*}
+            add "- **Privacy Policy:** %privacy policy url of {_app}%" to {_m::*}
+            add "- **Terms of Service:** %terms of service url of {_app}%" to {_m::*}
+    
+            reply with join {_m::*} with nl
+    ```

@@ -42,9 +42,10 @@ register webhooks using event-bot named "my_webhook" with url "https://discord.c
 ```
 
 A few notes here:
-* You must use a **loaded bot** as "bridge" to register the webhook.
-* The `name` is the name you'll use to refer to this webhook client later. It's only for DiSky, not for Discord.
-* The `url` is the URL you copied earlier, containing both the webhook's ID and token.
+
+- You must use a **loaded bot** as "bridge" to register the webhook.
+- The `name` is the name you'll use to refer to this webhook client later. It's only for DiSky, not for Discord.
+- The `url` is the URL you copied earlier, containing both the webhook's ID and token.
 
 ### Send a message
 
