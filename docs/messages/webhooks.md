@@ -49,7 +49,7 @@ A few notes here:
 
 ### Send a message
 
-The message sending workflow was greatly improved in 4.15.0 compared to the module, as it integrates smoothly with DiSky's existing syntax. For instance, you can directly use a [rich message](../advanced-stuff/advanced-messages.md) as the message to send!
+The message sending workflow was greatly improved in 4.15.0 compared to the module, as it integrates smoothly with DiSky's existing syntax. For instance, you can directly use a [rich message](advanced-messages.md) as the message to send!
 
 ```applescript
 create a new message and store it in {_msg}:

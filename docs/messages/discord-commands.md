@@ -11,7 +11,7 @@ Even if they are old and Discord does not recommend anymore to use them, DiSky w
 
 !!! warning
     They now require a specific **intent** enabled, to retrieve **message's content**.
-    We highly recommend you to use [Slash Commands](../advanced-stuff/slash-commands.md) instead, as they are more user-friendly and easier to use.
+    We highly recommend you to use [Slash Commands](../interactions/slash-commands.md) instead, as they are more user-friendly and easier to use.
 
 ## Creating the command
 

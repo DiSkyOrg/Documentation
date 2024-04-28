@@ -19,6 +19,9 @@ theme:
     - search.highlight
     - search.share
     - content.tooltips
+    - navigation.instant.progress
+    - navigation.sections
+    - navigation.path
 repo_url: https://github.com/DiSkyOrg/DiSky
 
 markdown_extensions:
@@ -59,16 +62,71 @@ plugins:
       j2_variable_start_string: "[[["
       j2_variable_end_string: "]]]"
 
+#nav:
+#  - 'Wiki':
+#      - 'Home': home.md
+#      - 'Getting Started':
+#          - 'Installation': getting-started/0-installation.md
+#          - 'Bot Creation': getting-started/1-bot-creation.md
+#          - 'Bot Loading': getting-started/2-bot-loading.md
+#          - 'Frequently Asked Questions (FAQ)': getting-started/faq.md
+#      - 'Basic Stuff': basic-stuff
+#      - 'Advanced Stuff': advanced-stuff
+#  - 'Modules': modules
+#  - 'Documentation':
+#      - 'Effects': docs/effects.md
+#      - 'Events': docs/events.md
+#      - 'Expressions': docs/expressions.md
+#      - 'Conditions': docs/conditions.md
+#      - 'Types': docs/types.md
+#      - 'Sections': docs/sections.md
+#      - 'Modules':
+#          - 'LavaPlayer': docs/lavaplayer.md
+#          - 'TranSkript': docs/transkript.md
+#  - 'SkImage2': skimage
+#  #- 'Create an Addon':
+#  #    - addons/getting-started.md
+#  - 'BooSK':
+#      - 'Getting Started': boosk/getting-started.md
+#      - 'Create a Book': boosk/create-a-book.md
+# re-organization with the following structure:
+# -> Messages (rich/normal messages, emojis, webhooks, wrapper, polls)
+# -> Interactions (components, slash commands, modals)
+# -> Bot (application, gateway intents, multiple bots, presence & status)
+# -> Guild (automod, logs, forums, welcome screen, forums)
+
 nav:
   - 'Wiki':
       - 'Home': home.md
       - 'Getting Started':
+          - 'Asking Help': getting-started/asking-help.md
           - 'Installation': getting-started/0-installation.md
           - 'Bot Creation': getting-started/1-bot-creation.md
           - 'Bot Loading': getting-started/2-bot-loading.md
-          - 'Frequently Asked Questions (FAQ)': getting-started/faq.md
-      - 'Basic Stuff': basic-stuff
-      - 'Advanced Stuff': advanced-stuff
+          - 'F.A.Q.': getting-started/faq.md
+      - 'Bot':
+          - 'Presence & Status': bot/presence-and-status.md
+          - 'Gateway Intents': bot/intents.md
+          - 'Multiple Bots': bot/multiple-bots.md
+          - 'Application': bot/bot-application-info.md
+      - 'Messages':
+            - 'Simple Messages': messages/simple-messages.md
+            - 'Advanced Messages': messages/advanced-messages.md
+            - 'Emojis': messages/emojis.md
+            - 'Webhooks': messages/webhooks.md
+            - 'Message Wrapper': messages/message-wrapper.md
+            - 'Polls': messages/polls.md
+            - 'Discord Commands': messages/discord-commands.md
+      - 'Guild':
+          - 'Automod': guild/automod.md
+          - 'Logs': guild/logs-manipulation.md
+          - 'Forums': guild/forums.md
+          - 'Welcome Screen': guild/guild-welcome-screen.md
+      - 'Interactions':
+            - 'Components': interactions/components.md
+            - 'Slash Commands': interactions/slash-commands.md
+            - 'Modals': interactions/modals.md
+            - 'Select Menus': interactions/selectmenu-dropdown.md
   - 'Modules': modules
   - 'Documentation':
       - 'Effects': docs/effects.md
@@ -81,8 +139,6 @@ nav:
           - 'LavaPlayer': docs/lavaplayer.md
           - 'TranSkript': docs/transkript.md
   - 'SkImage2': skimage
-  #- 'Create an Addon':
-  #    - addons/getting-started.md
   - 'BooSK':
       - 'Getting Started': boosk/getting-started.md
       - 'Create a Book': boosk/create-a-book.md

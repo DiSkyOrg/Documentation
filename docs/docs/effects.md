@@ -91,10 +91,10 @@ This effect allows you to manage the permissions of slash commands, with the fol
 
 [[[ macros.required_version('4.0.0') ]]]
 
-Update a **list** of [slash commands](../advanced-stuff/slash-commands.md) in a bot (globally) or in a guild (locally).
+Update a **list** of [slash commands](../interactions/slash-commands.md) in a bot (globally) or in a guild (locally).
 
 === "Examples"
-    See the [slash commands](../advanced-stuff/slash-commands.md) page for examples.
+    See the [slash commands](../interactions/slash-commands.md) page for examples.
 === "Patterns"
 
     ```applescript
@@ -343,8 +343,22 @@ Destroy on Discord the wanted entity.
 
 [[[ macros.required_version('4.4.0') ]]]
 
-Edit a specific message/interaction hook to show a new rich or simple message.
-The interaction hook will only be editable for the next 15 minutes once it's sent!
+Edit a message with new content:
+
+!!! info "In Interactions (SlashCommands/Buttons/SelectMenus)"
+    The effect will, by default, edit the **interaction** itself, and thus **acknowledge** it. 
+    If you want to acknowledge an interaction in another way, while also editing the message, you'll have to edit the message **directly**, by specifying `direct` in the pattern:
+
+    ```applescript
+    on button click:
+        if event-string is "my-button":
+            reply with hidden "That message will acknowledge the interaction!"
+            edit direct event-message with "I by-passed the interaction!"
+    ```
+
+!!! info "Anywhere Else"
+    This will simply edit the message with the new desired content. By default, it overrides all the message content (text content, components, embeds, etc...).
+
 === "Examples"
 
     ```applescript
@@ -353,10 +367,11 @@ The interaction hook will only be editable for the next 15 minutes once it's sen
     wait a second
     # The variable does not contains a 'real' message, it contains the interaction hook.edit {_msg} to show "Abracadabra!"
     ```
+
 === "Patterns"
 
     ```applescript
-    edit [the] [message] %message/interactionhook% (with|to show) %string/messagecreatebuilder/embedbuilder%
+    edit [:direct] [the] [message] %message% (with|to show) %string/messagecreatebuilder/embedbuilder%
     ```
 
 ## Kick Member
@@ -990,7 +1005,7 @@ Download the specific attachment to a file path.
 
 Edit the event component directly, without editing the whole message again. This effect only works in button, string dropdown and entities dropdown events.
 
-For concrete usage and example, check examples [here for buttons](../advanced-stuff/components.md#handling-button-interactions) and [here for dropdowns](../advanced-stuff/components.md#handling-dropdown-interactions).
+For concrete usage and example, check examples [here for buttons](../interactions/components.md#handling-button-interactions) and [here for dropdowns](../interactions/components.md#handling-dropdown-interactions).
 
 === "Patterns"
 
@@ -1065,11 +1080,11 @@ Can only be used in a 'modify welcome screen' section.
 [[[ macros.required_version('4.15.0') ]]]
 
 Register a new webhook client with the specified name and URL. The name is only used for internal purposes and can be anything you want; it'll be used in other syntax to reference the registered webhook client.
-The URL should be a valid Discord webhook URL (containing both the ID and the token). More information & examples can be found on the [webhooks page](../basic-stuff/webhooks.md).
+The URL should be a valid Discord webhook URL (containing both the ID and the token). More information & examples can be found on the [webhooks page](../messages/webhooks.md).
 
 === "Examples"
 
-    See the [webhooks page](../basic-stuff/webhooks.md) for examples.
+    See the [webhooks page](../messages/webhooks.md) for examples.
 
 === "Patterns"
 
@@ -1103,7 +1118,7 @@ Retrieve all webhooks in a specific channel or guild. The output will be a list 
 
 === "Examples"
 
-    See the [webhooks page](../basic-stuff/webhooks.md) for examples.
+    See the [webhooks page](../messages/webhooks.md) for examples.
 
 === "Patterns"
 
@@ -1115,11 +1130,11 @@ Retrieve all webhooks in a specific channel or guild. The output will be a list 
 
 [[[ macros.required_version('4.15.0') ]]]
 
-Make the specified webhook client post a message to its channel. More information & examples can be found on the [webhooks page](../basic-stuff/webhooks.md).
+Make the specified webhook client post a message to its channel. More information & examples can be found on the [webhooks page](../messages/webhooks.md).
 
 === "Examples"
 
-    See the [webhooks page](../basic-stuff/webhooks.md) for examples.
+    See the [webhooks page](../messages/webhooks.md) for examples.
 
 === "Patterns"
 

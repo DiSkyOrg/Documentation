@@ -237,14 +237,14 @@ Description and emote are optional.
 [[[ macros.return_type('object') ]]]
 
 Represents the localization of the name or the description of a slash/sub command.
-You can add **Locale Data** (check for expression) to them.
-Basically, the command's name & description will be according to the client's language code.
-Documentation: https://docs.disky.me/advanced-stuff/slash-commands#using-localizations-v4.3.0+
+You can add **Locale Data** (check for expression) to them. Basically, the command's name & description will be according to the client's language code.
+
+**For more information, check the [dedicated wiki page](../interactions/slash-commands.md#using-localizations)!**
+
 === "Examples"
 
-    ```applescript
-    No examples provided.
-    ```
+    See the [dedicated wiki page](../interactions/slash-commands.md#using-localizations) for examples.
+
 === "Patterns"
 
     ```applescript
@@ -1162,11 +1162,11 @@ Of course, the provided value type must be compatible with the option type (you 
 [[[ macros.return_type('object') ]]]
 
 Create a new Slash Command builder, where you'll be able to add options, subcommands, etc...
-For a more detailed guide, take a look at [this tutorial](../advanced-stuff/slash-commands.md).
+For a more detailed guide, take a look at [this tutorial](../interactions/slash-commands.md).
 
 === "Examples"
 
-    Check the tutorial for a complete example: [Slash Commands](../advanced-stuff/slash-commands.md)
+    Check the tutorial for a complete example: [Slash Commands](../interactions/slash-commands.md)
 
 === "Patterns"
 
@@ -3502,7 +3502,7 @@ Get the user instance of the message's author. Can be null in case of the messag
 
 Get the text channel were the message was sent. Can be null if it's in PM or not in guild!
 
-Starting DiSky v4.15.0, this can also be used to get the channel of a [webhook](../basic-stuff/webhooks.md#manage-webhooks).
+Starting DiSky v4.15.0, this can also be used to get the channel of a [webhook](../messages/webhooks.md#manage-webhooks).
 
 === "Examples"
 

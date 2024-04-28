@@ -41,7 +41,7 @@ This is gonna results in the same output as before:
 
 ## Add an embed
 
-Now we have some text, let's link an embed to our message. [For embed creation, take a look at the reference page of the wiki](../basic-stuff/simple-messages.md#simple-embed-message)!
+Now we have some text, let's link an embed to our message. [For embed creation, take a look at the reference page of the wiki](simple-messages.md#simple-embed-message)!
 
 ```applescript
 create a new message and store it in {_msg}:
@@ -110,7 +110,7 @@ reply with {_msg}
 
 [[[ macros.required_version('4.14.0') ]]]
 
-More details about polls (creation, ...) can be found [here](../basic-stuff/polls.md "Polls"). You can however add a poll to your rich message using message:
+More details about polls (creation, ...) can be found [here](polls.md "Polls"). You can however add a poll to your rich message using message:
 
 ```applescript
 set poll of the message to {_poll}

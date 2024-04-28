@@ -5,7 +5,7 @@ icon: material/webhook
 # Webhooks
 
 !!! danger "Deprecation warning"
-    This module is no longer **maintained** and __no support will be provided__ for it! Webhooks are now parts of **DiSky itself** starting 4.15, you can find the new documentation [here](../basic-stuff/webhooks.md).
+    This module is no longer **maintained** and __no support will be provided__ for it! Webhooks are now parts of **DiSky itself** starting 4.15, you can find the new documentation [here](../messages/webhooks.md).
 
 ??? warning "Webhooks Module Wiki"
     !!! warning

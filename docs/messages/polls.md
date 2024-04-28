@@ -38,7 +38,7 @@ add answer "C##" with reaction "desktop" to answers of {_poll}
 
 ## Sending the poll
 
-Now your poll is created, you can join it through a [rich message](../advanced-stuff/advanced-messages.md#add-poll "Advanced Messages"), or use the `inline message` expression as such:
+Now your poll is created, you can join it through a [rich message](../messages/advanced-messages.md#add-poll "Advanced Messages"), or use the `inline message` expression as such:
 
 === "With message"
     ```applescript
