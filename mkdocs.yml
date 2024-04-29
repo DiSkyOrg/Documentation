@@ -1,6 +1,7 @@
 site_name: DiSky Wiki
 theme:
   name: material
+  custom_dir: overrides
   icon:
     logo: simple/discord
   palette:
@@ -22,6 +23,8 @@ theme:
     - navigation.instant.progress
     - navigation.sections
     - navigation.path
+    - navigation.footer
+    - announce.dismiss
 repo_url: https://github.com/DiSkyOrg/DiSky
 
 markdown_extensions:
@@ -43,6 +46,7 @@ markdown_extensions:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
+copyright: Copyright &copy; 2020 - 2024 ItsTheSky
 extra_css:
   - stylesheets/main.css
 
@@ -50,6 +54,13 @@ extra:
   status:
     new: 'Recently added'
     deprecated: 'Deprecated'
+  social:
+    - icon: simple/discord
+      link: https://disky.me/discord
+    - icon: simple/github
+      link: https://github.com/DiSkyOrg/DiSky
+    - icon: material/cloud
+      link: https://itsthesky.net/
 
 plugins:
   - search
@@ -61,34 +72,6 @@ plugins:
       j2_block_end_string: "%]]]"
       j2_variable_start_string: "[[["
       j2_variable_end_string: "]]]"
-
-#nav:
-#  - 'Wiki':
-#      - 'Home': home.md
-#      - 'Getting Started':
-#          - 'Installation': getting-started/0-installation.md
-#          - 'Bot Creation': getting-started/1-bot-creation.md
-#          - 'Bot Loading': getting-started/2-bot-loading.md
-#          - 'Frequently Asked Questions (FAQ)': getting-started/faq.md
-#      - 'Basic Stuff': basic-stuff
-#      - 'Advanced Stuff': advanced-stuff
-#  - 'Modules': modules
-#  - 'Documentation':
-#      - 'Effects': docs/effects.md
-#      - 'Events': docs/events.md
-#      - 'Expressions': docs/expressions.md
-#      - 'Conditions': docs/conditions.md
-#      - 'Types': docs/types.md
-#      - 'Sections': docs/sections.md
-#      - 'Modules':
-#          - 'LavaPlayer': docs/lavaplayer.md
-#          - 'TranSkript': docs/transkript.md
-#  - 'SkImage2': skimage
-#  #- 'Create an Addon':
-#  #    - addons/getting-started.md
-#  - 'BooSK':
-#      - 'Getting Started': boosk/getting-started.md
-#      - 'Create a Book': boosk/create-a-book.md
 
 nav:
   - 'Wiki':
