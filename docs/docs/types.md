@@ -49,7 +49,7 @@ The **PrivateChannel** type is the base type for all channels that are private, 
 
 This type is used to represent a flag of a member. This was introduced in Discord recently, therefore old members may not have any flag.
 
-You can check the [member flags expression](expressions.md#) for getting/adding flags to a member. **Some flags cannot be added manually!**
+You can check the [member flags expression](expressions.md#member-flags) for getting/adding flags to a member. **Some flags cannot be added manually!**
 
 === "`did rejoin`"
     The Member has left and rejoined the guild

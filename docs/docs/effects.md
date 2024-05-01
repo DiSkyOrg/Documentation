@@ -71,10 +71,12 @@ No description provided.
 [[[ macros.required_version('4.0.0') ]]]
 
 This effect allows you to manage the permissions of slash commands, with the following rules:
+
 - By default, the command is marked as ENABLED, and anyone can see & use it.
 - You can DISABLE completely the command (first pattern), only admins will be able to use it.
 - Or you can ENABLE the commands for specific PERMISSIONS (second pattern).
-  === "Examples"
+
+=== "Examples"
 
    ```applescript
    disable command{_cmd1} # disable the command for everyone, except the admins.
@@ -374,6 +376,10 @@ Edit a message with new content:
     edit [:direct] [the] [message] %message% (with|to show) %string/messagecreatebuilder/embedbuilder%
     ```
 
+=== "See Also"
+    * [Edit Event-Component](#edit-event-component)
+    * [Edit Message's Component](#edit-messages-component)
+
 ## Kick Member
 
 [[[ macros.required_version('4.0.0') ]]]
@@ -608,32 +614,36 @@ No description provided.
     retrieve [(all|every)] bans (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the bans) in %-objects%
     ```
 
-## RetrieveEmotes
+## Retrieve Guild Emotes
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve (and cache) all emotes from a specific guild.
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all emotes from event-guild and store them in {_emotes::*}
     ```
+
 === "Patterns"
 
     ```applescript
     retrieve [(all|every)] emotes (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the emotes) in %-objects%
     ```
 
-## RetrieveEmotes
+## Retrieve Interested Members
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve (and cache) the interested members from a scheduled event.
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all interested members from {_event} and store them in {_members::*}
     ```
+
 === "Patterns"
 
     ```applescript
@@ -967,22 +977,6 @@ Unbans a user from a guild.
     [discord] un[-| ]ban [the] [discord] [user] %user% (from|in) [guild] %guild%
     ```
 
-## Return
-
-[[[ macros.required_version('4.0.0') ]]]
-
-No description provided.
-=== "Examples"
-
-    ```applescript
-    No examples provided.
-    ```
-=== "Patterns"
-
-    ```applescript
-    return %slashchoices%
-    ```
-
 ## Download Attachment
 
 [[[ macros.required_version('4.0.0') ]]]
@@ -1005,6 +999,8 @@ Download the specific attachment to a file path.
 
 Edit the event component directly, without editing the whole message again. This effect only works in button, string dropdown and entities dropdown events.
 
+!!! danger "This will <u>Acknowledge</u> the interaction!"
+
 For concrete usage and example, check examples [here for buttons](../interactions/components.md#handling-button-interactions) and [here for dropdowns](../interactions/components.md#handling-dropdown-interactions).
 
 === "Patterns"
@@ -1012,6 +1008,33 @@ For concrete usage and example, check examples [here for buttons](../interaction
     ```applescript
     edit [component] (button|dropdown|select[( |-)]menu) [of [the] (interaction|event)] to [show] %button/dropdown%
     ```
+
+=== "See Also"
+    * [Edit Message](#edit-message)
+    * [Edit Message's Component](#edit-messages-component)
+
+## Edit Message's Component
+
+[[[ macros.required_version('4.15.2') ]]]
+
+Modify a single component via its ID in a specific message. This effect can only handle [buttons](../interactions/components.md#buttons) and [select menus](../interactions/components.md#select-menu).
+
+!!! danger "This will <u>NOT Acknowledge</u> the interaction!"
+
+=== "Examples"
+
+    ```applescript
+    edit button with id "first" of event-message to show new secondary button with id "third" named "ayo ?!" with reaction "sob"
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    edit [message] (component|button|dropdown|select[( |-)]menu) with [the] id %string% (of|from|in) [the] [message] %message% (to [show]|with) %button/dropdown%
+    ```
+
+=== "See Also"
+    * [Edit Event-Component](#edit-event-component)
 
 ## EffAddField
 
