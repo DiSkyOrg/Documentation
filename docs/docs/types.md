@@ -8,6 +8,24 @@ icon: material/check-all
 
 This page will explain the different types available on DiSky, and some specification about them.
 
+## General
+
+### `bot`
+
+Represent a **DiSky** bot, which is a bot that is **connected to Discord**. It holds information like the token, the shard manager, and the cache.
+
+### `user`
+
+The **User** type represent a Discord account, or a bot account. There's only one "user instance", meaning each user are uniques across all guilds. Due to obvious reasons, we cannot cache all users, thus you'll have to [retrieve](../docs/effects.md#retrieveuser) them.
+
+### `member`
+
+The **Member** type represent a Discord account that is in a guild. It holds more information than a user, like the roles, nickname, and the guild it's in. It's unique for each guild, meaning a user can have multiple member instances.
+
+### `guild`
+
+The **Guild** type represent a Discord server. It holds information like the name, icon, owner, and the members.
+
 ## Channels
 
 ### `channel`

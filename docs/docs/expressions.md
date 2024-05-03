@@ -967,16 +967,67 @@ Get the parent channel of a thread channel. It can return a text, news or forum 
 === "Patterns"
 
     ```applescript
-    [the] thread parent [channel]
+    [the] thread parent [channel] of %guildchannel%
+    %guildchannel%'[s] thread parent [channel]
+    ```
+
+## Guild Bot's Role
+
+[[[ macros.required_version('4.16.0') ]]]
+[[[ macros.return_type('role') ]]]
+
+Get the bot's specific role for a given guild. Each bot has a specific role in each guild it is in, to define its permissions and restrictions.
+
+=== "Examples"
+
+    ```applescript
+    set {_role} to bot role of event-guild
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [guild] bot role of %guild%
+    [the] %guild%'[s] [guild] bot role
+    ```
+
+## Guild Boost Tier
+
+[[[ macros.required_version('4.16.0') ]]]
+[[[ macros.return_type('string') ]]]
+[[[ macros.no_changers() ]]]
+
+Get the boost tier of a guild, according to the number of boosts it has. It can return the following values:
+
+| Returns  | Description            | Max Bitrate | Max Emojis |
+|----------|------------------------|-------------|------------|
+| `None`   | No boost (or only one) | 96kbps      | 50         |
+| `Tier 1` | 2 boosts               | 128kbps     | 100        |
+| `Tier 2` | 7 boosts               | 256kbps     | 150        |
+| `Tier 3` | 14 boosts              | 384kbps     | 250        |
+
+=== "Examples"
+
+    ```applescript
+    set {_tier} to boost tier of event-guild
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [guild] boost[(ing|er)] tier of %guild%
+    [the] %guild%'[s] [guild] boost[(ing|er)] tier
     ```
 
 ## User Badges
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
+[[[ macros.no_changers() ]]]
 
 Represent every badges' name a user have.
-This does not and cannot contain any intro-related badges (nitro membership or nitro boosting), it need OAuth2 to be enabled.
+This does not and cannot contain any intro-related badges (nitro membership or nitro boosting), it needs OAuth2 to be enabled.
+
 === "Examples"
 
     ```applescript
@@ -993,6 +1044,7 @@ This does not and cannot contain any intro-related badges (nitro membership or n
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('guild') ]]]
+[[[ macros.no_changers() ]]]
 
 Represent every guild that the bot and the user have in common.
 === "Examples"
@@ -2480,24 +2532,6 @@ No description provided.
     %channel/channelaction%'[s] [channel] parent
     ```
 
-## ChannelPosition
-
-[[[ macros.required_version('4.0.0') ]]]
-[[[ macros.return_type('number') ]]]
-
-No description provided.
-=== "Examples"
-
-    ```applescript
-    No examples provided.
-    ```
-=== "Patterns"
-
-    ```applescript
-    [the] [channel] position of %channel/channelaction%
-    %channel/channelaction%'[s] [channel] position
-    ```
-
 ## Voice Channel Status
 
 [[[ macros.required_version('4.13.0') ]]]
@@ -3681,23 +3715,38 @@ No description provided.
     %role/roleaction%'[s] role name
     ```
 
-## RolePosition
+## Channel/Role Position
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('number') ]]]
+[[[ macros.accept_type('number') ]]]
 
-No description provided.
+Get or change the relative position of a channel (within its category) or role (among all roles). This is also supported by [role actions](#newroleaction) and [channel actions](#newtextaction)!
+
+!!! warning "Position Conflicts"
+    If you try to set a position that is already taken, they will be **sorted** by their **creation date**!
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    discord command moveup:
+        prefixes: ?
+        trigger:
+            remove 1 from channel position of event-channel # remove will move the channel up
     ```
+
 === "Patterns"
 
     ```applescript
-    [the] [discord] [role] position of %role/roleaction%
-    %role/roleaction%'[s] [discord] [role] position
+    [the] [(role|channel)] position of %role/roleaction/channel/channelaction%
+    %role/roleaction/channel/channelaction%'[s] [(role|channel)] position
     ```
+
+!!! example ""
+
+    - `add` (will increase the position)
+    - `remove` (will decrease the position)
+    - `set` (will set the position to the given number)
 
 ## Tag Emoji
 

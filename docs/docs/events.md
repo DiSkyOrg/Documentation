@@ -178,6 +178,31 @@ Fired when a bot is stopped.
     
     ```
 
+# On Channel Create Event
+
+[[[ macros.required_version('4.0.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a channel is created in a guild.
+
+=== "Examples"
+    
+    ```applescript
+    on channel create:
+        broadcast "%event-channel% has been created in %event-guild%!"
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [discord] channel creat(e|ion)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-bot`](../docs/types.md#bot)
+
 ## On Guild Ready Event
 
 [[[ macros.required_version('4.0.0') ]]]
