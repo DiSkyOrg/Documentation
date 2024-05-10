@@ -226,21 +226,27 @@ The URL will represent the image, and can be either a web URL or a local path.
     (make|create) [the] [new] emote (named|with name) %string% with [the] (url|path) %string% in [the] [guild] %guild% and store (it|the emote) in %object%
     ```
 
-## CreateInvite
+## Create Invite
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Create an invitation for a specific channel, and store it in a variable.
+
+!!! warning 
+    Creating an invitation for a **guild** is not supported anymore. DiSky will default the invite to the guild's default channel, if any!
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    create new invite in event-channel with max uses 5 with max age 50 and store it in {_invite}
     ```
 === "Patterns"
 
     ```applescript
     (make|create) [the] [new] invite in [the] [(guild|channel)] %guild/channel% [with max us(e|age)[s] %-number%] [with max (time|age) %-number%] and store (it|the invite) in %object%
     ```
+
+!!! example "See Also the [Invite Type](types.md#invite)"
 
 ## Create Post
 
@@ -753,20 +759,22 @@ Don't forget to use 'purge' effect to delete a lot of messages the most enhanced
     retrieve [last] %number% [amount of] message[s] (of|in|from) %channel% and store (them|the messages) in %-objects%
     ```
 
-## RetrieveOwner
+## Retrieve Owner 
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve the owner of a specific guild.
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve owner of event-guild and store it in {_member}
     ```
+
 === "Patterns"
 
     ```applescript
-    retrieve owner (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (it|the owner) in %-object%
+    retrieve [the] owner (of|from) %guild% and store (it|the member) in %~object%
     ```
 
 ## Retrieve Profile
@@ -868,16 +876,15 @@ No description provided.
     retrieve user (with|from) id %string% (from|with|of|in) %bot% and store (it|the user) in %-object%
     ```
 
-## RetrieveEventValue
+## Retrieve Event Value
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve an event-value instead of getting it. Only available in some events, that actually contains retrieve values. For more information, please [check this section](events.md#information-event-values)!
+
 === "Examples"
 
-    ```applescript
-    No examples provided.
-    ```
+    [Check the wiki](events.md#information-event-values)
 === "Patterns"
 
     ```applescript
@@ -1015,7 +1022,7 @@ For concrete usage and example, check examples [here for buttons](../interaction
 
 ## Edit Message's Component
 
-[[[ macros.required_version('4.15.2') ]]]
+[[[ macros.required_version('4.16.0') ]]]
 
 Modify a single component via its ID in a specific message. This effect can only handle [buttons](../interactions/components.md#buttons) and [select menus](../interactions/components.md#select-menu).
 

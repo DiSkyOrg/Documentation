@@ -6,6 +6,21 @@ icon: material/check-all
 
 [[[% import 'macros.html' as macros %]]]
 
+## Information: Event-Values
+
+For some event, you can see a `retrieve values` section. Some values are given by Discord directly, and others needs another **request** to Discord to get the value (those are in as `retrieve values`).
+
+!!! example ""
+    For instance in the [Reaction Add Event](#on-reaction-add), Discord gives us the message ID only, so you can use its retrieve value to get the actual message:
+
+    ```applescript
+    on reaction add:
+        # </>
+
+        retrieve event value "message" and store it in {_message}
+        # now you can use {_message} as the message that was reacted to!
+    ```
+
 ## On Bot Creation Scope
 
 [[[ macros.required_version('4.0.0') ]]]
@@ -27,11 +42,7 @@ No description provided.
     ```applescript
     
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Discord Command
 
@@ -65,11 +76,7 @@ Custom DiSky discord command system. Arguments works like the normal skript's on
     event-message
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Disky Command
 
@@ -97,11 +104,7 @@ Fired when a disky/discord command is executed.
     event-bot
     event-message
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Bot Join Event
 
@@ -172,13 +175,8 @@ Fired when a bot is stopped.
     ```applescript
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
-
-# On Channel Create Event
+## On Channel Create Event
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
@@ -203,6 +201,7 @@ Fired when a channel is created in a guild.
     * [`event-channel`](../docs/types.md#channel)
     * [`event-bot`](../docs/types.md#bot)
 
+
 ## On Guild Ready Event
 
 [[[ macros.required_version('4.0.0') ]]]
@@ -225,11 +224,7 @@ Fired when a guild is fully loaded.
     event-guild
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Ready Event
 
@@ -252,11 +247,7 @@ Fired when a bot is fully loaded. 'guild ready' should be called before this one
     ```applescript
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On DiSky Error / Exception
 
@@ -280,11 +271,7 @@ Since DiSky exception are per-event only, this regroup every exception occurred 
     ```applescript
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Guild AFK Channel Event
 
@@ -568,11 +555,7 @@ Fired when the bot joins in a guild.
     event-guild
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Guild Log Entry Create Event
 
@@ -753,11 +736,7 @@ Modal can be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Entity Dropdown Click
 
@@ -794,11 +773,7 @@ Modal can be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Message Command
 
@@ -833,11 +808,7 @@ Modal can be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Modal Receive
 
@@ -871,11 +842,7 @@ Modal can NOT be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Slash Command
 
@@ -910,11 +877,7 @@ You can get value of arguments using 'argument "name" as string' for example.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Slash Completion
 
@@ -948,11 +911,7 @@ Modal can NOT be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On String Dropdown Click
 
@@ -989,11 +948,7 @@ Modal can be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Command
 
@@ -1027,11 +982,7 @@ Modal can be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Accept Screen Event
 
@@ -1057,11 +1008,7 @@ Fired when a member has agreed to membership screen requirements it can be usefu
     event-bot
     event-boolean
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Avatar Event
 
@@ -1087,15 +1034,11 @@ Fired when a member changes their avatar.
     event-bot
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Boost Time Change Event
 
-[[[ macros.required_version('4.15.2') ]]]
+[[[ macros.required_version('4.16.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 ??? failure "What happened to the `member boost` event?"
@@ -1162,11 +1105,7 @@ Fired when a member joins a guild.
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Nickname Event
 
@@ -1192,11 +1131,7 @@ Fired when a member changes their nickname.
     event-bot
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Leave Event
 
@@ -1221,11 +1156,7 @@ Fired when a member is removed from a guild either by leaving or being punished.
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Role Add Event
 
@@ -1250,11 +1181,7 @@ Fired when a member adds roles to another member, it's a log action so event-aut
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Role Remove Event
 
@@ -1279,11 +1206,7 @@ Fired when a member removes roles from another member, it's a log action so even
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Voice Join Event
 
@@ -1311,11 +1234,7 @@ Fired when a member joins a voice or a stage channel, also fires when a member m
     event-stagechannel
     event-voicechannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Voice Leave Event
 
@@ -1343,11 +1262,7 @@ Fired when a member leaves a voice or a stage channel
     event-stagechannel
     event-voicechannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Message Delete
 
@@ -1418,11 +1333,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Message Receive
 
@@ -1459,11 +1370,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
     event-message
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Reaction Add
 
@@ -1597,11 +1504,7 @@ Fired when the color of a role changes.
     event-guild
     event-color
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Role Create
 
@@ -1835,11 +1738,7 @@ Fired when a member joins a tread, either by joining itself or by a moderator ca
     event-bot
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Thread Leave Event
 
@@ -1865,11 +1764,7 @@ Fired when a member leaves a thread, either by leaving itself or by a moderator 
     event-bot
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Activity Order Event
 
@@ -1895,11 +1790,7 @@ Fired when a user in a guild changes its activity. Ex: by playing something diff
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Avatar Event
 
@@ -1924,11 +1815,7 @@ Fired when a user changes its avatar.
     event-bot
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Discriminator Event
 
@@ -1953,11 +1840,7 @@ Fired when a user changes its discriminator.
     event-bot
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Name Event
 
@@ -1982,11 +1865,7 @@ Fired when a user changes its name (not nickname).
     event-bot
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Online Status Event
 
@@ -2013,11 +1892,7 @@ Fired when a user changes its online status.
     event-bot
     event-onlinestatus
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Typing Event
 
@@ -2043,11 +1918,7 @@ Fired when a user starts typing in a channel.
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Track Event
 
@@ -2081,9 +1952,5 @@ Fired when a track receive a specific event. Use the literal to define the event
     event-bot
     event-trackeventtype
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 

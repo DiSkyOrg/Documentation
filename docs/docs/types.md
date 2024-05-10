@@ -26,6 +26,19 @@ The **Member** type represent a Discord account that is in a guild. It holds mor
 
 The **Guild** type represent a Discord server. It holds information like the name, icon, owner, and the members.
 
+### `invite`
+
+Represent a Discord invitation to a guild. It always points to a channel (that is of course in the guild), and can have a limited number of uses, and an expiration date.
+
+??? example "Related Syntax"
+    |                    Expressions                    |                     Effects                     |                         Events                          |
+    |:-------------------------------------------------:|:-----------------------------------------------:|:-------------------------------------------------------:|
+    |     [Invite Code](expressions.md#invite-code)     |    [Create Invite](effects.md#create-invite)    | [Invite Create Event](events.md#on-invite-create-event) |
+    |  [Invite Inviter](expressions.md#invite-inviter)  |  [Retrieve Invite](effects.md#retrieve-invite)  | [Invite Delete Event](events.md#on-invite-delete-event) |
+    |  [Invite Max Age](expressions.md#invite-max-age)  | [Retrieve Invites](effects.md#retrieve-invites) |                                                         |
+    | [Invite Max Uses](expressions.md#invite-max-uses) |                                                 |                                                         |
+    |      [Invite URL](expressions.md#invite-url)      |                                                 |                                                         |
+
 ## Channels
 
 ### `channel`
