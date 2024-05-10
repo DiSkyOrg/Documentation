@@ -129,7 +129,10 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    show {_moda_variable}
+    show {_moda_variable} to event-user
+    show the {_moda_variable} to event-user
+    show the modal {_moda_variable} to the event-user
     ```
 === "Patterns"
 
@@ -199,7 +202,23 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    # Role
+    set {_action} to new role action in event-guild
+    set role name of {_action} to "Member"
+    create {_action} and store it in {_role}
+
+    # Text Channel
+    set {_action} to new text channel action in event-guild
+    set channel parent of {_action} to {_category}
+    set channel name of {_action} to "Text"
+    create {_action} and store it in {_text}
+
+    # Voice Channel
+    set {_action} to new voice channel action in event-guild
+    set channel parent of {_action} to {_category}
+    set channel name of {_action} to "Voice"
+    set max users of {_action} to 5
+    create {_action} and store it in {_voice}
     ```
 === "Patterns"
 
@@ -299,7 +318,8 @@ Creating private thread need the guild to be level 2 or more, else it'll throw a
 === "Examples"
 
     ```applescript
-    No examples provided.
+    create new thread named "abc" in (channel with id "abc") using the message (message with id "abc") and store it in {_thread}
+    create new private thread named "abc" in (channel with id "abc") using the message (message with id "abc") and store it in {_thread}
     ```
 === "Patterns"
 
@@ -612,7 +632,8 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all bans of event-guild and store them in {_bans::*}
+	send "%{_bans::*}%" to console
     ```
 === "Patterns"
 
@@ -717,7 +738,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve member with id "329999814546817024" in event-guild and store it in {_m}
     ```
 === "Patterns"
 
@@ -733,7 +754,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve message with id discord id of event-message in event-channel and store it in {_message} 
     ```
 === "Patterns"
 
@@ -786,7 +807,7 @@ Profile represent mainly the banner of the user, could return the accent color i
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve profile with id "329999814546817024" from event-user and store it in {_m}
     ```
 === "Patterns"
 
@@ -819,7 +840,7 @@ Retrieve every stickers (and cache them) from a specific guild.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all stickers from event-guild and store them in {_m::*}
     ```
 === "Patterns"
 
@@ -835,7 +856,7 @@ Retrieve every members (and cache them) from a specific thread.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all thread members from event-threadchannel and store them in {_m::*}
     ```
 === "Patterns"
 
@@ -852,7 +873,7 @@ This effect will only get back the ACTIVE thread, and will pass on the archived 
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all threads from event-guild and store them in {_threads::*}
     ```
 === "Patterns"
 
@@ -868,7 +889,9 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve user with id "6516165135165135213" from event-bot and store it in {_user}
+    retrieve user with id "6516165135165135213" from event-bot and store the user in {_user}
+    retrieve user with id "6516165135165135213" with event-bot and store it in {_user}
     ```
 === "Patterns"
 
@@ -1051,7 +1074,11 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    add field named "field_name" with value "field_description" to embed
+    add field named "field_name" with value "field_description" to fields of embed
+    
+    add inline field named "field_name" with value "field_description" to embed
+    add inline field named "field_name" with value "field_description" to fields of embed
     ```
 === "Patterns"
 
