@@ -21,7 +21,7 @@ For some event, you can see a `retrieve values` section. Some values are given b
         # now you can use {_message} as the message that was reacted to!
     ```
 
-## On Bot Creation Scope
+## On Bot Creation Structure
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
@@ -1124,7 +1124,7 @@ Fired when a member changes their avatar.
 Fired when a member **starts** or **stops** boosting a guild.
 
 !!! warning ""
-    This event requires the [**`guild members` intents**](../bot/intents.md#guild-members-guild-members), and target members to be [**cached**](../getting-started/2-bot-loading.md#1-bot-scope)
+    This event requires the [**`guild members` intents**](../bot/intents.md#guild-members-guild-members), and target members to be [**cached**](../getting-started/2-bot-loading.md#bot-structure)
 
 === "Patterns"
 

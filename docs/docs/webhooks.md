@@ -92,7 +92,8 @@ Change the files of any webhook message builder.
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('webhookmessage') ]]]
 
-The current webhook message builder from the current 'make message' scope.
+The current webhook message builder from the current 'make message' section.
+
 === "Examples"
 
     ```applescript

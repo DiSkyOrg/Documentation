@@ -50,7 +50,7 @@ This specifically affects messages received through the message history of a cha
 
 This is used to lazy load members and update user properties such as name/avatar.
 !!! danger
-    **This is a very heavy intent!** Presence updates are 99% of traffic the bot will receive. To get user update events you should consider using [`guild members`](#guild-members) instead.
+    **This is a very heavy intent!** Presence updates are 99% of traffic the bot will receive. To get user update events you should consider using [`guild members`](#guild-members-guild-members) instead.
 
 ??? info "Less Important Intents"
     ### Guild Moderation (`guild moderation`)

@@ -9,29 +9,29 @@ icon: material/numeric-3-box
 
 You'll see here how to use DiSky in a Skript file, especially how to load your bot.
 
-??? tips "What are scopes? (read if you're a newbie)"
-    DiSky is using a lot of **scopes**, which are very similar to the event system. Instead of being in a trigger (such as on load or a command), a scope is the trigger itself and thus can be placed in a file without a parent.
+??? tips "What are structures? (read if you're a newbie)"
+    DiSky is using a lot of **structures**, which are very similar to the event system. Instead of being in a trigger (such as on load or a command), a structure is the trigger itself and thus can be placed in a file without a parent.
     
-    Scopes come with two sorts of **entry** (entry looks like `name: value`):
+    Structures come with two sorts of **entry** (entry looks like `name: value`):
     
     * Value entry (form: `name: value`), event-related literals are forbidden (only global variable & script options works here):
     ````applescript
-    <scope name>:
+    <structure name>:
             token: "token"
     ````
     
     * Section entry (form: `name: <line break> code ...`), code that could be running.
     ````applescript
-    <scope name>:
+    <strcture name>:
             on ready:
                 send "%event-bot% has been loaded!" to console
     ````
     
     It will load automatically when the code is reloaded.
 
-## Bot Scope
+## Bot Structure
 
-DiSky's bot creation scope looks like this: 
+DiSky's bot creation structure looks like this: 
  
 ```applescript hl_lines="3 6 10 14 15 16 18 19 23 26 29"
 # The name specified here doesn't matter with the one used in the developer portal. 
@@ -91,7 +91,7 @@ The only event-value here is `event-bot` to get the bot instance that's just loa
 **Example:**
 
 ```applescript
-<scope name>:
+<structure name>:
     on ready:
         send "&a%event-bot%&2 has been loaded!" to console
 ```
@@ -110,7 +110,7 @@ There's two event value here:
 **Example:**
 
 ```applescript
-<scope name>:
+<structure name>:
     on guild ready:
         send "&a%event-bot%&2 just loaded &a%event-guild%&2 guild!" to console
 ```

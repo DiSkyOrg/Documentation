@@ -15,7 +15,7 @@ Even if they are old and Discord does not recommend anymore to use them, DiSky w
 
 ## Creating the command
 
-Any discord command is defined via a [Scope](../getting-started/2-bot-loading.md#scopes):&#x20;
+Any discord command is defined via a [Structure](../getting-started/2-bot-loading.md#bot-loading):
 
 ```applescript
 # This is outside any event!

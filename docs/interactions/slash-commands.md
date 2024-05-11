@@ -39,7 +39,7 @@ Let's create a sample command with DiSky now. We'll make a slash command named `
     Options can be required or not. If they are not, then you should always think of a fallback value, here, the user who executed the command for example!
 
 ```applescript
-# We highly recommend using the 'on ready' section of the bot's scope
+# We highly recommend using the 'on ready' section of the bot's structure
 # for registering commands!
 define bot XXX:
     ...

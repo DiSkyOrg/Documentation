@@ -2944,7 +2944,7 @@ Get or change the URL of this embed. The Discord client mostly only uses this pr
 If multiple embeds in a message use the same URL, the Discord client will merge them into a single embed and aggregate images into a gallery view.
 
 !!! warning
-This is different from the [EmbedTitleURL](#embedtitleurl) property: this one can be used even if there's **no title yet**, while the other one can only be used if **there's a title**!
+This is different from the [Embed Title URL](#title-of-embed) property: this one can be used even if there's **no title yet**, while the other one can only be used if **there's a title**!
 
 === "Examples"
 
@@ -3792,7 +3792,7 @@ No description provided.
 [[[ macros.return_type('number') ]]]
 [[[ macros.accept_type('number') ]]]
 
-Get or change the relative position of a channel (within its category) or role (among all roles). This is also supported by [role actions](#newroleaction) and [channel actions](#newtextaction)!
+Get or change the relative position of a channel (within its category) or role (among all roles). This is also supported by [role actions](#new-role-action) and [channel actions](#new-text-channel-action)!
 
 !!! warning "Position Conflicts"
     If you try to set a position that is already taken, they will be **sorted** by their **creation date**!

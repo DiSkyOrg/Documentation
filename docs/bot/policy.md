@@ -8,7 +8,7 @@ When [defining a bot](../getting-started/2-bot-loading.md#bot-loading), you can 
 
 ## Member Cache Policy
 
-This will define how the bot will handle members cache itself, for instance what member can be get using [member getter](../docs/expressions.md#get-member) instead of being [retrieved](../docs/effects.md#retrievemember)
+This will define how the bot will handle members cache itself, for instance what member can be get using [member getter](../docs/expressions.md#get-member) instead of being [retrieved](../docs/effects.md#retrieve-member)
 
 | Code name | Description                           |                                                                                                      [Required Intents](../bot/intents.md) |
 |-----------|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------:|

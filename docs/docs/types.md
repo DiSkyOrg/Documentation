@@ -16,7 +16,7 @@ Represent a **DiSky** bot, which is a bot that is **connected to Discord**. It h
 
 ### `user`
 
-The **User** type represent a Discord account, or a bot account. There's only one "user instance", meaning each user are uniques across all guilds. Due to obvious reasons, we cannot cache all users, thus you'll have to [retrieve](../docs/effects.md#retrieveuser) them.
+The **User** type represent a Discord account, or a bot account. There's only one "user instance", meaning each user are uniques across all guilds. Due to obvious reasons, we cannot cache all users, thus you'll have to [retrieve](../docs/effects.md#retrieve-user) them.
 
 ### `member`
 

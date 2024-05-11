@@ -903,11 +903,11 @@ No description provided.
 
 [[[ macros.required_version('4.0.0') ]]]
 
-Retrieve an event-value instead of getting it. Only available in some events, that actually contains retrieve values. For more information, please [check this section](events.md#information-event-values)!
+Retrieve an event-value instead of getting it. Only available in some events, that actually contains retrieve values. For more information, please [check this section](events.md#information-retrieve-values)!
 
 === "Examples"
 
-    [Check the wiki](events.md#information-event-values)
+    [Check the wiki](events.md#information-retrieve-values)
 === "Patterns"
 
     ```applescript
