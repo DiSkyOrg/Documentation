@@ -22,7 +22,7 @@ To fetch manually the logs of a guild, you'll have to use the `retrieve audit lo
 ```applescript
 ...
 set {_guild} to event-guild # Get the guild from the event, or replace by any guild
-retrieve audit logs from {_guild} and store it in {_logs::*}
+retrieve audit logs from {_guild} and store them in {_logs::*}
 ```
 
 Now, `{_logs::*}` is a list of all the logs of the guild. You can loop through them, and get the info you want for each entry.

@@ -6,7 +6,7 @@ icon: material/check-all
 
 [[[% import 'macros.html' as macros %]]]
 
-## Information: Event-Values
+## Information: Retrieve-Values
 
 For some event, you can see a `retrieve values` section. Some values are given by Discord directly, and others needs another **request** to Discord to get the value (those are in as `retrieve values`).
 
@@ -43,10 +43,81 @@ No description provided.
     
     ```
 
+## On Member Kick
+
+[[[ macros.required_version('4.17.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a member is kicked from a guild. This use a "*tricky*" way to get the kicked member, since the member is not in the guild anymore, so this event requires some preparation:
+
+!!! warning "Requirements"
+    * The [`guild members` intent](../bot/intents.md#guild-members-guild-members) to be enabled
+    * The [`guild moderation` intent](../bot/intents.md#guild-moderation-guild-moderation) to be enabled
+    * Target (the one who was kicked) and author (the one who kicked) members to be [**cached**](../bot/policy.md)
+
+!!! note "Note"
+    * `event-user` represent the **kicked member** (as it's not a member anymore, it's a user)
+    * `event-member` represent the **author** (the one who kicked the member)
+    * There's no possible way to get the **reason** of the kick, as Discord doesn't provide it at all
+
+=== "Patterns"
+
+    ```applescript
+    [discord] member kick[ed]
+    ```
+
+=== "Examples"
+
+    ```applescript
+    on member kick:
+        broadcast "%event-user% has been kicked from %event-guild% by %event-member%!"
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-user`](../docs/types.md#user) (the kicked member)
+    * [`event-member`](../docs/types.md#member) (the author)
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Member Ban
+
+[[[ macros.required_version('4.17.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a member is banned from a guild. This use a "*tricky*" way to get the banned member, since the member is not in the guild anymore, so this event requires some preparation:
+
+!!! warning "Requirements"
+    * The [`guild members` intent](../bot/intents.md#guild-members-guild-members) to be enabled
+    * The [`guild moderation` intent](../bot/intents.md#guild-moderation-guild-moderation) to be enabled
+    * Target (the one who was banned) and author (the one who banned) members to be [**cached**](../bot/policy.md)
+
+!!! note "Note"
+    * `event-user` represent the **banned member** (as it's not a member anymore, it's a user)
+    * `event-member` represent the **author** (the one who banned the member)
+    * There's no possible way to get the **reason** of the ban, as Discord doesn't provide it at all 
+
+=== "Patterns"
+
+    ```applescript
+    [discord] member ban[ned]
+    ```
+
+=== "Examples"
+
+    ```applescript
+    on member ban:
+        broadcast "%event-user% has been banned from %event-guild% by %event-member%!"
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-user`](../docs/types.md#user) (the banned member)
+    * [`event-member`](../docs/types.md#member) (the author)
+    * [`event-bot`](../docs/types.md#bot)
 
 ## On Discord Command
 
-[[[ macros.required_version('3.0') ]]]
+[[[ macros.required_version('3.0.0') ]]]
 [[[ macros.is_cancellable('Yes') ]]]
 
 Custom DiSky discord command system. Arguments works like the normal skript's one and accept both optional and require arguments.
@@ -563,28 +634,32 @@ Fired when the bot joins in a guild.
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a new log entry is created in a guild.
+
+!!! warning "`logged author` will always return `none` for the logged entry of this event (as we only have its ID)"
+    You can use the [**retrieve value `author`**](#information-retrieve-values) to get the actual author of the entry. (only for DiSky v4.17.0+)
+
 === "Patterns"
 
     ```applescript
     [discord] guild log [entry] create [seen by %-string%]
     ```
+
 === "Examples"
 
     ```applescript
     on guild log entry create:
     ```
+
 === "Event Values"
 
-    ```applescript
-    event-guild
-    event-logentry
-    event-bot
-    ```
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-bot`](../docs/types.md#bot)
+    * `event-logentry` (**Note**: `logged author` of the entry will always return `none`)
+    * `event-number` (represent the author ID of the logged entry)
+
 === "Retrieve Values"
 
-    ```applescript
-    author
-    ```
+    * [`author`](#information-retrieve-values) (to get the actual author of the entry)
 
 ## On Guild Name Event
 
