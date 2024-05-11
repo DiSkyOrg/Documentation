@@ -121,7 +121,7 @@ The best way remains to update bot's commands without the command you want to de
     unregister [the] [command[s]] %strings% [(1�globally|2�locally)] (in|from|of) [the] [(bot|guild)] %bot/guild%
     ```
 
-## OpenModal
+## Open Modal
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -194,7 +194,7 @@ If using the disconnect pattern, only the guild will be required.
     disconnect [[the] [bot] %bot%] from [the] [guild] %guild%
     ```
 
-## CreateAction
+## Create Action Channel/Role
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -624,7 +624,7 @@ Starting DiSky v4.14.3, you can use `reply with premium message` to reply with a
     reply with premium [required] message
     ```
 
-## RetrieveBans
+## Retrieve Bans
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -730,7 +730,7 @@ Retrieve the audit logs of a guild.
     retrieve [(all|every)] [audit] log[s] [entries] (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the [audit] log[s] [entries]) in %-objects%
     ```
 
-## RetrieveMember
+## Retrieve Member
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -746,7 +746,7 @@ No description provided.
     retrieve member (with|from) id %string% (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (it|the member) in %-object%
     ```
 
-## RetrieveMessage
+## Retrieve Message
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -881,7 +881,7 @@ This effect will only get back the ACTIVE thread, and will pass on the archived 
     retrieve [(all|every)] thread[s] (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the thread[s]) in %-objects%
     ```
 
-## RetrieveUser
+## Retrieve User
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -1066,7 +1066,7 @@ Modify a single component via its ID in a specific message. This effect can only
 === "See Also"
     * [Edit Event-Component](#edit-event-component)
 
-## EffAddField
+## Add Embed field/inline field
 
 [[[ macros.required_version('4.0.0') ]]]
 
