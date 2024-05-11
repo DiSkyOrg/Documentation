@@ -317,11 +317,16 @@ The list of the selected values' IDs, in the current dropdown update event.
 [[[ macros.return_type('emote') ]]]
 
 Get an emoji or an emote from its name, ID or unicode.
+
 - An emoji is discord-side only, can be used everywhere, and don't have any attached guild.
 - An emote is guild-side only, have a custom long ID and are attached to a guild.
-  It the specified reaction doesn't exist, DiSky will simply return null and say it in console.
-  We highly recommend the specification of the guild when retrieving an emote, to avoid conflicts with other that potentially have the same name.
-  === "Examples"
+
+If the specified reaction doesn't exist, DiSky will simply return null and say it in console.
+We highly recommend the specification of the guild when retrieving an emote, to avoid conflicts with other that potentially have the same name.
+
+!!! success "Check the [dedicated wiki page](../messages/emojis.md) for more information!"
+
+=== "Examples"
 
     ```applescript
     reaction "joy"
@@ -2997,14 +3002,17 @@ You can change this property to change the emote's name itself.
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
 
-Get the URL of this emote.
-Only emote have image URL, emoji are from Discord and will therefore return none here.
+Get the URL of this emote. Only emote have image URL, emoji are from Discord and will therefore return none here.
+
 === "Examples"
 
     ```applescript
     emote url of event-emote
-    emote image of reaction "disky" # Custom emoji only
+    emote image of reaction "<:disky:825811394963177533>" #(1)!
     ```
+
+    1. See the [emojis page](../messages/emojis.md) for more information about emojis.
+
 === "Patterns"
 
     ```applescript
