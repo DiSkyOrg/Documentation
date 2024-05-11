@@ -49,7 +49,8 @@ Works same as Skript's command argument. You can specify the argument number or 
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_args} last arguments
+    set {_args} last args
     ```
 === "Patterns"
 
@@ -92,7 +93,7 @@ This is intended to be for test purpose only, and therefore only return a String
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_args} to the used arguments
     ```
 
 === "Patterns"
@@ -127,7 +128,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    
     ```
 === "Patterns"
 
@@ -202,7 +203,11 @@ A single message can hold 5 components rows.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    make new component row and store it in {_row}:
+        add new success button with id "btn-2" named "Green lands!" with reaction "smile" to components of the row builder
+        add new link button with id "https://forum.itsthesky.info/discord/" named "DiSky's Discord" to components of the row builder
+    add {_row} to rows of the message
+
     ```
 === "Patterns"
 
@@ -223,7 +228,9 @@ Description and emote are optional.
 === "Examples"
 
     ```applescript
-    set {_btn} to new enabled danger button with id "button-id" named "Hello world :p"
+    add new option with value "one" named "One!" with description "Click to select" with reaction "sparkles" to options of {_dp}
+    add new option with value "two" named "Two!?" with description "Click to select" with reaction "sparkles" to options of {_dp}
+    add new option with value "three" named "THREE!!!" with description "Click to select" with reaction "sparkles" to options of {_dp}
     ```
 === "Patterns"
 
@@ -270,7 +277,7 @@ No description provided.
     [all] [the] %slashcommand/subslashcommand/dropdown%'[s] option[s] [mapping[s]]
     ```
 
-## Selected Entities
+## Selected Dropdown Values
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('object') ]]]
@@ -279,7 +286,7 @@ The list of the selected entities, in the current entity dropdown update event.
 === "Examples"
 
     ```applescript
-    selected entities
+    if "%selected value%" is "login":
     ```
 === "Patterns"
 
@@ -346,7 +353,7 @@ Once this has been called, it will remove the returned value from the errors lis
     [the] last (disky|discord) (error|exception)
     ```
 
-## BotGuilds
+## Bot Guilds
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('guild') ]]]
@@ -355,7 +362,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_guilds::*} to guilds of event-bot
     ```
 === "Patterns"
 
@@ -364,7 +371,7 @@ No description provided.
     [all] [the] %bot%'[s] guilds
     ```
 
-## ExprPresence
+## Bot Presences
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('activity') ]]]
@@ -373,7 +380,11 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set the presence of the bot named "BOTNAME" to listening "with feelings"
+    set the presence of the bot named "BOTNAME" to watching "over the"
+    set the presence of the bot named "BOTNAME" to playing "with the API"
+    set the presence of the bot named "BOTNAME" to streaming "with the API" with the url "https://itsthesky.info"
+    set the presence of the bot named "BOTNAME" to competing "with the API"
     ```
 === "Patterns"
 
@@ -385,7 +396,7 @@ No description provided.
     competing [to] %string%
     ```
 
-## ChannelChannels
+## Channel of Category
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('textchannel') ]]]
@@ -394,7 +405,8 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_channels::*} to channels of event-category
+    set {_channels::*} to channels of category with id "0000"
     ```
 === "Patterns"
 
@@ -440,7 +452,7 @@ Gets the threads of a specific forum/text channel or a guild.
     [all] [the] %forumchannel/textchannel/guild%'[s] threads
     ```
 
-## NewCategoryAction
+## New Category Action
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('channelaction') ]]]
@@ -449,7 +461,9 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_action} to new category action in event-guild
+    set channel name of {_action} to "Dog"
+    create {_action} and store it in {_category}
     ```
 === "Patterns"
 
@@ -457,7 +471,7 @@ No description provided.
     [a] new category (action|manager) in [the] [guild] %guild% [(using|with) [the] [bot] %-bot%]
     ```
 
-## NewNewsChannel
+## New News Channel Action
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('channelaction') ]]]
@@ -466,7 +480,11 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_action} to new news channel action in event-guild
+    set channel parent of {_action} to {_category}
+    set channel name of {_action} to "News"
+
+    create {_action} and store it in {_text}
     ```
 === "Patterns"
 
@@ -474,7 +492,7 @@ No description provided.
     [a] new news[( |-)]channel (action|manager) in [the] [guild] %guild% [(using|with) [the] [bot] %-bot%]
     ```
 
-## NewStageChannel
+## New Stage Channel Action
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('channelaction') ]]]
@@ -483,7 +501,11 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_action} to new stage channel action in event-guild
+    set channel parent of {_action} to {_category}
+    set channel name of {_action} to "Stage"
+
+    create {_action} and store it in {_text}
     ```
 === "Patterns"
 
@@ -491,7 +513,7 @@ No description provided.
     [a] new stage[( |-)]channel (action|manager) in [the] [guild] %guild% [(using|with) [the] [bot] %-bot%]
     ```
 
-## NewTextAction
+## New Text Channel Action
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('channelaction') ]]]
@@ -500,7 +522,11 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_action} to new text channel action in event-guild
+    set channel parent of {_action} to {_category}
+    set channel name of {_action} to "Text"
+    
+    create {_action} and store it in {_text}
     ```
 === "Patterns"
 
@@ -508,7 +534,7 @@ No description provided.
     [a] new text[( |-)]channel (action|manager) in [the] [guild] %guild% [(using|with) [the] [bot] %-bot%]
     ```
 
-## NewVoiceAction
+## New Voice Channel Action
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('channelaction') ]]]
@@ -517,7 +543,12 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_action} to new voice channel action in event-guild
+    set channel parent of {_action} to {_category}
+    set channel name of {_action} to "Voice"
+    set max users of {_action} to 5
+    
+    create {_action} and store it in {_voice}
     ```
 === "Patterns"
 
@@ -579,7 +610,8 @@ This expression returns the last generated embed using the embed builder.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    reply with {_embed}
+    reply with last embed
     ```
 === "Patterns"
 
@@ -877,7 +909,7 @@ Because of Discord's limitation, we cannot get which user reacted with which rea
     [all] [the] %message%'[s] [discord] [message] (emo(te|ji)|reaction)[s]
     ```
 
-## NewRoleAction
+## New Role Action
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('roleaction') ]]]
@@ -886,7 +918,10 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_action} to new role action in event-guild
+    set role name of {_action} to "Member"
+    
+    create {_action} and store it in {_role}
     ```
 === "Patterns"
 
@@ -1123,7 +1158,7 @@ See also: 'Create (rich) Message'
 === "Examples"
 
     ```applescript
-    No examples provided.
+    add "plugins/Skript/scripts/msg.sk" to the attachments of the message
     ```
 === "Patterns"
 
@@ -1142,7 +1177,7 @@ See also: 'Create (rich) Message'
 === "Examples"
 
     ```applescript
-    No examples provided.
+    add last embed to the embeds of the message
     ```
 === "Patterns"
 
@@ -1161,7 +1196,7 @@ See also: 'Creator Components Row'
 === "Examples"
 
     ```applescript
-    No examples provided.
+    add {_row} to rows of the message
     ```
 === "Patterns"
 
@@ -1290,7 +1325,7 @@ There's two type of dropdown available:
     [a] [new] entit(y|ies) drop[( |-)]down [with] [the] [id] %string% targeting %strings%
     ```
 
-## ExprNewInput
+## Modal Text Input
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('textinput') ]]]
@@ -1299,7 +1334,8 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_input} to new short text input with id "description" named "Description"
+    set {_input} to new text input with id "description" named "Description"
     ```
 === "Patterns"
 
@@ -1308,7 +1344,7 @@ No description provided.
     [a] [new] short text[( |-)]input [with] [the] [id] %string% (named|with name) %string%
     ```
 
-## ExprNewModal
+## New Modal
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('modal') ]]]
@@ -1317,7 +1353,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_modal} to a new modal with id "unique-id" named "My modal"
     ```
 === "Patterns"
 
@@ -1819,7 +1855,7 @@ This expression cannot be changed.
     thread [channel] (with|from) [the] id %string% [(with|using) [the] bot [(named|with name)] %-bot%]
     ```
 
-## GetUser
+## Get User
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('textchannel') ]]]
@@ -1828,7 +1864,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    user with id "Id_Here"
     ```
 === "Patterns"
 
@@ -1848,7 +1884,7 @@ User can have multiple instance according to which guild they are in, therefore 
 === "Examples"
 
     ```applescript
-    No examples provided.
+    user with id "000" in guild with id "000"
     ```
 === "Patterns"
 
@@ -2006,7 +2042,7 @@ The action type of the log entry.
     %logentry%'[s] log[ged] action [type]
     ```
 
-## ExprMaxRange
+## Dropdown/Modal Text Input Max Range
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('number') ]]]
@@ -2015,7 +2051,11 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    # Modal
+    set maximum range of {_input} to 30 # Maximum length of the input
+    
+    # Dropdown
+    set max range of {_dp} to 2
     ```
 === "Patterns"
 
@@ -2024,7 +2064,7 @@ No description provided.
     %dropdown/textinput%'[s] max[imum] range
     ```
 
-## ExprMinRange
+## Dropdown/Modal Text Input Min Range
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('number') ]]]
@@ -2033,7 +2073,11 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    # Modal
+    set minimum range of {_input} to 30 # Maximum length of the input
+    
+    # Dropdown
+    set min range of {_dp} to 2
     ```
 === "Patterns"
 
@@ -2042,7 +2086,7 @@ No description provided.
     %dropdown/textinput%'[s] min[imum] range
     ```
 
-## ExprPlaceholder
+## Placeholder of Dropdown/Modal Text Input
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2051,7 +2095,11 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    # Modal
+    set placeholder of {_input} to "Input whatever you want here ..."
+
+    # Dropdown
+    set placeholder of {_dp} to "Select a role ..."
     ```
 === "Patterns"
 
@@ -2060,7 +2108,7 @@ No description provided.
     %dropdown/textinput%'[s] [discord] place[( |-)]holder
     ```
 
-## ExprRequireState
+## Modal Require State Of Modal Text Input
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('boolean') ]]]
@@ -2069,7 +2117,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set required state of {_input} to true # Whether the input is required or not
     ```
 === "Patterns"
 
@@ -2078,7 +2126,7 @@ No description provided.
     %textinput%'[s] require[d] state
     ```
 
-## ExprValue
+## Modal Text Input Default Value
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2087,7 +2135,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set default value of {_input} to "This is a default value"
     ```
 === "Patterns"
 
@@ -2296,7 +2344,7 @@ The user linked to this ban.
     %ban%'[s] [banned] user
     ```
 
-## BotName
+## Bot Name
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2305,7 +2353,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_name} to bot name of event-bot
     ```
 === "Patterns"
 
@@ -2314,7 +2362,7 @@ No description provided.
     %bot%'[s] [discord] bot name
     ```
 
-## BotPing
+## Bot Ping
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('number') ]]]
@@ -2323,7 +2371,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_ping} to bot ping of event-bot
     ```
 === "Patterns"
 
@@ -2332,7 +2380,7 @@ No description provided.
     %bot%'[s] [discord] bot ping
     ```
 
-## BotPresence
+## Bot Presence
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('activity') ]]]
@@ -2341,7 +2389,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_presence} to presence of event-bot
     ```
 === "Patterns"
 
@@ -2368,7 +2416,7 @@ No description provided.
     %bot/member%'[s] [discord] [online] status
     ```
 
-## BotToken
+## Bot Token
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2377,7 +2425,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_token} to bot token of event-bot
     ```
 === "Patterns"
 
@@ -2386,7 +2434,7 @@ No description provided.
     %bot%'[s] [discord] bot token
     ```
 
-## BotUptime
+## Bot Uptime
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('timespan') ]]]
@@ -2395,7 +2443,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_uptime} to bot uptime of event-bot
     ```
 === "Patterns"
 
@@ -2423,7 +2471,7 @@ Get the self member instance of a bot, in a specific guild.
     [the] [bot] %bot%'s self [member] [in [the] [guild] %guild%]
     ```
 
-## ChannelBitrate
+## Channel Bitrate
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('number') ]]]
@@ -2432,7 +2480,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_bitrate} to bitrate of event-channel
     ```
 === "Patterns"
 
@@ -2460,7 +2508,7 @@ Clicking this URL in the Discord client will cause the client to jump to the spe
     %channel%'[s] channel [jump] url
     ```
 
-## ChannelMaxUser
+## Channel Max User
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('number') ]]]
@@ -2469,7 +2517,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_max} to max user of event-channel
     ```
 === "Patterns"
 
@@ -2478,7 +2526,7 @@ No description provided.
     %channel/channelaction%'[s] [channel] max[imum] user[s]
     ```
 
-## ChannelName
+## Channel Name
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2487,7 +2535,8 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_name} to channel name of event-channel
+    set channel name of event-channel to "new name"
     ```
 === "Patterns"
 
@@ -2496,7 +2545,7 @@ No description provided.
     %channel/channelaction%'[s] channel name
     ```
 
-## ChannelNSFW
+## Channel NSFW
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('boolean') ]]]
@@ -2514,7 +2563,7 @@ No description provided.
     %channel/channelaction%'[s] [channel] nsfw
     ```
 
-## ChannelParent
+## Channel Parent
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('category') ]]]
@@ -2523,7 +2572,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_parent} to parent of event-channel
     ```
 === "Patterns"
 
@@ -2557,7 +2606,7 @@ Represent the *temporary* status of a voice channel. Can be get, but also set wi
     [voice] channel status
     ```
 
-## ChannelRegion
+## Channel Region
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('object') ]]]
@@ -2566,7 +2615,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_region} to region of event-channel
     ```
 === "Patterns"
 
@@ -2575,7 +2624,7 @@ No description provided.
     %channel/channelaction%'[s] [channel] region
     ```
 
-## ChannelSlowmode
+## Channel Slowmode
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('number') ]]]
@@ -2593,7 +2642,7 @@ No description provided.
     %channel/channelaction%'[s] [channel] slow[( |-)]mode
     ```
 
-## ChannelTopic
+## Channel Topic
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2602,7 +2651,8 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set channel topic of event-channel to "New topic"
+    set {_topic} to channel topic of event-channel
     ```
 === "Patterns"
 
@@ -2666,6 +2716,7 @@ Get the unique long value (ID) that represent a discord entity.
     ```applescript
     discord id of event-channel
     discord id of event-guild
+    discord id of event-user
     ```
 === "Patterns"
 
@@ -2687,6 +2738,8 @@ Check for [nickname of member](#member-nickname) if you want to check / change c
 
     ```applescript
     discord name of event-guild
+    discord name of event-user
+    discord name of event-member
     ```
 === "Patterns"
 
@@ -2695,7 +2748,7 @@ Check for [nickname of member](#member-nickname) if you want to check / change c
     %channel/user/member/sticker/scheduledevent/emote/threadchannel/role/guild/webhook%'[s] [the] discord name
     ```
 
-## EmbedAuthor
+## Author of Embed
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2704,7 +2757,8 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set author of the embed to "Author name (Can point to URL)" # author must be set first
+    set author icon of embed to "https://cdn.discordapp.com/emojis/825811394963177533.png?v=1"
     ```
 === "Patterns"
 
@@ -2713,7 +2767,7 @@ No description provided.
     %embedbuilder%'[s] author
     ```
 
-## EmbedAuthorIcon
+## Author Icon of Embed
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2722,7 +2776,8 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set author of the embed to "Author name (Can point to URL)" # author must be set first
+    set author icon of embed to "https://cdn.discordapp.com/emojis/825811394963177533.png?v=1"
     ```
 === "Patterns"
 
@@ -2731,7 +2786,7 @@ No description provided.
     %embedbuilder%'[s] author icon
     ```
 
-## EmbedAuthorURL
+## Embed Author URL
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2740,7 +2795,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set author url of embed to "https://www.youtube.com/watch?v=i33DB6R8YUY"
     ```
 === "Patterns"
 
@@ -2749,7 +2804,7 @@ No description provided.
     %embedbuilder%'[s] author url
     ```
 
-## EmbedDescription
+## Description of Embed
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2758,7 +2813,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set description of embed to "Description of the embed"
     ```
 === "Patterns"
 
@@ -2767,7 +2822,7 @@ No description provided.
     %embedbuilder%'[s] description
     ```
 
-## EmbedFooter
+## Footer of Embed
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2776,7 +2831,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set footer of embed to "Footer text"
     ```
 === "Patterns"
 
@@ -2785,7 +2840,7 @@ No description provided.
     %embedbuilder%'[s] footer
     ```
 
-## EmbedFooterIcon
+## Footer Icon of Embed
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2794,7 +2849,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set footer icon of embed to "https://cdn.discordapp.com/emojis/825811394963177533.png?v=1"
     ```
 === "Patterns"
 
@@ -2803,7 +2858,7 @@ No description provided.
     %embedbuilder%'[s] footer icon
     ```
 
-## EmbedImage
+## Image of Embed
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2812,7 +2867,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set image of embed to "https://media.discordapp.net/attachments/237757030708936714/390520880242884608/8xAac.png?width=508&height=522"
     ```
 === "Patterns"
 
@@ -2821,7 +2876,7 @@ No description provided.
     %embedbuilder%'[s] image
     ```
 
-## EmbedThumbnail
+## Thumbnail of Embed
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2830,7 +2885,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set thumbnail of embed to "https://cdn.discordapp.com/emojis/825811394963177533.png?v=1"
     ```
 === "Patterns"
 
@@ -2839,7 +2894,7 @@ No description provided.
     %embedbuilder%'[s] thumbnail
     ```
 
-## EmbedTimeStamp
+## TimeStamp of Embed
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('date') ]]]
@@ -2848,7 +2903,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set timestamp of embed to now
     ```
 === "Patterns"
 
@@ -2857,7 +2912,7 @@ No description provided.
     %embedbuilder%'[s] time[( |-)]stamp
     ```
 
-## EmbedTitle
+## Title of Embed
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2866,7 +2921,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set title of embed to "Title"
     ```
 === "Patterns"
 
@@ -2898,7 +2953,7 @@ This is different from the [EmbedTitleURL](#embedtitleurl) property: this one ca
     %embedbuilder%'[s] embed url
     ```
 
-## EmbedTitleURL
+## Title URL of Embed
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -2907,7 +2962,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set title url of embed to "https://www.crunchyroll.com/fr/tonikawa-over-the-moon-for-you"
     ```
 === "Patterns"
 
@@ -3171,16 +3226,17 @@ This can return null if the entity is not guild-based, like private message chan
     %channel/role/sticker/member/message%'[s] guild
     ```
 
-## GuildAFKChannel
+## AFK Channel of Guild
 
 [[[ macros.required_version('4.0.0') ]]]
-[[[ macros.return_type('oicechannel') ]]]
+[[[ macros.return_type('voicechannel') ]]]
 
 No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_afk} to afk channel of event-guild
+    set afk channel of event-guild to voice channel with id "AFK"
     ```
 === "Patterns"
 
@@ -3189,7 +3245,7 @@ No description provided.
     %guild%'[s] [discord] afk [voice( |-)] channel
     ```
 
-## GuildAFKTimeout
+## AFK Timeout of Guild
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('number') ]]]
@@ -3198,7 +3254,8 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_timeout} to afk timeout of event-guild
+    set afk timeout of event-guild to 300
     ```
 === "Patterns"
 
@@ -3207,7 +3264,7 @@ No description provided.
     %guild%'[s] [discord] afk time[( |-)]out [second[s]]
     ```
 
-## GuildBanner
+## Banner of Guild
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -3216,7 +3273,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_banner} to banner of event-guild
     ```
 === "Patterns"
 
@@ -3473,7 +3530,7 @@ Use [effective name](#member-effective-name) expression to get member's name of 
     %member%'[s] [member] nick[( |-)]name[s]
     ```
 
-## MemberVoiceChannel
+## Voice Channel of Member
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('audiochannel') ]]]
@@ -3482,7 +3539,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_channel} to voice channel of event-member
     ```
 === "Patterns"
 
@@ -3623,7 +3680,7 @@ Get the member instance of the message's author. Can be null if it's in PM or no
     %message%'[s] [discord] [message] member (author|writer)
     ```
 
-## MessageReferenced
+## Reference Message
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('message') ]]]
@@ -3632,7 +3689,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_message} to discord message referencing message of event-message
     ```
 === "Patterns"
 
@@ -3651,7 +3708,8 @@ Use the 'profile color' expression to get the color instead of the banner URL in
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve profile with id "329999814546817024" from event-user and store it in {_m}
+    set {_banner} to profile banner url of {_m}
     ```
 === "Patterns"
 
@@ -3670,7 +3728,8 @@ Use the 'profile banner' expression to get the avatar URL instead of the color a
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve profile with id "329999814546817024" from event-user and store it in {_m}
+    set {_color} to profile color of {_m}
     ```
 === "Patterns"
 
@@ -3679,7 +3738,7 @@ Use the 'profile banner' expression to get the avatar URL instead of the color a
     %userprofile%'[s] profile color [accent]
     ```
 
-## RoleColor
+## Role Color
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('color') ]]]
@@ -3688,7 +3747,10 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_action} to new role action in event-guild
+    set role color of {_action} to orange
+
+    set {_color} to role color of role with id "000"
     ```
 === "Patterns"
 
@@ -3697,7 +3759,7 @@ No description provided.
     %role/roleaction%'[s] role color
     ```
 
-## RoleName
+## Role Name
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -3706,7 +3768,8 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_action} to new role action in event-guild
+    set role name of {_action} to "Member"
     ```
 === "Patterns"
 
@@ -3766,7 +3829,7 @@ Gets the emoji of a forum tag. Can be null if the tag has no emoji.
     %forumtag%'[s] tag emo(te|ji)
     ```
 
-## User Discriminator
+## User Discriminator (Deprecated)
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -3796,7 +3859,11 @@ See also: 'Create (rich) Message'
 === "Examples"
 
     ```applescript
-    No examples provided.
+    create a new message and store it in {_msg}:
+        set the content of the message to "Hello World!"
+    
+    reply with {_msg}
+
     ```
 === "Patterns"
 
@@ -3832,7 +3899,7 @@ Return the duration of a specific track
 === "Examples"
 
     ```applescript
-    set {_duration} to duration of last played track.
+    set {_duration} to duration of last played track
     ```
 === "Patterns"
 
@@ -3889,7 +3956,7 @@ Return the thumbnail URL of a specific track
 === "Examples"
 
     ```applescript
-    set thumbnail of embed to thumbnail of last played track.
+    set thumbnail of embed to thumbnail of last played track
     ```
 === "Patterns"
 
@@ -3898,7 +3965,7 @@ Return the thumbnail URL of a specific track
     %audiotrack%'[s] [discord] [audio] track thumbnail
     ```
 
-## ExprTrackTitle
+## Title of Track
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
@@ -3907,7 +3974,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    set {_title} to track title of last played track
     ```
 === "Patterns"
 
