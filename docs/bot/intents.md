@@ -52,51 +52,65 @@ This is used to lazy load members and update user properties such as name/avatar
 !!! danger
     **This is a very heavy intent!** Presence updates are 99% of traffic the bot will receive. To get user update events you should consider using [`guild members`](#guild-members-guild-members) instead.
 
-??? info "Less Important Intents"
-    ### Guild Moderation (`guild moderation`)
-    
-    Moderation events, such as ban/unban/audit-log.
-    
-    ### Guild Emojis and Stickers (`guild emojis and stickers`)
-    
-    Custom emoji and sticker add/update/delete events.
-    
-    ### Guild Webhooks (`guild webhooks`)
-    
-    Webhook add/update/delete events.
-    
-    ### Guild Invites (`guild invites`)
-    
-    Invite add/update/delete events.
-    
-    ### Guild Voice States (`guild voice states`)
-    
-    Voice state events. This is used to determine which members are connected to a voice channel.
-    
-    ### Guild Messages (`guild messages`)
-    
-    Message events from text channels in guilds.
-    
-    ### Guild Message Reactions (`guild message reactions`)
-    
-    Reaction add/update/delete events from text channels in guilds.
-    
-    ### Guild Message Typing (`guild message typing`)
-    
-    Typing events from text channels in guilds.
-    
-    ### Direct Messages (`direct messages`)
-    
-    Message events from direct/private messages.
-    
-    ### Direct Message Reactions (`direct message reactions`)
-    
-    Reaction add/update/delete events from direct/private messages.
-    
-    ### Direct Message Typing (`direct message typing`)
-    
-    Typing events from direct/private messages.
-    
-    ### Scheduled Events (`scheduled events`)
-    
-    Scheduled Events events.
+### Message Polls
+
+This intent is used to get poll events from messages. There's two version for the guild & direct message polls:
+
+* `guild message polls` to get poll events from guild messages.
+* `direct message polls` to get poll events from direct messages.
+
+!!! example "Related Events"
+    * [On Poll Vote Add](../docs/events.md#on-poll-vote-add)
+    * [On Poll Vote Remove](../docs/events.md#on-poll-vote-remove)
+
+---
+
+## Less Important Intents
+
+### Guild Moderation (`guild moderation`)
+
+Moderation events, such as ban/unban/audit-log.
+
+### Guild Emojis and Stickers (`guild emojis and stickers`)
+
+Custom emoji and sticker add/update/delete events.
+
+### Guild Webhooks (`guild webhooks`)
+
+Webhook add/update/delete events.
+
+### Guild Invites (`guild invites`)
+
+Invite add/update/delete events.
+
+### Guild Voice States (`guild voice states`)
+
+Voice state events. This is used to determine which members are connected to a voice channel.
+
+### Guild Messages (`guild messages`)
+
+Message events from text channels in guilds.
+
+### Guild Message Reactions (`guild message reactions`)
+
+Reaction add/update/delete events from text channels in guilds.
+
+### Guild Message Typing (`guild message typing`)
+
+Typing events from text channels in guilds.
+
+### Direct Messages (`direct messages`)
+
+Message events from direct/private messages.
+
+### Direct Message Reactions (`direct message reactions`)
+
+Reaction add/update/delete events from direct/private messages.
+
+### Direct Message Typing (`direct message typing`)
+
+Typing events from direct/private messages.
+
+### Scheduled Events (`scheduled events`)
+
+Scheduled Events events.

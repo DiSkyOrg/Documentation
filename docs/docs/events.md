@@ -546,6 +546,68 @@ Fired when the icon of a guild changes can be used to get the old/new icon, the 
     author
     ```
 
+## On Poll Vote Add
+
+[[[ macros.required_version('4.17.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a user vote on a poll.
+
+!!! warning "Requirements"
+    * The [`guild message polls` intent](../bot/intents.md#message-polls) (to work in guilds)
+    * The [`direct message polls` intent](../bot/intents.md#message-polls) (to work in DMs)
+    
+    If none of these intents are enabled, the event will not be fired at all.
+
+=== "Patterns"
+
+    ```applescript
+    [message] poll vote add[ed]
+    ```
+
+=== "Event Values"
+    * [`event-user`](../docs/types.md#user)
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-bot`](../docs/types.md#bot)
+    * [`event-channel`](../docs/types.md#channel) (and subtypes)
+    * `event-number` (represents the message's ID)
+
+=== "Retrieve Values"
+    * [`message`](#information-retrieve-values) (to get the poll's message)
+    * [`member`](#information-retrieve-values) (to get the voter as member)
+    * [`user`](#information-retrieve-values) (to get the voter as user)
+
+## On Poll Vote Remove
+
+[[[ macros.required_version('4.17.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a user remove their vote on a poll.
+
+!!! warning "Requirements"
+    * The [`guild message polls` intent](../bot/intents.md#message-polls) (to work in guilds)
+    * The [`direct message polls` intent](../bot/intents.md#message-polls) (to work in DMs)
+    
+    If none of these intents are enabled, the event will not be fired at all.
+
+=== "Patterns"
+
+    ```applescript
+    [message] poll vote remove[d]
+    ```
+
+=== "Event Values"
+    * [`event-user`](../docs/types.md#user)
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-bot`](../docs/types.md#bot)
+    * [`event-channel`](../docs/types.md#channel) (and subtypes)
+    * `event-number` (represents the message's ID)
+
+=== "Retrieve Values"
+    * [`message`](#information-retrieve-values) (to get the poll's message)
+    * [`member`](#information-retrieve-values) (to get the voter as member)
+    * [`user`](#information-retrieve-values) (to get the voter as user)
+
 ## On Invite Create Event
 
 [[[ macros.required_version('4.0.0') ]]]
