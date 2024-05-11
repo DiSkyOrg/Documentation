@@ -1,5 +1,5 @@
 ---
-icon: material/check-all
+icon: material/texture-box
 ---
 
 # Types

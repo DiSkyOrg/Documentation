@@ -4,6 +4,8 @@ icon: material/sticker-emoji
 
 # Emojis
 
+[[[% import 'macros.html' as macros %]]]
+
 This guide will show you how to use and interact with emojis in your Discord bot using DiSky. 
 
 ## Structure
@@ -72,7 +74,7 @@ To put it simply: **bots can't react with super reactions**. However, they can d
 
 ## Reaction Emotes 
 
-|Minimal Version|v4.12.2|
+[[[ macros.required_version('4.12.2') ]]]
 
 When the [reaction event](../docs/events.md#on-reaction-add) is fired, you can get the emote that was used to react with, but also some other information: this is called a **Reaction Emote**.
 

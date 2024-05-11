@@ -11,10 +11,10 @@ You'll see here how to **install** DiSky correctly.
 DiSky is pretty flexible on server requirements, however some needed points must be completed:
 
 * While **Skript** work, DiSky will work.
-* DiSky **require** Skript v**2.6+**!
+* DiSky **require** Skript v**2.8+**!
 * ... and that's all!...
 
-While Skript is running good, and using 2.6+ version, DiSky should run without any problem!
+While Skript is running good, and using 2.8+ version, DiSky should run without any problem!
 
 We however recommend [**the official fork**](https://github.com/SkriptLang/Skript/releases/latest) of Skript (maintained by _SkriptLang_).
 
