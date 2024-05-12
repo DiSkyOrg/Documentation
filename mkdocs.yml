@@ -102,6 +102,7 @@ nav:
           - 'Welcome Screen': guild/guild-welcome-screen.md
       - 'Interactions':
             - 'Components': interactions/components.md
+            - 'Slash Structure': interactions/slash-structure.md
             - 'Slash Commands': interactions/slash-commands.md
             - 'Modals': interactions/modals.md
             - 'Select Menus': interactions/selectmenu-dropdown.md

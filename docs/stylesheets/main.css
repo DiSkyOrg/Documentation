@@ -47,11 +47,11 @@
     color: limegreen;
 }
 
-.md-nav--primary .md-nav__link[href*="interactions/components"] svg {
+.md-nav--primary .md-nav__link[href*="bot/policy"] svg {
     color: limegreen;
 }
 
-.md-nav--primary .md-nav__link[href*="messages/polls"] svg {
+.md-nav--primary .md-nav__link[href*="interactions/slash-structure"] svg {
     color: limegreen;
 }
 

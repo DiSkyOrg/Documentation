@@ -720,10 +720,8 @@ Retrieve all invites from a specific guild.
 
 Retrieve the audit logs of a guild.
 === "Examples"
+    See [Logs Manipulation page](../guild/logs-manipulation.md)
 
-    ```applescript
-    retrieve audit logs from event-guild and store it in {_logs::*}
-    ```
 === "Patterns"
 
     ```applescript
