@@ -50,12 +50,13 @@ A **LogEntry** is an object that represents an entry log. It contains all the in
 
 You can get the following information from a **LogEntry**:
 
-|Property|Type|Description|
-|:-:|:-:|:-:|
-|`logged author`|`user`|The user who made the action|
-|`logged guild`|`guild`|The guild where the action has been made|
-|`logged id`|`channel`|The unique id of the entry|
-|`logged action`|`text`|The action that has been made|
+|    Property     |   Type    |                            Description                             |
+|:---------------:|:---------:|:------------------------------------------------------------------:|
+| `logged author` |  `user`   |                    The user who made the action                    |
+| `logged guild`  |  `guild`  |              The guild where the action has been made              |
+|   `logged id`   | `channel` |                     The unique id of the entry                     |
+| `logged action` |  `text`   |                   The action that has been made                    |
+| `logged reason` |  `text`   | The reason of the action (if any)<br/>**Requires DiSky v`4.17.2`** |
 
 !!! info
     To use these, simply follow this syntax:

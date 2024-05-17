@@ -115,6 +115,50 @@ Fired when a member is banned from a guild. This use a "*tricky*" way to get the
     * [`event-member`](../docs/types.md#member) (the author)
     * [`event-bot`](../docs/types.md#bot)
 
+## On Member Timeout
+
+[[[ macros.required_version('4.17.2') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a member is timed out in a guild, that means he can't write messages/join voice channels/reacts for a certain amount of time.
+
+!!! danger "**This event does not fire for automatic time out expiration!** (it must be done manually by a moderator to fire this event)"
+
+!!! warning "Requirements"
+    * The [`guild members` intent](../bot/intents.md#guild-members-guild-members) to be enabled
+    * The [`guild moderation` intent](../bot/intents.md#guild-moderation-guild-moderation) to be enabled
+    * The [**cache policy**](../bot/policy.md#cache-flags) to have the target member cached
+
+=== "Patterns"
+
+    ```applescript
+    [discord] member time[ ]out[ed]
+    ```
+
+=== "Examples"
+
+    ```applescript
+    on member timeout:
+        retrieve event value "author" and store it in {_author}
+        
+        if future date is set: # it's a timeout
+            broadcast "%event-user% has been timed out from %event-guild% by %{_author}% until %future date%!"
+        
+        else: # it's a timeout removal
+            broadcast "%event-user% has been untimed out from %event-guild% by %{_author}% (was previously timed out until %event-date%)!"
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-user`](../docs/types.md#user) (the timed out user)
+    * [`event-member`](../docs/types.md#member) (the timed out member)
+    * [`event-bot`](../docs/types.md#bot)
+    * `event-date` or `new event-date` (to get the new timeout date)
+    * `past event-date` (to get the previous timeout date)
+
+=== "Retrieve Values"
+    * [`author`](#information-retrieve-values) (to get the author of the timeout)
+
 ## On Discord Command
 
 [[[ macros.required_version('3.0.0') ]]]

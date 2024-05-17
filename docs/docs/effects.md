@@ -624,6 +624,30 @@ Starting DiSky v4.14.3, you can use `reply with premium message` to reply with a
     reply with premium [required] message
     ```
 
+## Retrieve Start Message
+
+[[[ macros.required_version('4.17.2') ]]]
+
+Retrieve the start message of a **thread** channel (this will only work in thread channels). Keep in mind the start message may not always be available, and the effect will return `none` if it's not.
+
+If you want to get the **first** message (first != start), you can simply use the [`retrieve last X messages`](#retrieve-messages) effect, and get the first message from the list.
+
+=== "Examples"
+
+    ```applescript
+    retrieve start message from event-threadchannel and store it in {_start}
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    retrieve start message (from|with|of|in) %threadchannel% and store (it|the message) in %~objects%
+    ```
+
+??? failure "Possible Errors"
+    - `MISSING_ACCESS`: The bot does not have access to the thread channel.
+    - `MISSING_PERMISSION`: The bot does not have the `message history` permission in the thread channel.
+
 ## Retrieve Bans
 
 [[[ macros.required_version('4.0.0') ]]]
