@@ -9,7 +9,7 @@ icon: material/developer-board
 
     We highly recommand to turn on **debug mode** (in Disky's configuration) to see more details about the errors you may encounter!
 
-DiSky v4.17 introduce a new brand-new way to create, register and handle slash commands, in a all-in-one way! It utilizes the new Skript structure system to make it easier to create and manage your slash commands.
+DiSky v4.17 introduce a brand-new way to create, register and handle slash commands, in a all-in-one way! It utilizes the new Skript structure system to make it easier to create and manage your slash commands.
 
 !!! danger ""
     * Slash command registered via this system **are** compatible with the ["old" one](slash-commands.md), although mixing both systems is not recommended.
@@ -165,7 +165,7 @@ slash command set_level <user="target"> [<integer="level">]:
         level:
             description: The new level
             choices:
-                # <value> : <name on Discord>
+                # <name on Discord> : <value in Skript>
                 Level 1: 1
                 Level 2: 2
                 Level 3: 3
@@ -221,7 +221,7 @@ slash command level:
 
 ### Cooldown System
 
-DiSky offer a built-in cooldown system for slash commands. Cooldowns are per-user, and a specific code can be ran when the user is on cooldown.
+DiSky offer a built-in cooldown system for slash commands. Cooldowns are per-user, and a specific code can be run when the user is on cooldown.
 
 ```applescript hl_lines="6-12"
 slash command level:
