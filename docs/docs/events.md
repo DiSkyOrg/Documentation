@@ -2040,3 +2040,62 @@ Fired when a track receive a specific event. Use the literal to define the event
     
     ```
 
+## On Channel Create Event
+
+[[[ macros.required_version('4.0.0') ]]]
+|Cancellable|No|class:version|
+
+Fired when a channel is created.
+=== "Patterns"
+
+    ```applescript
+    [discord] channel creat(e|ion)
+    ```
+=== "Examples"
+
+    ```applescript
+    on channel create:
+    on channel creation:
+    on discord channel create:
+    on discord channel creation:
+    ```
+=== "Event Values"
+
+    ```applescript
+    event-channel
+    event-guild
+    ```
+=== "Retrieve Values"
+    ```applescript
+
+    ```
+
+## On Channel delete Event
+
+[[[ macros.required_version('4.0.0') ]]]
+|Cancellable|No|class:version|
+
+Fired when a channel is deleted.
+=== "Patterns"
+
+    ```applescript
+    [discord] channel delet(e|ion)
+    ```
+=== "Examples"
+
+    ```applescript
+    on channel dele:
+    on channel deletion:
+    on discord channel delete:
+    on discord channel deletion:
+    ```
+=== "Event Values"
+
+    ```applescript
+    event-channel
+    event-guild
+    ```
+=== "Retrieve Values"
+    ```applescript
+
+    ```
