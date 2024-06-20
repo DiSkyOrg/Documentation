@@ -683,7 +683,7 @@ Retrieve (and cache) all emotes from a specific guild.
     retrieve [(all|every)] emotes (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the emotes) in %-objects%
     ```
 
-## RetrieveEmotes
+## Retrieve Interested Members
 
 [[[ macros.required_version('4.0.0') ]]]
 
