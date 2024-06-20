@@ -1,4 +1,8 @@
-# 🖼️ Images
+---
+icon: material/image
+---
+
+# Images
 
 The first step with SkImage will be to load and save images. That's what we'll see in this section.
 

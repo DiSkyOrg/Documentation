@@ -1,4 +1,8 @@
-# 💬 Simple Messages
+---
+icon: material/thought-bubble
+---
+
+# Simple Messages
 
 DiSky allows you to send or reply to messages. Although simple text works, bots can also use "embeds", with different ways to organize the structure of your message.
 

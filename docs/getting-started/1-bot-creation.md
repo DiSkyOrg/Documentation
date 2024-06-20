@@ -1,4 +1,8 @@
-# 2️⃣ Bot Creation
+---
+icon: material/numeric-2-box
+---
+
+# Bot Creation
 
 First, we need to create the application then the Discord bot itself
 

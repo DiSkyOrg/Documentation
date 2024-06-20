@@ -1,4 +1,8 @@
-# ✉️ Message Wrapper
+---
+icon: material/message-fast
+---
+
+# Message Wrapper
 
 ## ⚠️ Disclaimer
 

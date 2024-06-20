@@ -1,8 +1,9 @@
 ---
 status: deprecated
+icon: material/message-flash
 ---
 
-# 📐 Discord Commands
+# Discord Commands
 
 Discord Commands are the old way to provide user-to-bot interaction. They use the message's content, and DiSky parses it as you request when you're defining the command.
 
@@ -10,11 +11,11 @@ Even if they are old and Discord does not recommend anymore to use them, DiSky w
 
 !!! warning
     They now require a specific **intent** enabled, to retrieve **message's content**.
-    We highly recommend you to use [Slash Commands](../advanced-stuff/slash-commands.md) instead, as they are more user-friendly and easier to use.
+    We highly recommend you to use [Slash Commands](../interactions/slash-commands.md) instead, as they are more user-friendly and easier to use.
 
 ## Creating the command
 
-Any discord command is defined via a [Scope](../getting-started/2-bot-loading.md#scopes):&#x20;
+Any discord command is defined via a [Structure](../getting-started/2-bot-loading.md#bot-loading):
 
 ```applescript
 # This is outside any event!

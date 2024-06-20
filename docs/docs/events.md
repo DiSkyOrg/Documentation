@@ -1,11 +1,30 @@
-# 🎒 Events
+---
+icon: material/check-all
+---
+
+# Events
 
 [[[% import 'macros.html' as macros %]]]
 
-## On Bot Creation Scope
+## Information: Retrieve-Values
+
+For some event, you can see a `retrieve values` section. Some values are given by Discord directly, and others needs another **request** to Discord to get the value (those are in as `retrieve values`).
+
+!!! example ""
+    For instance in the [Reaction Add Event](#on-reaction-add), Discord gives us the message ID only, so you can use its retrieve value to get the actual message:
+
+    ```applescript
+    on reaction add:
+        # </>
+
+        retrieve event value "message" and store it in {_message}
+        # now you can use {_message} as the message that was reacted to!
+    ```
+
+## On Bot Creation Structure
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 No description provided.
 === "Patterns"
@@ -23,16 +42,127 @@ No description provided.
     ```applescript
     
     ```
-=== "Retrieve Values"
+
+## On Member Kick
+
+[[[ macros.required_version('4.17.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a member is kicked from a guild. This use a "*tricky*" way to get the kicked member, since the member is not in the guild anymore, so this event requires some preparation:
+
+!!! warning "Requirements"
+    * The [`guild members` intent](../bot/intents.md#guild-members-guild-members) to be enabled
+    * The [`guild moderation` intent](../bot/intents.md#guild-moderation-guild-moderation) to be enabled
+    * Target (the one who was kicked) and author (the one who kicked) members to be [**cached**](../bot/policy.md)
+
+!!! note "Note"
+    * `event-user` represent the **kicked member** (as it's not a member anymore, it's a user)
+    * `event-member` represent the **author** (the one who kicked the member)
+    * There's no possible way to get the **reason** of the kick, as Discord doesn't provide it at all
+
+=== "Patterns"
 
     ```applescript
-    
+    [discord] member kick[ed]
     ```
+
+=== "Examples"
+
+    ```applescript
+    on member kick:
+        broadcast "%event-user% has been kicked from %event-guild% by %event-member%!"
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-user`](../docs/types.md#user) (the kicked member)
+    * [`event-member`](../docs/types.md#member) (the author)
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Member Ban
+
+[[[ macros.required_version('4.17.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a member is banned from a guild. This use a "*tricky*" way to get the banned member, since the member is not in the guild anymore, so this event requires some preparation:
+
+!!! warning "Requirements"
+    * The [`guild members` intent](../bot/intents.md#guild-members-guild-members) to be enabled
+    * The [`guild moderation` intent](../bot/intents.md#guild-moderation-guild-moderation) to be enabled
+    * Target (the one who was banned) and author (the one who banned) members to be [**cached**](../bot/policy.md)
+
+!!! note "Note"
+    * `event-user` represent the **banned member** (as it's not a member anymore, it's a user)
+    * `event-member` represent the **author** (the one who banned the member)
+    * There's no possible way to get the **reason** of the ban, as Discord doesn't provide it at all 
+
+=== "Patterns"
+
+    ```applescript
+    [discord] member ban[ned]
+    ```
+
+=== "Examples"
+
+    ```applescript
+    on member ban:
+        broadcast "%event-user% has been banned from %event-guild% by %event-member%!"
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-user`](../docs/types.md#user) (the banned member)
+    * [`event-member`](../docs/types.md#member) (the author)
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Member Timeout
+
+[[[ macros.required_version('4.17.2') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a member is timed out in a guild, that means he can't write messages/join voice channels/reacts for a certain amount of time.
+
+!!! danger "**This event does not fire for automatic time out expiration!** (it must be done manually by a moderator to fire this event)"
+
+!!! warning "Requirements"
+    * The [`guild members` intent](../bot/intents.md#guild-members-guild-members) to be enabled
+    * The [`guild moderation` intent](../bot/intents.md#guild-moderation-guild-moderation) to be enabled
+    * The [**cache policy**](../bot/policy.md#cache-flags) to have the target member cached
+
+=== "Patterns"
+
+    ```applescript
+    [discord] member time[ ]out[ed]
+    ```
+
+=== "Examples"
+
+    ```applescript
+    on member timeout:
+        retrieve event value "author" and store it in {_author}
+        
+        if future date is set: # it's a timeout
+            broadcast "%event-user% has been timed out from %event-guild% by %{_author}% until %future date%!"
+        
+        else: # it's a timeout removal
+            broadcast "%event-user% has been untimed out from %event-guild% by %{_author}% (was previously timed out until %event-date%)!"
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-user`](../docs/types.md#user) (the timed out user)
+    * [`event-member`](../docs/types.md#member) (the timed out member)
+    * [`event-bot`](../docs/types.md#bot)
+    * `event-date` or `new event-date` (to get the new timeout date)
+    * `past event-date` (to get the previous timeout date)
+
+=== "Retrieve Values"
+    * [`author`](#information-retrieve-values) (to get the author of the timeout)
 
 ## On Discord Command
 
-[[[ macros.required_version('3.0') ]]]
-|Cancellable|Yes|class:version|
+[[[ macros.required_version('3.0.0') ]]]
+[[[ macros.is_cancellable('Yes') ]]]
 
 Custom DiSky discord command system. Arguments works like the normal skript's one and accept both optional and require arguments.
 === "Patterns"
@@ -61,16 +191,12 @@ Custom DiSky discord command system. Arguments works like the normal skript's on
     event-message
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Disky Command
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|Yes|class:version|
+[[[ macros.is_cancellable('Yes') ]]]
 
 Fired when a disky/discord command is executed.
 === "Patterns"
@@ -93,16 +219,12 @@ Fired when a disky/discord command is executed.
     event-bot
     event-message
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Bot Join Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when any bot join a new guild.
 === "Patterns"
@@ -125,7 +247,7 @@ Fired when any bot join a new guild.
 ## On Bot Leave Event
 
 [[[ macros.required_version('4.11.1') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when any bot leave a guild.
 
@@ -150,7 +272,7 @@ Fired when any bot leave a guild.
 ## On Shutdown Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a bot is stopped.
 === "Patterns"
@@ -168,16 +290,37 @@ Fired when a bot is stopped.
     ```applescript
     event-bot
     ```
-=== "Retrieve Values"
+
+## On Channel Create Event
+
+[[[ macros.required_version('4.0.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a channel is created in a guild.
+
+=== "Examples"
+    
+    ```applescript
+    on channel create:
+        broadcast "%event-channel% has been created in %event-guild%!"
+    ```
+
+=== "Patterns"
 
     ```applescript
-    
+    [discord] channel creat(e|ion)
     ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-bot`](../docs/types.md#bot)
+
 
 ## On Guild Ready Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a guild is fully loaded.
 === "Patterns"
@@ -196,16 +339,12 @@ Fired when a guild is fully loaded.
     event-guild
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Ready Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a bot is fully loaded. 'guild ready' should be called before this one.
 === "Patterns"
@@ -223,16 +362,12 @@ Fired when a bot is fully loaded. 'guild ready' should be called before this one
     ```applescript
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On DiSky Error / Exception
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when any DiSky error occur.
 Since DiSky exception are per-event only, this regroup every exception occurred in every events.
@@ -251,16 +386,12 @@ Since DiSky exception are per-event only, this regroup every exception occurred 
     ```applescript
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Guild AFK Channel Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a afk channel of a guild changes can be used to get the old/new channel, the author and the guild.
 === "Patterns"
@@ -289,7 +420,7 @@ Fired when a afk channel of a guild changes can be used to get the old/new chann
 ## On Guild AFK Timeout Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a afk timeout of a guild changes can be used to get the old/new timeout value, the author and the guild.
 === "Patterns"
@@ -317,7 +448,7 @@ Fired when a afk timeout of a guild changes can be used to get the old/new timeo
 ## On Guild Ban Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a user is banned from a guild. A member doesn't exist here because the member is not in the guild anymore! Can be used to get the banned user, the author and the guild.
 === "Patterns"
@@ -346,7 +477,7 @@ Fired when a user is banned from a guild. A member doesn't exist here because th
 ## On Guild Banner Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a banner of a guild changes can be used to get the old/new banner, the author and the guild.
 === "Patterns"
@@ -375,7 +506,7 @@ Fired when a banner of a guild changes can be used to get the old/new banner, th
 ## On Guild Boost Count Update
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a boost count of a guild changes - can be used to get the old/new count, and the guild.
 === "Patterns"
@@ -404,7 +535,7 @@ Fired when a boost count of a guild changes - can be used to get the old/new cou
 ## On Guild Boost Tier Update
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a boost tier of a guild changes - can be used to get the old/new tier, and the guild.
 === "Patterns"
@@ -433,7 +564,7 @@ Fired when a boost tier of a guild changes - can be used to get the old/new tier
 ## On Guild Icon Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when the icon of a guild changes can be used to get the old/new icon, the author and the guild.
 === "Patterns"
@@ -459,10 +590,72 @@ Fired when the icon of a guild changes can be used to get the old/new icon, the 
     author
     ```
 
+## On Poll Vote Add
+
+[[[ macros.required_version('4.17.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a user vote on a poll.
+
+!!! warning "Requirements"
+    * The [`guild message polls` intent](../bot/intents.md#message-polls) (to work in guilds)
+    * The [`direct message polls` intent](../bot/intents.md#message-polls) (to work in DMs)
+    
+    If none of these intents are enabled, the event will not be fired at all.
+
+=== "Patterns"
+
+    ```applescript
+    [message] poll vote add[ed]
+    ```
+
+=== "Event Values"
+    * [`event-user`](../docs/types.md#user)
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-bot`](../docs/types.md#bot)
+    * [`event-channel`](../docs/types.md#channel) (and subtypes)
+    * `event-number` (represents the message's ID)
+
+=== "Retrieve Values"
+    * [`message`](#information-retrieve-values) (to get the poll's message)
+    * [`member`](#information-retrieve-values) (to get the voter as member)
+    * [`user`](#information-retrieve-values) (to get the voter as user)
+
+## On Poll Vote Remove
+
+[[[ macros.required_version('4.17.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a user remove their vote on a poll.
+
+!!! warning "Requirements"
+    * The [`guild message polls` intent](../bot/intents.md#message-polls) (to work in guilds)
+    * The [`direct message polls` intent](../bot/intents.md#message-polls) (to work in DMs)
+    
+    If none of these intents are enabled, the event will not be fired at all.
+
+=== "Patterns"
+
+    ```applescript
+    [message] poll vote remove[d]
+    ```
+
+=== "Event Values"
+    * [`event-user`](../docs/types.md#user)
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-bot`](../docs/types.md#bot)
+    * [`event-channel`](../docs/types.md#channel) (and subtypes)
+    * `event-number` (represents the message's ID)
+
+=== "Retrieve Values"
+    * [`message`](#information-retrieve-values) (to get the poll's message)
+    * [`member`](#information-retrieve-values) (to get the voter as member)
+    * [`user`](#information-retrieve-values) (to get the voter as user)
+
 ## On Invite Create Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a invite is created in a guild can be used to get the invite property, the author and the guild.
 === "Patterns"
@@ -491,7 +684,7 @@ Fired when a invite is created in a guild can be used to get the invite property
 ## On Invite Delete Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a invite is deleted from a guild can be used to get the invite property, the author and the guild.
 === "Patterns"
@@ -520,7 +713,7 @@ Fired when a invite is deleted from a guild can be used to get the invite proper
 ## On Guild Join Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when the bot joins in a guild.
 === "Patterns"
@@ -539,45 +732,45 @@ Fired when the bot joins in a guild.
     event-guild
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Guild Log Entry Create Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a new log entry is created in a guild.
+
+!!! warning "`logged author` will always return `none` for the logged entry of this event (as we only have its ID)"
+    You can use the [**retrieve value `author`**](#information-retrieve-values) to get the actual author of the entry. (only for DiSky v4.17.0+)
+
 === "Patterns"
 
     ```applescript
     [discord] guild log [entry] create [seen by %-string%]
     ```
+
 === "Examples"
 
     ```applescript
     on guild log entry create:
     ```
+
 === "Event Values"
 
-    ```applescript
-    event-guild
-    event-logentry
-    event-bot
-    ```
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-bot`](../docs/types.md#bot)
+    * `event-logentry` (**Note**: `logged author` of the entry will always return `none`)
+    * `event-number` (represent the author ID of the logged entry)
+
 === "Retrieve Values"
 
-    ```applescript
-    author
-    ```
+    * [`author`](#information-retrieve-values) (to get the actual author of the entry)
 
 ## On Guild Name Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when the name of a guild is changed can be used to get the old/new name.
 === "Patterns"
@@ -606,7 +799,7 @@ Fired when the name of a guild is changed can be used to get the old/new name.
 ## On Guild Owner Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a owner of a guild changes can be used to get the old/new owner, the author and the guild.
 === "Patterns"
@@ -635,7 +828,7 @@ Fired when a owner of a guild changes can be used to get the old/new owner, the 
 ## On Guild Splash Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a banner of a guild changes can be used to get the old/new banner, the author and the guild.
 === "Patterns"
@@ -664,7 +857,7 @@ Fired when a banner of a guild changes can be used to get the old/new banner, th
 ## On Guild Unban Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a user is unbanned can be used to get the unbanned user, the author and the guild.
 === "Patterns"
@@ -693,7 +886,7 @@ Fired when a user is unbanned can be used to get the unbanned user, the author a
 ## On Button Click
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when any button sent by the button is clicked.
 Use 'event-button' to get the button id. Don't forget to either reply or defer the interaction.
@@ -724,16 +917,12 @@ Modal can be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Entity Dropdown Click
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when an user select one or more choice in an entity dropdown.
 Use 'event-dropdown' to get the dropdown id. Don't forget to either reply or defer the interaction.
@@ -765,16 +954,12 @@ Modal can be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Message Command
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when someone click on a message application command.
 Use 'event-string' to get the command name. Don't forget to either reply to the interaction. Defer doesn't work here.
@@ -804,16 +989,12 @@ Modal can be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Modal Receive
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a modal has been sent to the bot from any user.
 Use 'event-string' to get the modal id. Don't forget to either reply or defer the interaction.
@@ -842,16 +1023,12 @@ Modal can NOT be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Slash Command
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a user execute a specific slash command.
 Use 'event-string' to get the command name. Don't forget to either reply or defer the interaction, You can only defer using the wait pattern  e.g: 'defer the interaction and wait [silently].
@@ -881,16 +1058,12 @@ You can get value of arguments using 'argument "name" as string' for example.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Slash Completion
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when Discord ask an argument completion.
 Use 'event-string' to get the command name. Use normal return effect to return the actual completions.
@@ -919,16 +1092,12 @@ Modal can NOT be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On String Dropdown Click
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when an user select one or more choice in a string dropdown.
 Use 'event-dropdown' to get the dropdown id. Don't forget to either reply or defer the interaction.
@@ -960,16 +1129,12 @@ Modal can be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Command
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when someone click on an user application command.
 Use 'event-string' to get the command name. Don't forget to either reply to the interaction. Defer doesn't work here.
@@ -998,16 +1163,12 @@ Modal can be shown in this interaction.
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Accept Screen Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member has agreed to membership screen requirements it can be useful for adding roles since the member is not available if they haven't accepted it yet.
 === "Patterns"
@@ -1028,16 +1189,12 @@ Fired when a member has agreed to membership screen requirements it can be usefu
     event-bot
     event-boolean
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Avatar Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member changes their avatar.
 === "Patterns"
@@ -1058,44 +1215,58 @@ Fired when a member changes their avatar.
     event-bot
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
-## On Member Boost Event
+## On Member Boost Time Change Event
 
-[[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.required_version('4.16.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
 
-Fired when a member starts or stops boosting a guild can be used to get the old/new boosting time and the guild.
+??? failure "What happened to the `member boost` event?"
+    Discord only sends us the `premium type` of a member, thus either he is **boosting** or **not**. 
+
+    It's impossible to tell how long he has been boosting, nor how many times, so the `member boost` event has been removed.
+
+Fired when a member **starts** or **stops** boosting a guild.
+
+!!! warning ""
+    This event requires the [**`guild members` intents**](../bot/intents.md#guild-members-guild-members), and target members to be [**cached**](../getting-started/2-bot-loading.md#bot-structure)
+
 === "Patterns"
 
     ```applescript
-    [discord] [guild] member boost (change|update) [seen by %-string%]
+    [discord] [guild] member boost time (change|update) [seen by %-string%]
     ```
+
 === "Examples"
 
     ```applescript
-    member boost change:
+    on member boost time change:
+        post "<3 **Thanks to %mention tag of event-member% for started boosting the server!** <3" to text channel with id "XXX"
     ```
+
 === "Event Values"
 
     ```applescript
     event-guild
     event-bot
+    event-user
+    event-member
+    
+    past event-date
+    future event-date
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    author
-    ```
+!!! example ""
+    **See also:**
+
+    - [Guild Boost Count Update](#on-guild-boost-count-update)
+    - [Guild Boost Tier Update](#on-guild-boost-tier-update)
 
 ## On Member Join Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member joins a guild.
 === "Patterns"
@@ -1115,16 +1286,12 @@ Fired when a member joins a guild.
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Nickname Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member changes their nickname.
 === "Patterns"
@@ -1145,16 +1312,12 @@ Fired when a member changes their nickname.
     event-bot
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Leave Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member is removed from a guild either by leaving or being punished. Use the ban/kick event instead to check the exact reason
 === "Patterns"
@@ -1174,16 +1337,12 @@ Fired when a member is removed from a guild either by leaving or being punished.
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Role Add Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member adds roles to another member, it's a log action so event-author returns who made the action event-roles returns a list of added roles
 === "Patterns"
@@ -1203,16 +1362,12 @@ Fired when a member adds roles to another member, it's a log action so event-aut
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Role Remove Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member removes roles from another member, it's a log action so event-author returns who made the action event-roles returns a list of removed roles
 === "Patterns"
@@ -1232,16 +1387,12 @@ Fired when a member removes roles from another member, it's a log action so even
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Voice Join Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member joins a voice or a stage channel, also fires when a member moves to another channel
 === "Patterns"
@@ -1264,16 +1415,12 @@ Fired when a member joins a voice or a stage channel, also fires when a member m
     event-stagechannel
     event-voicechannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Member Voice Leave Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member leaves a voice or a stage channel
 === "Patterns"
@@ -1296,16 +1443,12 @@ Fired when a member leaves a voice or a stage channel
     event-stagechannel
     event-voicechannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Message Delete
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when any message is deleted.
 Use 'event-string' to get the old message content, only works if this message was cached by DiSky before hand.
@@ -1343,7 +1486,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
 ## On Message Edit
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when any message is edited / updated.
 Use 'event-string' to get the old message content, only works if this message was cached by DiSky before hand.
@@ -1371,16 +1514,12 @@ This will be fired, by default, both guild & private messages, use the 'event is
     event-string
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Message Receive
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when any bot receive an actual message.
 This will be fired, by default, both guild & private messages, use the 'event is from guild' condition to avoid confusion.
@@ -1412,16 +1551,12 @@ This will be fired, by default, both guild & private messages, use the 'event is
     event-message
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Reaction Add
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a message, that can be seen by the bot, receive a reaction.
 This will be fired, by default, both guild & private messages, use the 'event is from guild' condition to avoid confusion.
@@ -1458,7 +1593,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
 ## On Reaction Remove All
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when an user remove every reactions from a message.
 This will be fired, by default, both guild & private messages, use the 'event is from guild' condition to avoid confusion.
@@ -1493,7 +1628,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
 ## On Reaction Remove
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when an user remove a reaction from a specific message.
 This will be fired, by default, both guild & private messages, use the 'event is from guild' condition to avoid confusion.
@@ -1530,7 +1665,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
 ## On Role Color Change
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when the color of a role changes.
 === "Patterns"
@@ -1550,16 +1685,12 @@ Fired when the color of a role changes.
     event-guild
     event-color
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Role Create
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a role is created in a guild
 === "Patterns"
@@ -1589,7 +1720,7 @@ Fired when a role is created in a guild
 ## On Role Delete
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a role is deleted from a guild.
 === "Patterns"
@@ -1618,7 +1749,7 @@ Fired when a role is deleted from a guild.
 ## On Role Hoist Change
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when the hoist state of a role changes.
 === "Patterns"
@@ -1648,7 +1779,7 @@ Fired when the hoist state of a role changes.
 ## On Role Icon Change
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when the icon of a role changes.
 === "Patterns"
@@ -1678,7 +1809,7 @@ Fired when the icon of a role changes.
 ## On Role Name Change
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when the name of a role changes.
 === "Patterns"
@@ -1708,7 +1839,7 @@ Fired when the name of a role changes.
 ## On Role Permission Change
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when the permissions of a role changes.
 === "Patterns"
@@ -1737,7 +1868,7 @@ Fired when the permissions of a role changes.
 ## On Role Position Change
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when the position of a role changes.
 === "Patterns"
@@ -1767,7 +1898,7 @@ Fired when the position of a role changes.
 ## On Thread Join Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member joins a tread, either by joining itself or by a moderator can be used to get the thread, the guild and the member.
 === "Patterns"
@@ -1788,16 +1919,12 @@ Fired when a member joins a tread, either by joining itself or by a moderator ca
     event-bot
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Thread Leave Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a member leaves a thread, either by leaving itself or by a moderator can be used to get the thread, the guild and the member.
 === "Patterns"
@@ -1818,16 +1945,12 @@ Fired when a member leaves a thread, either by leaving itself or by a moderator 
     event-bot
     event-threadchannel
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Activity Order Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a user in a guild changes its activity. Ex: by playing something different can be used to get the old/new activities.
 === "Patterns"
@@ -1848,16 +1971,12 @@ Fired when a user in a guild changes its activity. Ex: by playing something diff
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Avatar Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a user changes its avatar.
 === "Patterns"
@@ -1877,16 +1996,12 @@ Fired when a user changes its avatar.
     event-bot
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Discriminator Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a user changes its discriminator.
 === "Patterns"
@@ -1906,16 +2021,12 @@ Fired when a user changes its discriminator.
     event-bot
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Name Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a user changes its name (not nickname).
 === "Patterns"
@@ -1935,16 +2046,12 @@ Fired when a user changes its name (not nickname).
     event-bot
     event-string
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Online Status Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a user changes its online status.
 === "Patterns"
@@ -1966,16 +2073,12 @@ Fired when a user changes its online status.
     event-bot
     event-onlinestatus
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On User Typing Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a user starts typing in a channel.
 === "Patterns"
@@ -1996,16 +2099,12 @@ Fired when a user starts typing in a channel.
     event-member
     event-bot
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Track Event
 
 [[[ macros.required_version('2.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a track receive a specific event. Use the literal to define the event's type such as:
   - START
@@ -2034,11 +2133,7 @@ Fired when a track receive a specific event. Use the literal to define the event
     event-bot
     event-trackeventtype
     ```
-=== "Retrieve Values"
 
-    ```applescript
-    
-    ```
 
 ## On Channel Create Event
 

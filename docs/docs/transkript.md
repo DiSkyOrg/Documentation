@@ -1,4 +1,8 @@
-# 📖 TranSkript
+---
+icon: material/check-all
+---
+
+# TranSkript
 
 [[[% import 'macros.html' as macros %]]]
 
@@ -25,7 +29,7 @@ No description provided.
 ## New Transcript Options
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|tsoption|class:version|
+[[[ macros.return_type('tsoption') ]]]
 
 Create a new transcript options object, specifying:
 - If the template should be compact mode or not

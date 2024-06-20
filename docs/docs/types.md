@@ -1,8 +1,43 @@
-# 📜 Types
+---
+icon: material/texture-box
+---
+
+# Types
 
 [[[% import 'macros.html' as macros %]]]
 
 This page will explain the different types available on DiSky, and some specification about them.
+
+## General
+
+### `bot`
+
+Represent a **DiSky** bot, which is a bot that is **connected to Discord**. It holds information like the token, the shard manager, and the cache.
+
+### `user`
+
+The **User** type represent a Discord account, or a bot account. There's only one "user instance", meaning each user are uniques across all guilds. Due to obvious reasons, we cannot cache all users, thus you'll have to [retrieve](../docs/effects.md#retrieve-user) them.
+
+### `member`
+
+The **Member** type represent a Discord account that is in a guild. It holds more information than a user, like the roles, nickname, and the guild it's in. It's unique for each guild, meaning a user can have multiple member instances.
+
+### `guild`
+
+The **Guild** type represent a Discord server. It holds information like the name, icon, owner, and the members.
+
+### `invite`
+
+Represent a Discord invitation to a guild. It always points to a channel (that is of course in the guild), and can have a limited number of uses, and an expiration date.
+
+??? example "Related Syntax"
+    |                    Expressions                    |                     Effects                     |                         Events                          |
+    |:-------------------------------------------------:|:-----------------------------------------------:|:-------------------------------------------------------:|
+    |     [Invite Code](expressions.md#invite-code)     |    [Create Invite](effects.md#create-invite)    | [Invite Create Event](events.md#on-invite-create-event) |
+    |  [Invite Inviter](expressions.md#invite-inviter)  |  [Retrieve Invite](effects.md#retrieve-invite)  | [Invite Delete Event](events.md#on-invite-delete-event) |
+    |  [Invite Max Age](expressions.md#invite-max-age)  | [Retrieve Invites](effects.md#retrieve-invites) |                                                         |
+    | [Invite Max Uses](expressions.md#invite-max-uses) |                                                 |                                                         |
+    |      [Invite URL](expressions.md#invite-url)      |                                                 |                                                         |
 
 ## Channels
 
@@ -45,7 +80,7 @@ The **PrivateChannel** type is the base type for all channels that are private, 
 
 This type is used to represent a flag of a member. This was introduced in Discord recently, therefore old members may not have any flag.
 
-You can check the [member flags expression](expressions.md#) for getting/adding flags to a member. **Some flags cannot be added manually!**
+You can check the [member flags expression](expressions.md#member-flags) for getting/adding flags to a member. **Some flags cannot be added manually!**
 
 === "`did rejoin`"
     The Member has left and rejoined the guild

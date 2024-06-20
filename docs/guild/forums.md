@@ -1,4 +1,8 @@
-# 📂 Forums
+---
+icon: material/forum
+---
+
+# Forums
 
 This page will explain managing forums, including posts, tags, and more.
 

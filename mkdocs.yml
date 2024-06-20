@@ -1,6 +1,7 @@
 site_name: DiSky Wiki
 theme:
   name: material
+  custom_dir: overrides
   icon:
     logo: simple/discord
   palette:
@@ -18,6 +19,12 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
+    - content.tooltips
+    - navigation.instant.progress
+    - navigation.sections
+    - navigation.path
+    - navigation.footer
+    - content.code.copy
 repo_url: https://github.com/DiSkyOrg/DiSky
 
 markdown_extensions:
@@ -35,7 +42,11 @@ markdown_extensions:
   - pymdownx.extra
   - attr_list
   - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
+copyright: Copyright &copy; 2020 - 2024 ItsTheSky
 extra_css:
   - stylesheets/main.css
 
@@ -43,11 +54,17 @@ extra:
   status:
     new: 'Recently added'
     deprecated: 'Deprecated'
+  social:
+    - icon: simple/discord
+      link: https://disky.me/discord
+    - icon: simple/github
+      link: https://github.com/DiSkyOrg/DiSky
+    - icon: material/cloud
+      link: https://itsthesky.net/
 
 plugins:
   - search
   - include_dir_to_nav
-  - badges
   - macros:
       include_dir: macros
       j2_block_start_string: "[[[%"
@@ -56,18 +73,51 @@ plugins:
       j2_variable_end_string: "]]]"
 
 nav:
-  - '📦 Wiki':
-      - README.md
-      - 'Basic Stuff': basic-stuff
+  - 'Wiki':
+      - 'Home': home.md
       - 'Getting Started':
-          - '1️⃣ Installation': getting-started/0-installation.md
-          - '2️⃣ Bot Creation': getting-started/1-bot-creation.md
-          - '3️⃣ Bot Loading': getting-started/2-bot-loading.md
-          - '❓ Frequently Asked Questions (FAQ)': getting-started/faq.md
-      - 'Advanced Stuff': advanced-stuff
-  - '⚙️ Modules': modules
-  - '📚 Documentation': docs
-  - '🖼️ SkImage2': skimage
-  - '✨ Create an Addon':
-      - addons/getting-started.md
-  - '📖 BooSK': boosk
+          - 'Asking Help': getting-started/asking-help.md
+          - 'Installation': getting-started/0-installation.md
+          - 'Bot Creation': getting-started/1-bot-creation.md
+          - 'Bot Loading': getting-started/2-bot-loading.md
+          - 'F.A.Q.': getting-started/faq.md
+      - 'Bot':
+          - 'Cache Policy & Flags': bot/policy.md
+          - 'Presence & Status': bot/presence-and-status.md
+          - 'Gateway Intents': bot/intents.md
+          - 'Multiple Bots': bot/multiple-bots.md
+          - 'Application': bot/bot-application-info.md
+      - 'Messages':
+            - 'Simple Messages': messages/simple-messages.md
+            - 'Advanced Messages': messages/advanced-messages.md
+            - 'Emojis': messages/emojis.md
+            - 'Message Wrapper': messages/message-wrapper.md
+            - 'Webhooks': messages/webhooks.md
+            - 'Polls': messages/polls.md
+            - 'Discord Commands': messages/discord-commands.md
+      - 'Guild':
+          - 'Automod': guild/automod.md
+          - 'Logs': guild/logs-manipulation.md
+          - 'Forums': guild/forums.md
+          - 'Welcome Screen': guild/guild-welcome-screen.md
+      - 'Interactions':
+            - 'Components': interactions/components.md
+            - 'Slash Structure': interactions/slash-structure.md
+            - 'Slash Commands': interactions/slash-commands.md
+            - 'Modals': interactions/modals.md
+            - 'Select Menus': interactions/selectmenu-dropdown.md
+  - 'Modules': modules
+  - 'Documentation':
+      - 'Types': docs/types.md
+      - 'Effects': docs/effects.md
+      - 'Events': docs/events.md
+      - 'Expressions': docs/expressions.md
+      - 'Conditions': docs/conditions.md
+      - 'Sections': docs/sections.md
+      - 'Modules':
+          - 'LavaPlayer': docs/lavaplayer.md
+          - 'TranSkript': docs/transkript.md
+  - 'SkImage2': skimage
+  - 'BooSK':
+      - 'Getting Started': boosk/getting-started.md
+      - 'Create a Book': boosk/create-a-book.md

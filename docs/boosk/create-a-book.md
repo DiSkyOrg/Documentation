@@ -1,4 +1,8 @@
-# ✨ Creating a book
+---
+icon: material/book-plus
+---
+
+# Creating a book
 
 A Minecraft book is composed of an author, a title and **pages**. Each page can be formatted using **MiniMessage**'s formatting, and can contain clickable links, hover effect and more.
 

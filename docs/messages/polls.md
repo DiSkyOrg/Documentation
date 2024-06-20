@@ -1,4 +1,8 @@
-# 📊 Polls
+---
+icon: material/chart-bar
+---
+
+# Polls
 
 [[[% import 'macros.html' as macros %]]]
 [[[ macros.required_version('4.14.2') ]]]
@@ -34,7 +38,7 @@ add answer "C##" with reaction "desktop" to answers of {_poll}
 
 ## Sending the poll
 
-Now your poll is created, you can join it through a [rich message](../advanced-stuff/advanced-messages.md#add-poll "Advanced Messages"), or use the `inline message` expression as such:
+Now your poll is created, you can join it through a [rich message](../messages/advanced-messages.md#add-poll "Advanced Messages"), or use the `inline message` expression as such:
 
 === "With message"
     ```applescript
@@ -97,6 +101,54 @@ In additions, you can check for the poll's state using the following conditions:
     That mean the poll is finished, but votes can still be cast.
 
 ## References
+
+!!! example "Create Poll Example"
+    Here's a full example of a poll creation:
+
+    ```applescript
+    discord command poll:
+        prefixes: !
+        trigger:
+            set {_poll} to new poll "What's the best programming language?"
+            set poll duration of {_poll} to 5 hours
+            add answer "Java" with reaction "coffee" to answers of {_poll}
+            add answer "Python" with reaction "snake" to answers of {_poll}
+            add answer "C##" with reaction "desktop" to answers of {_poll}
+            reply with {_poll}
+    ```
+
+!!! example "Manage Poll Example"
+    Here's a full example of a poll management:
+
+    ```applescript
+    discord command pollinfo <string>:
+        prefixes: !
+        trigger:
+            retrieve message with id arg-1 in event-channel and store it in {_msg}
+            set {_poll} to poll of {_msg}
+            if {_poll} is not set:
+                reply with ":x: **Error:** This message does not contain a poll."
+                stop
+    
+            set {_answers::*} to answers of {_poll}
+            add "Poll: %poll question of {_poll}%" to {_m::*}
+            
+            if {_poll} is finalized:
+                add "- This poll is finalized." to {_m::*}
+            else:
+                add "- This poll is not finalized, votes may not be accurate." to {_m::*}
+            
+            if {_poll} is expired:
+                add "- This poll is over." to {_m::*}
+            else:
+                add "- This poll is not expired, votes may still be cast." to {_m::*}
+    
+            add "" to {_m::*}
+    
+            loop {_answers::*}:
+                add "• `%answer text of loop-value%` [%mention tag of answer emote of loop-value%]: with %answer votes of loop-value% votes." to {_m::*}
+            reply with join {_m::*} with nl
+    ```
 
 !!! warning ""
     * A poll's question title must be between **5 and 100 characters**.

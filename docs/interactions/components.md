@@ -1,8 +1,9 @@
 ---
 status: new
+icon: material/button-cursor
 ---
 
-# 🧭 Components
+# Components
 
 [[[% import 'macros.html' as macros %]]]
 
@@ -87,7 +88,7 @@ First thing first, we have to create our button. Here's the different ways to do
 
 #### Adding a button to a message
 
-You can use a [`rich message`](advanced-messages.md#add-components) to build a full message with content, embeds, ...
+You can use a [`rich message`](../messages/advanced-messages.md#add-components) to build a full message with content, embeds, ...
 
 You can also use the `inline message` expression to only send the desired buttons. Here's how to do it:
 

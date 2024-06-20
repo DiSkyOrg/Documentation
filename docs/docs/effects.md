@@ -1,4 +1,8 @@
-# 📘 Effects
+---
+icon: material/check-all
+---
+
+# Effects
 
 [[[% import 'macros.html' as macros %]]]
 
@@ -67,10 +71,12 @@ No description provided.
 [[[ macros.required_version('4.0.0') ]]]
 
 This effect allows you to manage the permissions of slash commands, with the following rules:
+
 - By default, the command is marked as ENABLED, and anyone can see & use it.
 - You can DISABLE completely the command (first pattern), only admins will be able to use it.
 - Or you can ENABLE the commands for specific PERMISSIONS (second pattern).
-  === "Examples"
+
+=== "Examples"
 
    ```applescript
    disable command{_cmd1} # disable the command for everyone, except the admins.
@@ -87,10 +93,10 @@ This effect allows you to manage the permissions of slash commands, with the fol
 
 [[[ macros.required_version('4.0.0') ]]]
 
-Update a **list** of [slash commands](../advanced-stuff/slash-commands.md) in a bot (globally) or in a guild (locally).
+Update a **list** of [slash commands](../interactions/slash-commands.md) in a bot (globally) or in a guild (locally).
 
 === "Examples"
-    See the [slash commands](../advanced-stuff/slash-commands.md) page for examples.
+    See the [slash commands](../interactions/slash-commands.md) page for examples.
 === "Patterns"
 
     ```applescript
@@ -115,7 +121,7 @@ The best way remains to update bot's commands without the command you want to de
     unregister [the] [command[s]] %strings% [(1�globally|2�locally)] (in|from|of) [the] [(bot|guild)] %bot/guild%
     ```
 
-## OpenModal
+## Open Modal
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -123,7 +129,10 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    show {_moda_variable}
+    show {_moda_variable} to event-user
+    show the {_moda_variable} to event-user
+    show the modal {_moda_variable} to the event-user
     ```
 === "Patterns"
 
@@ -185,7 +194,7 @@ If using the disconnect pattern, only the guild will be required.
     disconnect [[the] [bot] %bot%] from [the] [guild] %guild%
     ```
 
-## CreateAction
+## Create Action Channel/Role
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -193,7 +202,23 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    # Role
+    set {_action} to new role action in event-guild
+    set role name of {_action} to "Member"
+    create {_action} and store it in {_role}
+
+    # Text Channel
+    set {_action} to new text channel action in event-guild
+    set channel parent of {_action} to {_category}
+    set channel name of {_action} to "Text"
+    create {_action} and store it in {_text}
+
+    # Voice Channel
+    set {_action} to new voice channel action in event-guild
+    set channel parent of {_action} to {_category}
+    set channel name of {_action} to "Voice"
+    set max users of {_action} to 5
+    create {_action} and store it in {_voice}
     ```
 === "Patterns"
 
@@ -220,21 +245,27 @@ The URL will represent the image, and can be either a web URL or a local path.
     (make|create) [the] [new] emote (named|with name) %string% with [the] (url|path) %string% in [the] [guild] %guild% and store (it|the emote) in %object%
     ```
 
-## CreateInvite
+## Create Invite
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Create an invitation for a specific channel, and store it in a variable.
+
+!!! warning 
+    Creating an invitation for a **guild** is not supported anymore. DiSky will default the invite to the guild's default channel, if any!
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    create new invite in event-channel with max uses 5 with max age 50 and store it in {_invite}
     ```
 === "Patterns"
 
     ```applescript
     (make|create) [the] [new] invite in [the] [(guild|channel)] %guild/channel% [with max us(e|age)[s] %-number%] [with max (time|age) %-number%] and store (it|the invite) in %object%
     ```
+
+!!! example "See Also the [Invite Type](types.md#invite)"
 
 ## Create Post
 
@@ -287,7 +318,8 @@ Creating private thread need the guild to be level 2 or more, else it'll throw a
 === "Examples"
 
     ```applescript
-    No examples provided.
+    create new thread named "abc" in (channel with id "abc") using the message (message with id "abc") and store it in {_thread}
+    create new private thread named "abc" in (channel with id "abc") using the message (message with id "abc") and store it in {_thread}
     ```
 === "Patterns"
 
@@ -322,6 +354,7 @@ An interaction can only be deferred once!
 [[[ macros.required_version('4.0.0') ]]]
 
 Destroy on Discord the wanted entity.
+
 === "Examples"
 
     ```applescript
@@ -331,15 +364,29 @@ Destroy on Discord the wanted entity.
 === "Patterns"
 
     ```applescript
-    destroy %guild/message/role/channel/emote%
+    destroy %guild/message/role/channel/emote/webhook%
     ```
 
 ## Edit Message
 
 [[[ macros.required_version('4.4.0') ]]]
 
-Edit a specific message/interaction hook to show a new rich or simple message.
-The interaction hook will only be editable for the next 15 minutes once it's sent!
+Edit a message with new content:
+
+!!! info "In Interactions (SlashCommands/Buttons/SelectMenus)"
+    The effect will, by default, edit the **interaction** itself, and thus **acknowledge** it. 
+    If you want to acknowledge an interaction in another way, while also editing the message, you'll have to edit the message **directly**, by specifying `direct` in the pattern:
+
+    ```applescript
+    on button click:
+        if event-string is "my-button":
+            reply with hidden "That message will acknowledge the interaction!"
+            edit direct event-message with "I by-passed the interaction!"
+    ```
+
+!!! info "Anywhere Else"
+    This will simply edit the message with the new desired content. By default, it overrides all the message content (text content, components, embeds, etc...).
+
 === "Examples"
 
     ```applescript
@@ -348,11 +395,16 @@ The interaction hook will only be editable for the next 15 minutes once it's sen
     wait a second
     # The variable does not contains a 'real' message, it contains the interaction hook.edit {_msg} to show "Abracadabra!"
     ```
+
 === "Patterns"
 
     ```applescript
-    edit [the] [message] %message/interactionhook% (with|to show) %string/messagecreatebuilder/embedbuilder%
+    edit [:direct] [the] [message] %message% (with|to show) %string/messagecreatebuilder/embedbuilder%
     ```
+
+=== "See Also"
+    * [Edit Event-Component](#edit-event-component)
+    * [Edit Message's Component](#edit-messages-component)
 
 ## Kick Member
 
@@ -572,7 +624,31 @@ Starting DiSky v4.14.3, you can use `reply with premium message` to reply with a
     reply with premium [required] message
     ```
 
-## RetrieveBans
+## Retrieve Start Message
+
+[[[ macros.required_version('4.17.2') ]]]
+
+Retrieve the start message of a **thread** channel (this will only work in thread channels). Keep in mind the start message may not always be available, and the effect will return `none` if it's not.
+
+If you want to get the **first** message (first != start), you can simply use the [`retrieve last X messages`](#retrieve-messages) effect, and get the first message from the list.
+
+=== "Examples"
+
+    ```applescript
+    retrieve start message from event-threadchannel and store it in {_start}
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    retrieve start message (from|with|of|in) %threadchannel% and store (it|the message) in %~objects%
+    ```
+
+??? failure "Possible Errors"
+    - `MISSING_ACCESS`: The bot does not have access to the thread channel.
+    - `MISSING_PERMISSION`: The bot does not have the `message history` permission in the thread channel.
+
+## Retrieve Bans
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -580,7 +656,8 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all bans of event-guild and store them in {_bans::*}
+	send "%{_bans::*}%" to console
     ```
 === "Patterns"
 
@@ -588,68 +665,77 @@ No description provided.
     retrieve [(all|every)] bans (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the bans) in %-objects%
     ```
 
-## RetrieveEmotes
+## Retrieve Guild Emotes
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve (and cache) all emotes from a specific guild.
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all emotes from event-guild and store them in {_emotes::*}
     ```
+
 === "Patterns"
 
     ```applescript
     retrieve [(all|every)] emotes (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the emotes) in %-objects%
     ```
 
-## RetrieveInterestedMembers
+## RetrieveEmotes
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve (and cache) the interested members from a scheduled event.
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all interested members from {_event} and store them in {_members::*}
     ```
+
 === "Patterns"
 
     ```applescript
     retrieve [(all|every)] interested members (from|with|of|in) %scheduledevent% [(with|using) [the] [bot] %-bot%] and store (them|the interested members) in %-objects%
     ```
 
-## RetrieveInvite
+## Retrieve Invite
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve an invitation from a guild using its invite code/ID.
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve invite with id "000" from event-guild and store it in {_invite}
     ```
+
 === "Patterns"
 
     ```applescript
-    retrieve invite (with|from) id %string% (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (it|the invite) in %-object%
+    retrieve invite (with|from) id %string% (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (it|the invite) in %~objects%
     ```
 
-## RetrieveInvites
+## Retrieve Invites
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+
+Retrieve all invites from a specific guild.
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve invites of event-guild and store them in {_invites::*}
     ```
+
 === "Patterns"
 
     ```applescript
-    retrieve [(all|every)] invites (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the invites) in %-objects%
+    retrieve [all [of]] [the] invite[s] (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (it|them|the invites) in %~objects%
     ```
 
 ## Retrieve Logs
@@ -658,17 +744,15 @@ No description provided.
 
 Retrieve the audit logs of a guild.
 === "Examples"
+    See [Logs Manipulation page](../guild/logs-manipulation.md)
 
-    ```applescript
-    retrieve audit logs from event-guild and store it in {_logs::*}
-    ```
 === "Patterns"
 
     ```applescript
     retrieve [(all|every)] [audit] log[s] [entries] (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the [audit] log[s] [entries]) in %-objects%
     ```
 
-## RetrieveMember
+## Retrieve Member
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -676,7 +760,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve member with id "329999814546817024" in event-guild and store it in {_m}
     ```
 === "Patterns"
 
@@ -684,7 +768,7 @@ No description provided.
     retrieve member (with|from) id %string% (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (it|the member) in %-object%
     ```
 
-## RetrieveMessage
+## Retrieve Message
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -692,7 +776,7 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve message with id discord id of event-message in event-channel and store it in {_message} 
     ```
 === "Patterns"
 
@@ -718,20 +802,22 @@ Don't forget to use 'purge' effect to delete a lot of messages the most enhanced
     retrieve [last] %number% [amount of] message[s] (of|in|from) %channel% and store (them|the messages) in %-objects%
     ```
 
-## RetrieveOwner
+## Retrieve Owner 
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve the owner of a specific guild.
+
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve owner of event-guild and store it in {_member}
     ```
+
 === "Patterns"
 
     ```applescript
-    retrieve owner (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (it|the owner) in %-object%
+    retrieve [the] owner (of|from) %guild% and store (it|the member) in %~object%
     ```
 
 ## Retrieve Profile
@@ -743,7 +829,7 @@ Profile represent mainly the banner of the user, could return the accent color i
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve profile with id "329999814546817024" from event-user and store it in {_m}
     ```
 === "Patterns"
 
@@ -776,7 +862,7 @@ Retrieve every stickers (and cache them) from a specific guild.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all stickers from event-guild and store them in {_m::*}
     ```
 === "Patterns"
 
@@ -792,7 +878,7 @@ Retrieve every members (and cache them) from a specific thread.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all thread members from event-threadchannel and store them in {_m::*}
     ```
 === "Patterns"
 
@@ -809,7 +895,7 @@ This effect will only get back the ACTIVE thread, and will pass on the archived 
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve all threads from event-guild and store them in {_threads::*}
     ```
 === "Patterns"
 
@@ -817,7 +903,7 @@ This effect will only get back the ACTIVE thread, and will pass on the archived 
     retrieve [(all|every)] thread[s] (from|with|of|in) %guild% [(with|using) [the] [bot] %-bot%] and store (them|the thread[s]) in %-objects%
     ```
 
-## RetrieveUser
+## Retrieve User
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -825,7 +911,9 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    retrieve user with id "6516165135165135213" from event-bot and store it in {_user}
+    retrieve user with id "6516165135165135213" from event-bot and store the user in {_user}
+    retrieve user with id "6516165135165135213" with event-bot and store it in {_user}
     ```
 === "Patterns"
 
@@ -833,16 +921,15 @@ No description provided.
     retrieve user (with|from) id %string% (from|with|of|in) %bot% and store (it|the user) in %-object%
     ```
 
-## RetrieveEventValue
+## Retrieve Event Value
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve an event-value instead of getting it. Only available in some events, that actually contains retrieve values. For more information, please [check this section](events.md#information-retrieve-values)!
+
 === "Examples"
 
-    ```applescript
-    No examples provided.
-    ```
+    [Check the wiki](events.md#information-retrieve-values)
 === "Patterns"
 
     ```applescript
@@ -942,22 +1029,6 @@ Unbans a user from a guild.
     [discord] un[-| ]ban [the] [discord] [user] %user% (from|in) [guild] %guild%
     ```
 
-## Return
-
-[[[ macros.required_version('4.0.0') ]]]
-
-No description provided.
-=== "Examples"
-
-    ```applescript
-    No examples provided.
-    ```
-=== "Patterns"
-
-    ```applescript
-    return %slashchoices%
-    ```
-
 ## Download Attachment
 
 [[[ macros.required_version('4.0.0') ]]]
@@ -980,7 +1051,9 @@ Download the specific attachment to a file path.
 
 Edit the event component directly, without editing the whole message again. This effect only works in button, string dropdown and entities dropdown events.
 
-For concrete usage and example, check examples [here for buttons](../advanced-stuff/components.md#handling-button-interactions) and [here for dropdowns](../advanced-stuff/components.md#handling-dropdown-interactions).
+!!! danger "This will <u>Acknowledge</u> the interaction!"
+
+For concrete usage and example, check examples [here for buttons](../interactions/components.md#handling-button-interactions) and [here for dropdowns](../interactions/components.md#handling-dropdown-interactions).
 
 === "Patterns"
 
@@ -988,7 +1061,34 @@ For concrete usage and example, check examples [here for buttons](../advanced-st
     edit [component] (button|dropdown|select[( |-)]menu) [of [the] (interaction|event)] to [show] %button/dropdown%
     ```
 
-## EffAddField
+=== "See Also"
+    * [Edit Message](#edit-message)
+    * [Edit Message's Component](#edit-messages-component)
+
+## Edit Message's Component
+
+[[[ macros.required_version('4.16.0') ]]]
+
+Modify a single component via its ID in a specific message. This effect can only handle [buttons](../interactions/components.md#buttons) and [select menus](../interactions/components.md#select-menu).
+
+!!! danger "This will <u>NOT Acknowledge</u> the interaction!"
+
+=== "Examples"
+
+    ```applescript
+    edit button with id "first" of event-message to show new secondary button with id "third" named "ayo ?!" with reaction "sob"
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    edit [message] (component|button|dropdown|select[( |-)]menu) with [the] id %string% (of|from|in) [the] [message] %message% (to [show]|with) %button/dropdown%
+    ```
+
+=== "See Also"
+    * [Edit Event-Component](#edit-event-component)
+
+## Add Embed field/inline field
 
 [[[ macros.required_version('4.0.0') ]]]
 
@@ -996,7 +1096,11 @@ No description provided.
 === "Examples"
 
     ```applescript
-    No examples provided.
+    add field named "field_name" with value "field_description" to embed
+    add field named "field_name" with value "field_description" to fields of embed
+    
+    add inline field named "field_name" with value "field_description" to embed
+    add inline field named "field_name" with value "field_description" to fields of embed
     ```
 === "Patterns"
 
@@ -1048,4 +1152,71 @@ Can only be used in a 'modify welcome screen' section.
     ```applescript
     change [the] [welcome] screen description to %string%
     change [the] description of [the] [welcome] screen to %string%
+    ```
+
+## Register Webhook Client
+
+[[[ macros.required_version('4.15.0') ]]]
+
+Register a new webhook client with the specified name and URL. The name is only used for internal purposes and can be anything you want; it'll be used in other syntax to reference the registered webhook client.
+The URL should be a valid Discord webhook URL (containing both the ID and the token). More information & examples can be found on the [webhooks page](../messages/webhooks.md).
+
+=== "Examples"
+
+    See the [webhooks page](../messages/webhooks.md) for examples.
+
+=== "Patterns"
+
+    ```applescript
+    register [a] [new] webhook[s] [client] (in|using) [the] [bot] %bot% (with [the] name|named) %string% (and|with) [the] [webhook] url %string%
+    ```
+
+## Unregister Webhook Client
+
+[[[ macros.required_version('4.15.0') ]]]
+
+Unregister a webhook client with the specified name. This will remove the webhook client from the bot's memory, and it will no longer be usable in any further syntax.
+
+=== "Examples"
+
+    ```applescript
+    unregister client named "my-webhook"
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    unregister [the] [webhook] client (with [the] name|named) %string%
+    ```
+
+## Retrieve Webhooks
+
+[[[ macros.required_version('4.15.0') ]]]
+
+Retrieve all webhooks in a specific channel or guild. The output will be a list of webhook **clients**, which can be used in other webhook-related syntax.
+
+=== "Examples"
+
+    See the [webhooks page](../messages/webhooks.md) for examples.
+
+=== "Patterns"
+
+    ```applescript
+    retrieve [all] [discord] webhooks (of|from) [the] [(guild|channel)] %guild/textchannel% and store (them|the webhooks) in %~objects%
+    ```
+
+## Make Webhook Post Message
+
+[[[ macros.required_version('4.15.0') ]]]
+
+Make the specified webhook client post a message to its channel. More information & examples can be found on the [webhooks page](../messages/webhooks.md).
+
+=== "Examples"
+
+    See the [webhooks page](../messages/webhooks.md) for examples.
+
+=== "Patterns"
+
+    ```applescript
+    make [the] [webhook] client %string% (post|send) [the] [message] %string/messagecreatebuilder/embedbuilder/messagepollbuilder% [with [the] username %-string%] [[and] [with] [the] avatar [url] %-string%] [and store (it|the message) in %-~objects%]
     ```

@@ -1,4 +1,8 @@
-# 📙 Sections
+---
+icon: material/check-all
+---
+
+# Sections
 
 [[[% import 'macros.html' as macros %]]]
 

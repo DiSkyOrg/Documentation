@@ -1,4 +1,8 @@
-# 🤖 Multiple Bots
+---
+icon: material/robot
+---
+
+# Multiple Bots
 
 DiSky allows you to run multiple bot instances on a single server; Some syntaxes will have to change, and that's what we will see here!
 

@@ -1,4 +1,8 @@
-# 🎵 LavaPlayer
+---
+icon: material/check-all
+---
+
+# LavaPlayer
 
 [[[% import 'macros.html' as macros %]]]
 
@@ -102,7 +106,7 @@ This will also remove the current track from the queue.
 ## Loaded Playlist
 
 [[[ macros.required_version('2.0.0') ]]]
-|Return Type|audioplaylist|class:version|
+[[[ macros.return_type('audioplaylist') ]]]
 
 Represent the loaded playlist in a 'on playlist loaded' sub-load section.
 === "Examples"
@@ -119,7 +123,7 @@ Represent the loaded playlist in a 'on playlist loaded' sub-load section.
 ## Loaded Track
 
 [[[ macros.required_version('2.0.0') ]]]
-|Return Type|audiotrack|class:version|
+[[[ macros.return_type('audiotrack') ]]]
 
 Represent the loaded track in a 'on single load' sub-load section.
 === "Examples"
@@ -136,7 +140,7 @@ Represent the loaded track in a 'on single load' sub-load section.
 ## Load Exception
 
 [[[ macros.required_version('2.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Represent the exception that occurred during the load of a research or items.
 This is the message only.
@@ -154,7 +158,7 @@ This is the message only.
 ## Guild Playing Track
 
 [[[ macros.required_version('2.0.0') ]]]
-|Return Type|audiotrack|class:version|
+[[[ macros.return_type('audiotrack') ]]]
 
 Get the current track playing in a guild.
 This cannot be changed via this expression, but you can use the 'play' effect to play a track.
@@ -173,7 +177,7 @@ This cannot be changed via this expression, but you can use the 'play' effect to
 ## Guild Queue
 
 [[[ macros.required_version('2.0.0') ]]]
-|Return Type|audiotrack|class:version|
+[[[ macros.return_type('audiotrack') ]]]
 
 Represents the audio queue of a guild.
 You can get the queue, but also add or remove tracks from it.
@@ -193,7 +197,7 @@ You can get the queue, but also add or remove tracks from it.
 ## Playlist Tracks
 
 [[[ macros.required_version('2.0.0') ]]]
-|Return Type|audiotrack|class:version|
+[[[ macros.return_type('audiotrack') ]]]
 
 Get all the ordered tracks of a loaded playlist.
 === "Examples"
@@ -211,7 +215,7 @@ Get all the ordered tracks of a loaded playlist.
 ## Audio Mono Level
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 This is an audio effect/filter.
 Set the mono level of the current audio track.
@@ -231,7 +235,7 @@ The default value is 1.0
 ## Audio Pitch
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 This is an audio effect/filter.
 Change the pitch of the current audio track.
@@ -251,7 +255,7 @@ The default pitch is 1.0.
 ## Audio Rotation
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 This is an audio effect/filter.
 Change the rotation of the current audio track.
@@ -272,7 +276,7 @@ The default rotation is 1
 ## Audio Speed
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|number|class:version|
+[[[ macros.return_type('number') ]]]
 
 This is an audio effect/filter.
 Change the speed of the current audio track.
@@ -292,7 +296,7 @@ The default speed is 1.0.
 ## Guild Auto Play
 
 [[[ macros.required_version('2.0.0') ]]]
-|Return Type|boolean|class:version|
+[[[ macros.return_type('boolean') ]]]
 
 If enabled, when a track ends, the next will be played automatically.
 By default, this is disabled.
@@ -311,7 +315,7 @@ By default, this is disabled.
 ## Guild Repeat
 
 [[[ macros.required_version('2.0.0') ]]]
-|Return Type|boolean|class:version|
+[[[ macros.return_type('boolean') ]]]
 
 If enabled, when a track ends, the same track will be played again.
 By default, this is disabled.
@@ -330,7 +334,7 @@ By default, this is disabled.
 ## Guild Volume
 
 [[[ macros.required_version('2.0.0') ]]]
-|Return Type|integer|class:version|
+[[[ macros.return_type('integer') ]]]
 
 Get the volume of a guild, or null if the guild have not player.
 This can be changed to change the audio volume of a guild.
@@ -352,7 +356,7 @@ Note that the volume is a number between 0 and 1000.
 ## Playlist Name
 
 [[[ macros.required_version('2.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Get the name of a loaded playlist.
 === "Examples"

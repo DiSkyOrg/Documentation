@@ -1,4 +1,11 @@
-# 📥 Webhooks
+---
+icon: material/check-all
+---
+
+# Webhooks
+
+!!! danger "This is NOT for DiSky!"
+    This page is for the **Webhooks Module**, that is now **deprecated**. You can see the new [Webhooks](../messages/webhooks.md) page for the new way to use webhooks with DiSky.
 
 [[[% import 'macros.html' as macros %]]]
 
@@ -45,7 +52,7 @@ Once a client is registered, feel free to use it specifying its name registered 
 ## Builder Embeds
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|embedbuilder|class:version|
+[[[ macros.return_type('embedbuilder') ]]]
 
 Change the embeds of any webhook message builder.
 === "Examples"
@@ -64,7 +71,7 @@ Change the embeds of any webhook message builder.
 ## Builder Files
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Change the files of any webhook message builder.
 === "Examples"
@@ -83,9 +90,10 @@ Change the files of any webhook message builder.
 ## Webhook Message Builder
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|webhookmessage|class:version|
+[[[ macros.return_type('webhookmessage') ]]]
 
-The current webhook message builder from the current 'make message' scope.
+The current webhook message builder from the current 'make message' section.
+
 === "Examples"
 
     ```applescript
@@ -100,7 +108,7 @@ The current webhook message builder from the current 'make message' scope.
 ## Builder Avatar
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Change the avatar of any webhook message builder.
 === "Examples"
@@ -118,7 +126,7 @@ Change the avatar of any webhook message builder.
 ## Builder Content
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Change the content of any webhook message builder.
 === "Examples"
@@ -136,7 +144,7 @@ Change the content of any webhook message builder.
 ## Builder Name
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|string|class:version|
+[[[ macros.return_type('string') ]]]
 
 Change the name of any webhook message builder.
 === "Examples"
@@ -154,7 +162,7 @@ Change the name of any webhook message builder.
 ## Builder TTS State
 
 [[[ macros.required_version('4.0.0') ]]]
-|Return Type|boolean|class:version|
+[[[ macros.return_type('boolean') ]]]
 
 Change the tts state of any webhook message builder.
 If enabled, Discord will read the message aloud to the user.

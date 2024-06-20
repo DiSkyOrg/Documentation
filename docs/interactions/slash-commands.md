@@ -1,4 +1,8 @@
-# 📯 Slash Commands
+---
+icon: material/slash-forward-box
+---
+
+# Slash Commands
 
 [[[% import 'macros.html' as macros %]]]
 
@@ -24,7 +28,7 @@ Let's take a concrete example, and imagine I'm executing these commands:
 
 * **Name** (used to execute the command, aka `/<name>`. Only alphanumeric chars)
 * **Description** (used to recognize the command. Is shown to the client once he selected that command)
-* Up to **25 options** (can be of the following type: `STRING`, `INTEGER`, `BOOLEAN`, `USER`, `CHANNEL`, `ROLE`, `MENTIONABLE`, `NUMBER`, `ATTACHMENT`)
+* Up to [**25 options**](#options) (can be of the following type: `STRING`, `INTEGER`, `BOOLEAN`, `USER`, `CHANNEL`, `ROLE`, `MENTIONABLE`, `NUMBER`, `ATTACHMENT`)
 * Possible **subcommands** or **groups**
 
 ## Getting Started
@@ -35,7 +39,7 @@ Let's create a sample command with DiSky now. We'll make a slash command named `
     Options can be required or not. If they are not, then you should always think of a fallback value, here, the user who executed the command for example!
 
 ```applescript
-# We highly recommend using the 'on ready' section of the bot's scope
+# We highly recommend using the 'on ready' section of the bot's structure
 # for registering commands!
 define bot XXX:
     ...
@@ -70,6 +74,38 @@ on slash command:
         # we lastly reply with something, that will also acknowledge (= approve) the command.
         reply with "%mention tag of {_target}% is level X"
 ```
+
+## Options
+
+Options are the arguments of the command. They can be of the following types:
+
+| Type         | Description                                                                     |           Support Choices            |
+|--------------|---------------------------------------------------------------------------------|:------------------------------------:|
+| `STRING`     | Accepts Text. Just plain text.                                                  |  :material-check-bold:{ .correct }   |
+| `INTEGER`    | Accepts a single **integer value**.                                             |  :material-check-bold:{ .correct }   |
+| `NUMBER`     | Accepts a single **decimal value**.                                             |  :material-check-bold:{ .correct }   |
+| `BOOLEAN`    | Accepts either True or False.                                                   | :material-close-thick:{ .incorrect } |
+| `CHANNEL`    | Accepts a single [guild channel](../docs/types.md#guildchannel-extends-channel) | :material-close-thick:{ .incorrect } |
+| `USER`       | Accepts a single **user** (not member).                                         | :material-close-thick:{ .incorrect } |
+| `ROLE`       | Accepts a single **role**.                                                      | :material-close-thick:{ .incorrect } |
+| `ATTACHMENT` | Accepts a single **file**.                                                      | :material-close-thick:{ .incorrect } |
+
+!!! example "Handling Attachment Options"
+    ```applescript
+    on slash command:
+        if event-string is "upload":
+            # Get the attachment
+            set {_file} to argument "file" as attachment
+    
+            # Check if it's an image
+            if attachment {_file} is not an image:
+                reply with ":x: **We only accept images!**"
+                stop
+            
+            # Download the file
+            download {_file} to path "plugins/DiSky/attachments/file.png"
+            reply with "You sent a file named `%file name of {_file}%`"
+    ```
 
 ## Using localizations
 

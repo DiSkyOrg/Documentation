@@ -1,4 +1,10 @@
-# 😁 Emojis
+---
+icon: material/sticker-emoji
+---
+
+# Emojis
+
+[[[% import 'macros.html' as macros %]]]
 
 This guide will show you how to use and interact with emojis in your Discord bot using DiSky. 
 
@@ -16,41 +22,42 @@ The terms *emoji* and *emote* are **completely different** in Discord:
 
 There's only one expression to gather an emojis:
 
-=== "Emoji"
-    ```applescript
-    set {_emoji} to reaction "joy" # DiSky will 'translate' it to the unicode character '😂'
-    ```
+!!! example ""
+    === "Emoji"
+        ```applescript
+        set {_emoji} to reaction "joy" # DiSky will 'translate' it to the unicode character '😂'
+        ```
 
-=== "Emote (via ID)"
-    ```applescript
-    set {_emote} to reaction "123456789012345678"
-    ```
+    === "Emote (via ID)"
+        ```applescript
+        set {_emote} to reaction "123456789012345678"
+        ```
+ 
+        Each IDs are unique, and are the best way to get an emote.
 
-    Each IDs are unique, and are the best way to get an emote.
-
-=== "Emote (via name)"
-    !!! warning
-        This method is **not recommended** because of the potential name conflicts and unloaded emotes.
-
-    ```applescript
-    set {_emote} to reaction "Checkmark"
-    ```
-
-    DiSky will try to find an emote from any guild the bot is in, with the name `Checkmark`.
-
-=== "Emote (via full reference)"
-    ```applescript
-    set {_emote} to reaction "<:Checkmark:123456789012345678>"
-    ```
-
-    In this case, DiSky will split the given string and apply different state of filter to determine the emote. This method can sometime be faster for a lot of emotes.
-
-Now you got your emoji/emote, you can use it in messages (using a mention) or in reactions:
-
-=== "In Messages"
-    ```applescript
-    reply with "Hello, I'm using an emoji: {_emoji}" # Will send, for the first case, "Hello, I'm using an emoji: 😂"    
-    ```
+    === "Emote (via name)"
+        !!! warning
+            This method is **not recommended** because of the potential name conflicts and unloaded emotes.
+    
+        ```applescript
+        set {_emote} to reaction "Checkmark"
+        ```
+    
+        DiSky will try to find an emote from any guild the bot is in, with the name `Checkmark`.
+    
+    === "Emote (via full reference)"
+        ```applescript
+        set {_emote} to reaction "<:Checkmark:123456789012345678>"
+        ```
+    
+        In this case, DiSky will split the given string and apply different state of filter to determine the emote. This method can sometime be faster for a lot of emotes.
+    
+        Now you got your emoji/emote, you can use it in messages (using a mention) or in reactions:
+    
+    === "In Messages"
+        ```applescript
+        reply with "Hello, I'm using an emoji: {_emoji}" # Will send, for the first case, "Hello, I'm using an emoji: 😂"    
+        ```
 
 === "In Reactions"
     ```applescript
@@ -67,7 +74,7 @@ To put it simply: **bots can't react with super reactions**. However, they can d
 
 ## Reaction Emotes 
 
-|Minimal Version|v4.12.2|
+[[[ macros.required_version('4.12.2') ]]]
 
 When the [reaction event](../docs/events.md#on-reaction-add) is fired, you can get the emote that was used to react with, but also some other information: this is called a **Reaction Emote**.
 

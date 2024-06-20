@@ -1,4 +1,13 @@
-# 📚 Getting Started
+---
+icon: material/image-text
+---
+
+# Getting Started
+
+!!! success "How to download?"
+    SkImage2 is only available for **Patreons** of [ItsTheSky](https://www.patreon.com/itsthesky).
+
+    [Access Patreon-only Resources](https://patreon.disky.me/){ .md-button }
 
 SkImage is another Skript addon, not directly related to DiSky, used to make image manipulation easier. You can draw shapes, images, apply filters, and all of that optimized for Skript.
 

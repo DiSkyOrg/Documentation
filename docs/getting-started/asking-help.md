@@ -1,4 +1,8 @@
-# 🙋 Asking Help
+---
+icon: material/help-box-multiple
+---
+
+# Asking Help
 
 !!! danger
     We will only provide support for DiSky's latest **stable** version. If you're using an older version, please update to the latest version before asking for help.
@@ -13,7 +17,7 @@ Your help message have to contain the following information:
 * The code you used to get the error (if there is one)
 
 !!! info
-    The `<name>` is the configured name of your bot, when you used [created the bot](../getting-started/2-bot-loading.md#1-bot-scope)
+    The `<name>` is the configured name of your bot, when you used [created the bot](2-bot-loading.md#bot-structure)
 
 ## Where to ask?
 

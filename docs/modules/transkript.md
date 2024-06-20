@@ -1,4 +1,8 @@
-# 📜 TranSkript
+---
+icon: material/script-text
+---
+
+# TranSkript
 
 !!! warning
     This is a **premium** module and can be accessed through [**Patreon**](https://www.patreon.com/itsthesky)
