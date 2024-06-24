@@ -21,7 +21,7 @@ Now that it's created, let's invite it to our guild:
 2. Replace the `X`'s with the client ID in this URL: `https://discord.com/api/oauth2/authorize?client_id=XXXXXXXXXXXXXXXXXX&permissions=8&scope=bot%20applications.commands`
 
 !!! tip
-    You can give this link to anyone, so he or she can invite your bot to their server!
+    You can give this link to anyone, so they can invite your bot to their server!
 
 1. Simply click the changed link, follow the information, and your bot should join your server in the next seconds!
 
