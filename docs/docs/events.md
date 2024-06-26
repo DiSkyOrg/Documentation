@@ -2138,7 +2138,7 @@ Fired when a track receive a specific event. Use the literal to define the event
 ## On Channel Create Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel is created.
 === "Patterns"
@@ -2160,15 +2160,11 @@ Fired when a channel is created.
     event-channel
     event-guild
     ```
-=== "Retrieve Values"
-    ```applescript
 
-    ```
-
-## On Channel delete Event
+## On Channel Delete Event
 
 [[[ macros.required_version('4.0.0') ]]]
-|Cancellable|No|class:version|
+[[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel is deleted.
 === "Patterns"
@@ -2189,8 +2185,4 @@ Fired when a channel is deleted.
     ```applescript
     event-channel
     event-guild
-    ```
-=== "Retrieve Values"
-    ```applescript
-
     ```
