@@ -2351,6 +2351,9 @@ The user linked to this ban.
 
 ## Bot Name
 
+!!! danger "Deprecated: removed since DiSky v4.18.0"
+    Use [`discord name`](#name-of-discord-entity) to have the same behavior.
+
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
 
@@ -2734,10 +2737,13 @@ Get the unique long value (ID) that represent a discord entity.
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
+[[[ macros.accept_type('string') ]]]
 
 This represents the current name of any discord entity that can hold one.
-You can change name of every entity except member and user by defining a new text.
+You can change the name of every entity except member and user by defining a new text.
 Check for [nickname of member](#member-nickname) if you want to check / change custom member's name.
+
+!!! info "This property accepts __string__, and will change the name of a **bot**, **channel** or **role**."
 
 === "Examples"
 
@@ -2745,12 +2751,15 @@ Check for [nickname of member](#member-nickname) if you want to check / change c
     discord name of event-guild
     discord name of event-user
     discord name of event-member
+
+    set discord name of event-bot to "My Bot" # Will change the Discord's Bot name (not the username)
     ```
+
 === "Patterns"
 
     ```applescript
-    [the] [the] discord name of %channel/user/member/sticker/scheduledevent/emote/threadchannel/role/guild/webhook%
-    %channel/user/member/sticker/scheduledevent/emote/threadchannel/role/guild/webhook%'[s] [the] discord name
+    [the] [the] discord name of %channel/user/member/sticker/scheduledevent/emote/threadchannel/role/guild/webhook/bot%
+    %channel/user/member/sticker/scheduledevent/emote/threadchannel/role/guild/webhook/bot%'[s] [the] discord name
     ```
 
 ## Author of Embed
@@ -3710,14 +3719,20 @@ No description provided.
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
+[[[ macros.accept_type('string') ]]]
 
 Get the profile banner URL. If the user doesn't have a custom banner, this will return none.
 Use the 'profile color' expression to get the color instead of the banner URL in that case!
+
+!!! info "This property accepts __string__, and will change the banner of a **bot** only."
+
 === "Examples"
 
     ```applescript
     retrieve profile with id "329999814546817024" from event-user and store it in {_m}
     set {_banner} to profile banner url of {_m}
+
+    set profile banner of event-bot to "<file path or URL>"
     ```
 === "Patterns"
 

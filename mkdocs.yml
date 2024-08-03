@@ -4,6 +4,7 @@ theme:
   custom_dir: overrides
   icon:
     logo: simple/discord
+  favicon: images/favicon.png
   palette:
     scheme: slate
     primary: orange
@@ -28,7 +29,11 @@ theme:
 repo_url: https://github.com/DiSkyOrg/DiSky
 
 markdown_extensions:
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - admonition
   - pymdownx.details
   - pymdownx.tabbed:
@@ -39,7 +44,12 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.extra
+  - pymdownx.extra:
+      pymdownx.superfences:
+        custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
   - attr_list
   - md_in_html
   - pymdownx.emoji:
@@ -81,6 +91,9 @@ nav:
           - 'Bot Creation': getting-started/1-bot-creation.md
           - 'Bot Loading': getting-started/2-bot-loading.md
           - 'F.A.Q.': getting-started/faq.md
+      - 'Concepts':
+          - 'Error Handling': concepts/error-handling.md
+          - 'Asynchronous': concepts/async.md
       - 'Bot':
           - 'Cache Policy & Flags': bot/policy.md
           - 'Presence & Status': bot/presence-and-status.md
