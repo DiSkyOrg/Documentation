@@ -13,7 +13,7 @@ First, we need to create the application then the Discord bot itself
 5. Under `App Bot User` find "Token" and copy it.
 
 !!! danger
-    This token is **private**, and if you lose it you'll have to **regenerate** another one. Keep in mind anyone who has it can do **whatever he or she wants** with your bot!
+    This token is **private**, and if you lose it you'll have to **regenerate** another one. Keep in mind anyone who has it can do **whatever they wants** with your bot!
 
 Now that it's created, let's invite it to our guild:
 
@@ -21,7 +21,7 @@ Now that it's created, let's invite it to our guild:
 2. Replace the `X`'s with the client ID in this URL: `https://discord.com/api/oauth2/authorize?client_id=XXXXXXXXXXXXXXXXXX&permissions=8&scope=bot%20applications.commands`
 
 !!! tip
-    You can give this link to anyone, so he or she can invite your bot to their server!
+    You can give this link to anyone, so they can invite your bot to their server!
 
 1. Simply click the changed link, follow the information, and your bot should join your server in the next seconds!
 
