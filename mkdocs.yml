@@ -94,6 +94,7 @@ nav:
       - 'Concepts':
           - 'Error Handling': concepts/error-handling.md
           - 'Asynchronous': concepts/async.md
+          - 'Listen Once': concepts/listen-once.md
       - 'Bot':
           - 'Cache Policy & Flags': bot/policy.md
           - 'Presence & Status': bot/presence-and-status.md
@@ -134,3 +135,5 @@ nav:
   - 'BooSK':
       - 'Getting Started': boosk/getting-started.md
       - 'Create a Book': boosk/create-a-book.md
+  - 'ParseSK':
+      - 'Getting Started': parsesk/parsesk.md

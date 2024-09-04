@@ -4,6 +4,9 @@ icon: material/stop-circle-outline
 
 # Error Handling
 
+[[[% import 'macros.html' as macros %]]]
+[[[ macros.required_version('4.18.0') ]]]
+
 Since DiSky v4.18.0, a basic try/catch system has been implemented. For those who don't know what it is, it's a way to catch errors that can occur in your code and handle them in a specific way.
 
 This can especially be useful when, for instance, you're trying to send a DM to someone who has their DMs disabled: 
