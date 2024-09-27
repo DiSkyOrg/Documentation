@@ -95,6 +95,7 @@ nav:
           - 'Error Handling': concepts/error-handling.md
           - 'Asynchronous': concepts/async.md
           - 'Listen Once': concepts/listen-once.md
+          - 'Rate Limits': concepts/ratelimit.md
       - 'Bot':
           - 'Cache Policy & Flags': bot/policy.md
           - 'Presence & Status': bot/presence-and-status.md
