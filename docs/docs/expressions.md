@@ -3359,6 +3359,7 @@ Even if it's not a real role, it share multiple properties such as permissions.
 
 [[[ macros.required_version('4.0.0') ]]]
 [[[ macros.return_type('string') ]]]
+[[[ macros.accept_type('string') ]]]
 
 Represent the verification level of the guild. It can either be:
 - None
@@ -3366,11 +3367,19 @@ Represent the verification level of the guild. It can either be:
 - Medium
 - High
 - Very High
-  === "Examples"
+
+=== "Examples"
 
     ```applescript
     reply with verification level of event-guild
+
+    set verification level of event-guild to "Low" #(1)!
+    reset verification level of event-guild #(2)!
     ```
+
+    1. Requires **DiSky v4.19.1**
+    2. Requires **DiSky v4.19.1**
+
 === "Patterns"
 
     ```applescript
