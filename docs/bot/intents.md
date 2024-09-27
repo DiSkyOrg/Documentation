@@ -1,116 +1,102 @@
 ---
+status: updated
 icon: material/key-chain
 ---
 
-# Gateway Intents
+# Gateway Intents in Discord
 
-It can be a weird terms, right? You've maybe heard of it before, but what does it mean? What does it do? How do I use it? Well, let's get into it!
+## Introduction
+
+Gateway Intents are a crucial concept in Discord bot development. They allow developers to specify which events and data their bot should receive from Discord, optimizing performance and reducing unnecessary data transfer.
 
 ## What are Gateway Intents?
 
-Gateway Intents are a way to tell Discord what __events__ and __data__ you want to receive from them. This is useful for bots that don't need to receive all the data, and can help reduce the amount of data that is sent to your bot.
+Gateway Intents act as filters for the events and data your bot receives from Discord. By selecting specific intents, you can:
 
-For instance, a specific `message content` intent is required to get any message's content, while `guild moderation` intent is required for any moderation action (such as ban, kick, getting logs, etc...)!
+1. Reduce the amount of data sent to your bot
+2. Focus on the events that are relevant to your bot's functionality
+3. Comply with Discord's requirements for accessing certain types of data
 
-## Privileged Intents
+??? info "Diagram"
+    ```mermaid
+    graph TD
+        A[Discord Intents] --> B[Privileged Intents]
+        A --> C[Standard Intents]
+        A --> D[Message Poll Intents]
+        
+        B --> E[Guild Members]
+        B --> F[Message Content]
+        B --> G[Guild Presences]
+        
+        C --> H[Guild Moderation]
+        C --> I[Guild Emojis and Stickers]
+        C --> J[Guild Webhooks]
+        C --> K[Guild Invites]
+        C --> L[Guild Voice States]
+        C --> M[Guild Messages]
+        C --> N[Guild Message Reactions]
+        C --> O[Guild Message Typing]
+        C --> P[Direct Messages]
+        C --> Q[Direct Message Reactions]
+        C --> R[Direct Message Typing]
+        C --> S[Scheduled Events]
+        
+        D --> T[Guild Message Polls]
+        D --> U[Direct Message Polls]
+    ```
 
-Some intents are considered "privileged", which means that you need to enable them in your bot's application page. You can do this by going to your [application page](https://discord.com/developers/applications), selecting your bot, and going to the "Bot" tab. There, you can enable the intents you want to use.
+## Categories of Intents
 
-They will be marked in the following intent list.
+As visualized in the diagram above, Discord intents can be categorized into three main groups:
 
-## Information per Intent
+1. **Privileged Intents**: Require explicit enabling in the Discord Developer Portal
+2. **Standard Intents**: Available to all bots without special permission
+3. **Message Poll Intents**: Specific to handling poll-related events
 
-### Guild Members (`guild members`)
+### Privileged Intents
 
-!!! warning ""
-    This intent is [privileged](#privileged-intents).
+Privileged intents require special approval from Discord for bots in 100+ servers. They include:
 
-Events which inform us about member update/leave/join of a guild.
-This is required to chunk all members of a guild.
-This will also update user information such as name/avatar.
+- Guild Members
+- Message Content
+- Guild Presences
 
+!!! warning "Important"
+    Enabling privileged intents is crucial for certain bot functionalities. For example, without the Message Content intent, your bot won't be able to read message content in most situations.
 
-### Message Content (`message content`)
+### Standard Intents
 
-!!! warning ""
-    This intent is [privileged](#privileged-intents).
+These intents cover a wide range of bot functionalities and don't require special approval:
 
-Access to message content.
+- Guild Moderation
+- Guild Emojis and Stickers
+- Guild Webhooks
+- Guild Invites
+- Guild Voice States
+- Guild Messages
+- Guild Message Reactions
+- Guild Message Typing
+- Direct Messages
+- Direct Message Reactions
+- Direct Message Typing
+- Scheduled Events
 
-This specifically affects messages received through the message history of a channel, or through Message Events. The content restriction does not apply if the message mentions the bot directly (using @username), sent by the bot itself, or if the message is a direct message from a PrivateChannel. Affected syntaxes are:
+### Message Poll Intents
 
-* [`content of %message%`](../docs/expressions.md#message-content)
-* [`embeds of %message%`](../docs/expressions.md#message-embeds)
-* [`components of %message%`](../docs/expressions.md#message-builder-component-rows)
+Introduced for handling poll-related events:
 
-### Guild Presences (`guild presences`)
+- Guild Message Polls
+- Direct Message Polls
 
-!!! warning ""
-    This intent is [privileged](#privileged-intents).
+## Best Practices for Using Intents
 
-This is used to lazy load members and update user properties such as name/avatar.
-!!! danger
-    **This is a very heavy intent!** Presence updates are 99% of traffic the bot will receive. To get user update events you should consider using [`guild members`](#guild-members-guild-members) instead.
+1. **Only enable necessary intents**: This reduces the load on both your bot and Discord's servers.
+2. **Plan for privileged intents**: If your bot requires privileged intents, plan for the approval process, especially if you expect rapid growth.
+3. **Stay updated**: Discord occasionally updates its intent system. Keep your bot and knowledge up-to-date.
+4. **Optimize for scale**: Consider how your intent choices will affect your bot's performance as it grows to serve more servers.
 
-### Message Polls
+## Conclusion
 
-This intent is used to get poll events from messages. There's two version for the guild & direct message polls:
+Understanding and properly implementing Gateway Intents is essential for creating efficient and compliant Discord bots. By carefully selecting the intents your bot needs, you can ensure optimal performance and adhere to Discord's guidelines.
 
-* `guild message polls` to get poll events from guild messages.
-* `direct message polls` to get poll events from direct messages.
-
-!!! example "Related Events"
-    * [On Poll Vote Add](../docs/events.md#on-poll-vote-add)
-    * [On Poll Vote Remove](../docs/events.md#on-poll-vote-remove)
-
----
-
-## Less Important Intents
-
-### Guild Moderation (`guild moderation`)
-
-Moderation events, such as ban/unban/audit-log.
-
-### Guild Emojis and Stickers (`guild emojis and stickers`)
-
-Custom emoji and sticker add/update/delete events.
-
-### Guild Webhooks (`guild webhooks`)
-
-Webhook add/update/delete events.
-
-### Guild Invites (`guild invites`)
-
-Invite add/update/delete events.
-
-### Guild Voice States (`guild voice states`)
-
-Voice state events. This is used to determine which members are connected to a voice channel.
-
-### Guild Messages (`guild messages`)
-
-Message events from text channels in guilds.
-
-### Guild Message Reactions (`guild message reactions`)
-
-Reaction add/update/delete events from text channels in guilds.
-
-### Guild Message Typing (`guild message typing`)
-
-Typing events from text channels in guilds.
-
-### Direct Messages (`direct messages`)
-
-Message events from direct/private messages.
-
-### Direct Message Reactions (`direct message reactions`)
-
-Reaction add/update/delete events from direct/private messages.
-
-### Direct Message Typing (`direct message typing`)
-
-Typing events from direct/private messages.
-
-### Scheduled Events (`scheduled events`)
-
-Scheduled Events events.
+For the most up-to-date information on intents and their implementation, always refer to the official Discord Developer Documentation.
