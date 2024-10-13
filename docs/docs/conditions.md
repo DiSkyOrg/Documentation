@@ -6,6 +6,26 @@ icon: material/check-all
 
 [[[% import 'macros.html' as macros %]]]
 
+## Is Message Forwarded
+
+[[[ macros.required_version('4.20.0') ]]]
+
+Check if a message is a 'forwarded message' or not, basically a message that was sent from another channel.
+
+=== "Examples"
+
+    ```applescript
+    if event-message is forwarded:
+    if event-message is not forwarded:
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    %message% (is|are) forwarded
+    %message% (isn't|is not|aren't|are not) forwarded
+    ```
+
 ## Member / Bot is in Thread
 
 [[[ macros.required_version('4.0.0') ]]]

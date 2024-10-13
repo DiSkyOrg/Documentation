@@ -121,6 +121,9 @@ nav:
             - 'Slash Commands': interactions/slash-commands.md
             - 'Modals': interactions/modals.md
             - 'Select Menus': interactions/selectmenu-dropdown.md
+  - 'Examples':
+      - 'Core': examples/core.md
+      - 'Components': examples/components.md
   - 'Modules': modules
   - 'Documentation':
       - 'Types': docs/types.md

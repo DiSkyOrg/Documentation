@@ -6,6 +6,25 @@ icon: material/check-all
 
 [[[% import 'macros.html' as macros %]]]
 
+## Forward Message
+
+[[[ macros.required_version('4.20.0') ]]]
+
+Forward a message to another channel. No additional content can be added to the message.
+
+=== "Examples"
+
+    ```applescript
+    forward event-message to channel with id "000"
+    forward event-message to channel with id "000" and store it in {_msg}
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    forward [the] [message] %message% to %channel/textchannel% [and store (it|the message) in %-object%]
+    ```
+
 ## Publish/Crosspost Message
 
 Publish or crosspost a message to a news channel. This will only work if the message is in a news channel.
@@ -158,20 +177,26 @@ Archive or unarchive a specific thread.
     unarchive [the] [thread] %threadchannel%
     ```
 
-## Ban Member
+## Ban User
 
 [[[ macros.required_version('4.0.0') ]]]
 
 Bans a member from a guild.
+
+!!! tip "Starting DiSky v4.20.0, you can just specify a USER ID to ban a user, without having to retrieve the member first!"
+
 === "Examples"
 
     ```applescript
     ban discord event-member because of "being lame" and delete 10 days worth of messages
+    ban discord member "00000000000" from guild with id "000" due to "being lame"
     ```
+
 === "Patterns"
 
     ```applescript
     [discord] ban [the] discord [member] %member% [(due to|because of|with [the] reason) %-string%] [and (delete|remove) %-timespan% [worth ]of messages]
+    [discord] ban [the] discord [member] %string% (from|of) [the] [guild] %guild% [(due to|because of|with [the] reason) %-string%] # Starting DiSky v4.20.0
     ```
 
 ## Connect / Disconnect Bot
@@ -563,7 +588,8 @@ Pin or unpin a message in a text channel or private channel. You can also use [`
 
 Posts a message to a message-channel. You can send messages in a text, private, news, post or thread channel.
 
-Starting DiSky v4.14.3, you can also **reference** a message (the bot will then reply to that message).
+* Starting DiSky v4.14.3, you can also **reference** a message (the bot will then reply to that message).
+* Starting DiSky v4.20.0, you can also **specify** a bot to use to post the message.
 
 === "Examples"
 
@@ -574,7 +600,7 @@ Starting DiSky v4.14.3, you can also **reference** a message (the bot will then 
 === "Patterns"
 
     ```applescript
-    (post|dispatch) %string/messagecreatebuilder/sticker/embedbuilder% (in|to) [the] %channel% [with [the] reference[d] [message] %-message%] [and store (it|the message) in %-objects%]
+    (post|dispatch) %string/messagecreatebuilder/sticker/embedbuilder/messagepollbuilder% (in|to) [the] %channel% [(using|with) [the] [bot] %-bot%] [with [the] reference[d] [message] %-message%] [and store (it|the message) in %-~objects%]
     ```
 
 ## Purge Messages

@@ -3377,8 +3377,8 @@ Represent the verification level of the guild. It can either be:
     reset verification level of event-guild #(2)!
     ```
 
-    1. Requires **DiSky v4.19.1**
-    2. Requires **DiSky v4.19.1**
+    1. Requires **DiSky v4.20.0**
+    2. Requires **DiSky v4.20.0**
 
 === "Patterns"
 
