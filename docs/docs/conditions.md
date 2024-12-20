@@ -479,3 +479,19 @@ Check if a thread is public or not.
     %threadchannel% (isn't|is not|aren't|are not) [a] public [thread]
     ```
 
+## Member is Timed Out
+
+[[[ macros.required_version('4.20.2') ]]]
+
+Check if a member is timed out in a discord server or not.
+=== "Examples"
+
+    ```applescript
+    No examples provided.
+    ```
+=== "Patterns"
+
+    ```applescript
+    %member% (is|isn't) [discord] [member] timeout[ed]
+    ```
+
