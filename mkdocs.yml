@@ -59,6 +59,7 @@ markdown_extensions:
 copyright: Copyright &copy; 2020 - 2024 ItsTheSky
 extra_css:
   - stylesheets/main.css
+  - stylesheets/gradient.css
 
 extra:
   status:
@@ -92,6 +93,7 @@ nav:
           - 'Bot Loading': getting-started/2-bot-loading.md
           - 'F.A.Q.': getting-started/faq.md
       - 'Concepts':
+          - 'Data Structures': concepts/ds.md
           - 'Error Handling': concepts/error-handling.md
           - 'Asynchronous': concepts/async.md
           - 'Listen Once': concepts/listen-once.md
@@ -116,16 +118,24 @@ nav:
           - 'Forums': guild/forums.md
           - 'Welcome Screen': guild/guild-welcome-screen.md
       - 'Interactions':
-            - 'Components': interactions/components.md
+            - 'Context Structure': interactions/context-structure.md
             - 'Slash Structure': interactions/slash-structure.md
+            - 'Components': interactions/components.md
             - 'Slash Commands': interactions/slash-commands.md
             - 'Modals': interactions/modals.md
             - 'Select Menus': interactions/selectmenu-dropdown.md
   - 'Examples':
       - 'Core': examples/core.md
       - 'Components': examples/components.md
-  - 'Modules': modules
+  - 'Modules':
+      - 'Getting Started': modules/getting-started.md
+      - 'ParseSK': modules/parsesk.md
+      - 'DiSkyOAuth': modules/diskyoauth.md
+      - 'LavaPlayer': modules/lavaplayer.md
+      - 'TranSkript': modules/transkript.md
+      - 'Webhooks': modules/webhooks.md
   - 'Documentation':
+      - 'Data Structures': docs/ds.md
       - 'Types': docs/types.md
       - 'Effects': docs/effects.md
       - 'Events': docs/events.md
@@ -139,5 +149,3 @@ nav:
   - 'BooSK':
       - 'Getting Started': boosk/getting-started.md
       - 'Create a Book': boosk/create-a-book.md
-  - 'ParseSK':
-      - 'Getting Started': parsesk/parsesk.md

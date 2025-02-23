@@ -175,6 +175,28 @@ You can add sub-slash-commands to a group or a core slash-command, then add this
     [all] [the] %slashcommandgroup/slashcommand%'[s] sub[( |-)]command[s]
     ```
 
+## New Text Input
+
+[[[ macros.required_version('4.0.0') ]]]
+[[[ macros.return_type('textinput') ]]]
+
+Create a new text ("short" or "paragraph") input with the given ID, name (label) and a possible pre-filled value. You can find more information about those in the [modal page](../interactions/modals.md#creating-a-modal). Those components can **only be used within a modal**.
+
+=== "Examples"
+
+    ```applescript
+    set {_input} to new text input with id "description" named "Description"
+    set {_input} to required new short text input with id "description" named "Description" with the value "Hello world!" #(1)
+    ```
+
+    1. Once the modal opens, that input will be required and pre-filled with "Hello world!"
+
+=== "Patterns"
+
+    ```applescript
+    [a] [new] [(:required)] text[( |-)]input [with] [the] [id] %string% (named|with name) %string% [with [the] value %-string%]
+    [a] [new] [(:required)] short text[( |-)]input [with] [the] [id] %string% (named|with name) %string% [with [the] value %-string%]
+    ```
 ## New Button
 
 [[[ macros.required_version('4.0.0') ]]]

@@ -47,11 +47,15 @@
     color: limegreen;
 }
 
-.md-nav--primary .md-nav__link[href*="concepts/listen-once"] svg {
+.md-nav--primary .md-nav__link[href*="concepts/context-structure"] svg {
     color: limegreen;
 }
 
 .md-nav--primary .md-nav__link[href*="interactions/slash-structure"] svg {
+    color: limegreen;
+}
+
+.md-nav--primary .md-nav__link[href*="concepts/ds"] svg {
     color: limegreen;
 }
 
@@ -65,4 +69,31 @@
 
 .incorrect {
     color: red;
+}
+
+/* Ads */
+.doc-ad {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.doc-ad .ad-label {
+    font-size: 0.7rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.doc-ad .ad-content {
+    font-size: 0.9rem;
+    color: #212529;
+}
+
+.doc-ad .ad-link {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 500;
 }

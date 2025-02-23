@@ -7,14 +7,14 @@ icon: material/developer-board
 !!! warning
     This feature is still in **beta**, meaning a lot of bugs can be expected. If you find any, please report them to our [GitHub](https://github.com/DiSkyOrg/DiSky)!
 
-    We highly recommand to turn on **debug mode** (in Disky's configuration) to see more details about the errors you may encounter!
+    We highly recommend turning on **debug mode** (in DiSky's configuration) to see more details about the errors you may encounter!
 
-DiSky v4.17 introduce a brand-new way to create, register and handle slash commands, in a all-in-one way! It utilizes the new Skript structure system to make it easier to create and manage your slash commands.
+DiSky v4.19 introduces a brand-new way to create, register and handle slash commands, in an all-in-one way! It utilizes the new Skript structure system to make it easier to create and manage your slash commands.
 
 !!! danger ""
-    * Slash command registered via this system **are** compatible with the ["old" one](slash-commands.md), although mixing both systems is not recommended.
+    * The 'old' way to create slash commands (registering commands in `on ready` and using `on slash command` events) are sort of deprecated (although they won't be removed, they are not compatible with this new system).
     * This system is still in **beta**, meaning a lot of bugs can be expected. If you find any, please report them to our [GitHub](https://github.com/DiSkyOrg/DiSky)!
-    * Skript 2.8+ is required to use this system.
+    * Skript 2.10+ is required to use this system.
 
 ## Core Structure
 
@@ -31,30 +31,124 @@ You have two things to replace here:
 
 ### `{name}`
 
-This is the name of your slash command. It must be unique, and can only contain alphanumeric characters. Do not include the `/` prefix.
+This is the name of your slash command. It must be unique and can only contain alphanumeric characters. Do not include the `/` prefix. The name can have up to three parts to create command groups and subcommands (see Command Groups section below).
 
 ### `{arguments}`
 
-This is the list of arguments your slash command will have. It works the same as Skript's command arguments, but the only a few **types** are supported:
+This is the list of arguments your slash command will have. It works the same as Skript's command arguments, but only a few **types** are supported:
 
-| Type         | Description                                           |            Support Choices             |
-|--------------|-------------------------------------------------------|:--------------------------------------:|
-| `string`     | A simple text argument                                |   :material-check-bold:{ .correct }    |
-| `integer`    | An integer argument (`1`, `2`, `3`, ...)              |   :material-check-bold:{ .correct }    |
-| `number`     | An number argument (`6`, `3.14`, ...)                 |   :material-check-bold:{ .correct }    |
-| `user`       | A Discord user argument                               |  :material-close-thick:{ .incorrect }  |
-| `channel`    | A Discord channel argument (also includes categories) |  :material-close-thick:{ .incorrect }  |
-| `role`       | A Discord role argument                               |  :material-close-thick:{ .incorrect }  |
-| `boolean`    | A boolean argument (`true` or `false`)                |  :material-close-thick:{ .incorrect }  |
-| `attachment` | A file attachment argument                            |  :material-close-thick:{ .incorrect }  |
+| Type         | Description                                           | Support Choices            |
+|--------------|-------------------------------------------------------|:-------------------------:|
+| `string`     | A simple text argument                                | :material-check-bold:     |
+| `integer`    | An integer argument (`1`, `2`, `3`, ...)             | :material-check-bold:     |
+| `number`     | A number argument (`6`, `3.14`, ...)                 | :material-check-bold:     |
+| `user`       | A Discord user argument                              | :material-close-thick:    |
+| `channel`    | A Discord channel argument (also includes categories) | :material-close-thick:    |
+| `role`       | A Discord role argument                              | :material-close-thick:    |
+| `boolean`    | A boolean argument (`true` or `false`)               | :material-close-thick:    |
+| `attachment` | A file attachment argument                           | :material-close-thick:    |
 
 An argument format is `<type="name">`, and can be surrounded by `[]` to make it optional.
 
-!!! example "An optional user argument named `target`"
-    ```applescript
-    slash command level [<user="target">]:
-        # Entries
-    ```
+## Command Groups and Subcommands
+
+DiSky supports organizing commands into groups and subcommands using a space-separated naming convention. You can create up to three levels of command hierarchy:
+
+1. Base Command
+2. Subcommand Group (optional)
+3. Subcommand
+
+### Basic Subcommands
+
+To create a subcommand, use a space in the command name:
+
+```applescript
+slash command profile view [<user="target">]:
+    description: View a user's profile
+    bot: my_bot
+    
+    arguments:
+        target: The user whose profile you want to view
+    
+    trigger:
+        reply with "Viewing profile of %arg-1%"
+
+slash command profile edit:
+    description: Edit your profile
+    bot: my_bot
+
+    trigger:
+        reply with "Editing your profile..."
+```
+
+This creates two subcommands under the `profile` command:
+- `/profile view [user]`
+- `/profile edit`
+
+### Subcommand Groups
+
+You can organize related subcommands into groups using a three-part name:
+
+```applescript
+slash command settings roles add <role="role">:
+    description: Add a role
+    bot: my_bot
+    
+    arguments:
+        role: The role to add
+    
+    trigger:
+        reply with "Adding role..."
+
+slash command settings roles remove <role="role">:
+    description: Remove a role
+    bot: my_bot
+    
+    arguments:
+        role: The role to remove
+    
+    trigger:
+        reply with "Removing role..."
+
+slash command settings prefix set <string="new_prefix">:
+    description: Set the server prefix
+    bot: my_bot
+    
+    arguments:
+        new_prefix: The new prefix
+    
+    trigger:
+        reply with "Setting prefix to %arg-1%"
+```
+
+This creates:
+- A `settings` base command
+- Two subcommand groups: `roles` and `prefix`
+- Subcommands under these groups:
+  - `/settings roles add <role>`
+  - `/settings roles remove <role>`
+  - `/settings prefix set <text>`
+
+### Important Notes
+
+1. Command names at all levels must:
+   - Start with a letter
+   - Contain only letters, numbers, underscores, and hyphens
+   - Be in English and use ASCII characters only
+
+2. You can have up to:
+   - One base command (e.g., `settings`)
+   - One subcommand group (e.g., `roles`)
+   - One subcommand (e.g., `add`)
+
+3. The order of registration doesn't matter - DiSky will properly group related commands together.
+
+4. Each subcommand can have its own:
+   - Description
+   - Arguments
+   - Permissions
+   - Cooldowns
+   - Trigger code
 
 ## Entries
 
@@ -105,7 +199,7 @@ This will tell DiSky where and how to register your slash command:
 
 This is where you put the code that will be executed when the command is called:
 
-```applescript hl_lines="6-9"
+```applescript
 slash command level:
     description: Check your own level
 
@@ -117,25 +211,24 @@ slash command level:
         reply with hidden "You're level XXX!"
 ```
 
-### Arguments 
+### Arguments
 
 Although we defined the argument's type (and name) in the command's structure, we can add more details about them, such as the argument's description and choices. This entry takes argument's names as keys:
 
 #### Description
 
-```applescript hl_lines="4 5 6 7"
+```applescript
 slash command level [<user="target">]:
     description: Check your level
 
     arguments:
-        
         target: #(1)!
             description: The user to check the level of
 ```
 
 1. If you only provide a description, you can directly write it after the argument's name, like this:
 
-    ```applescript hl_lines="8"
+    ```applescript
     slash command level [<user="target">]:
         description: Check your level
    
@@ -148,12 +241,12 @@ slash command level [<user="target">]:
         trigger:
             reply with "Checking %mention tag of arg-1%'s level..."
     ```
-   
+
 #### Choices
 
 Choices are a way to limit the user's input to a list of predefined values. They are only available for `string`, `integer` and `number` arguments.
 
-```applescript hl_lines="11-15"
+```applescript
 slash command set_level <user="target"> [<integer="level">]:
     description: Change someone's level
     
@@ -174,13 +267,13 @@ slash command set_level <user="target"> [<integer="level">]:
         reply with "Changed %mention tag of arg-1%'s level to %arg-2%"
 ```
 
-In this example, the `level` argument will only accept `Level 1`, `Level 2` or `Level 3`, and `arg-1` will be replaced by the corresponding value (`1`, `2` or `3`).
+In this example, the `level` argument will only accept `Level 1`, `Level 2` or `Level 3`, and `arg-2` will be replaced by the corresponding value (`1`, `2` or `3`).
 
 #### Auto Completion
 
-If you want to provide auto-completion for your arguments, you can use the `on completion request` entry. The provided code will be ran when the user is typing the argument's value.
+If you want to provide auto-completion for your arguments, you can use the `on completion request` entry. The provided code will be run when the user is typing the argument's value.
 
-```applescript hl_lines="12-15"
+```applescript
 slash command set_level <user="target"> [<integer="level">]:
     description: Change someone's level
     
@@ -205,9 +298,9 @@ slash command set_level <user="target"> [<integer="level">]:
 
 ### Permissions
 
-You can restrict who can use your command by using the `enabled for` entry. It takes a list of permissions, and will only allow users with one of these permissions to use the command. In additions, you can set `true` to the `disabled` entry to disable the command to everyone except admins:
+You can restrict who can use your command by using the `enabled for` entry. It takes a list of permissions, and will only allow users with one of these permissions to use the command. In addition, you can set `true` to the `disabled` entry to disable the command to everyone except admins:
 
-```applescript hl_lines="6"
+```applescript
 slash command level:
     description: Check your own level
 
@@ -221,9 +314,9 @@ slash command level:
 
 ### Cooldown System
 
-DiSky offer a built-in cooldown system for slash commands. Cooldowns are per-user, and a specific code can be run when the user is on cooldown.
+DiSky offers a built-in cooldown system for slash commands. Cooldowns are per-user, and specific code can be run when the user is on cooldown.
 
-```applescript hl_lines="6-12"
+```applescript
 slash command level:
     description: Check your own level
 
@@ -241,4 +334,4 @@ slash command level:
         reply with hidden "You're level XXX!"
 ```
 
-1. The `on cooldown` section is run the same as a slash command event, and can be used to let specific users bypass the cooldown. Simply use `cancel event` to let the command execute normally!
+1. The `on cooldown` section runs the same as a slash command event and can be used to let specific users bypass the cooldown. Simply use `cancel event` to let the command execute normally!
