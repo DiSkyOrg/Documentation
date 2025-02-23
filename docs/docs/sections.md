@@ -259,3 +259,28 @@ No description provided.
     search [the] items (with|from) [the] input %string%
     ```
 
+## Find Members
+
+[[[ macros.required_version('4.14.3') ]]]
+
+Find member filter! It's a section that lets you filter by yourself the members you want to retrieve.
+Wants only members with a role, or specific nickname, that are not connected to a channel? You've got it!
+
+=== "Examples"
+
+    ```applescript
+    find members in event-guild and store them in {_members::*} with filter var {_m}:
+    # {_m} now contains the member to apply the filter to. For instance:
+       {_m} has discord role with id "XXX"
+       {_m} is muted
+       return true
+   
+    reply with "I have found %size of {_members::*}% that has the role and is muted!"
+    ```
+
+
+=== "Patterns"
+
+    ```applescript
+    find [the] [discord] member[s] (in|from) [guild] %guild% and store (them|the members) in %~objects% with filter var[iable] %~objects%
+    ```
