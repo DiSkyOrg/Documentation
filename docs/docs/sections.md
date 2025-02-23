@@ -22,6 +22,7 @@ Use 'the last row builder' expression (within the section) to change the values 
         add new danger button with id "test" named "Hello World" with reaction "smile" to the components of the row
         add new success button with id "test2" named "yuss" to the components of the row
     ```
+
 === "Patterns"
 
     ```applescript
@@ -32,7 +33,8 @@ Use 'the last row builder' expression (within the section) to change the values 
 
 [[[ macros.required_version('3.0') ]]]
 
-This builder allow you to make embed easily. You can specify the template used, you must register this template before use it!
+This builder allow you to make embed easily. You can specify the template used, you must register this template before
+use it!
 === "Examples"
 
     ```applescript
@@ -58,6 +60,7 @@ This builder allow you to make embed easily. You can specify the template used, 
     			set timestamp of embed to now
     		reply with last embed
     ```
+
 === "Patterns"
 
     ```applescript
@@ -70,54 +73,56 @@ This builder allow you to make embed easily. You can specify the template used, 
 
 Creates a rich message.
 A rich message can receive the following data:
- - Content
- - Embed[s] (default max is 1, webhooks can send up to 5)
- - Attachment(s) (supports images if SkImage is installed)
- - Components
-This will be used to both post & edit a message. 
-Simply change what you want and pass the result of the section to the edit effect.
-=== "Examples"
 
-    ```applescript
-    create a new message and store it in {_message}:
-        set the content of the message to "hello world"
-    
-    
-        # we create a new component row that'll hold multiple buttons
-        create a new row and store it in {_row}:
-    
-            add new danger button with id "test" named "Hello World" with reaction "smile" to the components of the row
-            add new success button with id "test2" named "yuss" to the components of the row
-        # we add the row containing two buttons
-        add {_row} to the rows of message
-            
-        # row with one button only
-        add new secondary button with id "test3" named "Another row!" to the rows of message
-    
-        set {_dp} to new dropdown with id "selector"
-        set min range of {_dp} to 1
-        set max range of {_dp} to 2
-        set placeholder of {_dp} to "Dropdown"
-        loop "one", "two" and "three":
-            add new option with value (loop-value) named "Value: %loop-value%" with description "Click to select" with reaction "sparkles" to options of {_dp}
-        add {_dp} to the rows of message
-    
-        make embed:
-            set title of embed to "hello there!"
-            set embed color of embed to red
-            set image of embed to "attachment://image1.png"
-        add last embed to the embeds of message
-    
-        # SkImage's image. Images are named as: 'imageX.png' where X is the attachment's index.
-        set {_image} to new image with size 500, 500
-        set {_font} to new font style with name "Arial Black" and with size 60
-        set {_text} to new text "Hello World" with color from rgb 255, 255, 255 with font {_font} centered vertically centered horizontally
-        draw {_text} at 0, 0 on {_image}
-    
-        add {_image} to attachments of message
-    
-    reply with {_message}
-    ```
+- Content
+- Embed[s] (default max is 1, webhooks can send up to 5)
+- Attachment(s) (supports images if SkImage is installed)
+- Components
+  This will be used to both post & edit a message.
+  Simply change what you want and pass the result of the section to the edit effect.
+  === "Examples"
+
+   ```applescript
+   create a new message and store it in {_message}:
+       set the content of the message to "hello world"
+   
+   
+       # we create a new component row that'll hold multiple buttons
+       create a new row and store it in {_row}:
+   
+           add new danger button with id "test" named "Hello World" with reaction "smile" to the components of the row
+           add new success button with id "test2" named "yuss" to the components of the row
+       # we add the row containing two buttons
+       add {_row} to the rows of message
+           
+       # row with one button only
+       add new secondary button with id "test3" named "Another row!" to the rows of message
+   
+       set {_dp} to new dropdown with id "selector"
+       set min range of {_dp} to 1
+       set max range of {_dp} to 2
+       set placeholder of {_dp} to "Dropdown"
+       loop "one", "two" and "three":
+           add new option with value (loop-value) named "Value: %loop-value%" with description "Click to select" with reaction "sparkles" to options of {_dp}
+       add {_dp} to the rows of message
+   
+       make embed:
+           set title of embed to "hello there!"
+           set embed color of embed to red
+           set image of embed to "attachment://image1.png"
+       add last embed to the embeds of message
+   
+       # SkImage's image. Images are named as: 'imageX.png' where X is the attachment's index.
+       set {_image} to new image with size 500, 500
+       set {_font} to new font style with name "Arial Black" and with size 60
+       set {_text} to new text "Hello World" with color from rgb 255, 255, 255 with font {_font} centered vertically centered horizontally
+       draw {_text} at 0, 0 on {_image}
+   
+       add {_image} to attachments of message
+   
+   reply with {_message}
+   ```
+
 === "Patterns"
 
     ```applescript
@@ -134,6 +139,7 @@ No description provided.
     ```applescript
     No examples provided.
     ```
+
 === "Patterns"
 
     ```applescript
@@ -156,6 +162,7 @@ At the end, the request will be sent to discord to update the welcome screen.
                 add channel with id "937001799896956991" named "Read our rules" with reaction "?" to the screen
                 add channel with id "952199041335316520" named "Get roles" with reaction "??" to the screen
     ```
+
 === "Patterns"
 
     ```applescript
@@ -172,6 +179,7 @@ No description provided.
     ```applescript
     No examples provided.
     ```
+
 === "Patterns"
 
     ```applescript
@@ -188,6 +196,7 @@ No description provided.
     ```applescript
     No examples provided.
     ```
+
 === "Patterns"
 
     ```applescript
@@ -205,6 +214,7 @@ No description provided.
     ```applescript
     No examples provided.
     ```
+
 === "Patterns"
 
     ```applescript
@@ -221,6 +231,7 @@ No description provided.
     ```applescript
     No examples provided.
     ```
+
 === "Patterns"
 
     ```applescript
@@ -237,6 +248,7 @@ No description provided.
     ```applescript
     No examples provided.
     ```
+
 === "Patterns"
 
     ```applescript
@@ -253,6 +265,7 @@ No description provided.
     ```applescript
     No examples provided.
     ```
+
 === "Patterns"
 
     ```applescript
@@ -264,20 +277,20 @@ No description provided.
 [[[ macros.required_version('4.14.3') ]]]
 
 Find member filter! It's a section that lets you filter by yourself the members you want to retrieve.
+
 Wants only members with a role, or specific nickname, that are not connected to a channel? You've got it!
 
 === "Examples"
 
     ```applescript
     find members in event-guild and store them in {_members::*} with filter var {_m}:
-    # {_m} now contains the member to apply the filter to. For instance:
-       {_m} has discord role with id "XXX"
-       {_m} is muted
-       return true
+        # {_m} now contains the member to apply the filter to. For instance:
+        {_m} has discord role with id "XXX"
+        {_m} is muted
+        return true
    
     reply with "I have found %size of {_members::*}% that has the role and is muted!"
     ```
-
 
 === "Patterns"
 
