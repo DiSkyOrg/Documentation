@@ -7,7 +7,7 @@ icon: material/sync
 [[[% import 'macros.html' as macros %]]]
 [[[ macros.required_version('4.18.0') ]]]
 
-## What is Asynchronous Operations?
+## What are Asynchronous Operations?
 
 DiSky is designed with native asynchronous functionality, which means that most of its operations are non-blocking and can be executed concurrently. This design ensures that interactions with Discord's API don't impede the Minecraft server's main thread, maintaining smooth gameplay and server performance.
 

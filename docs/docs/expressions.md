@@ -175,6 +175,28 @@ You can add sub-slash-commands to a group or a core slash-command, then add this
     [all] [the] %slashcommandgroup/slashcommand%'[s] sub[( |-)]command[s]
     ```
 
+## New Text Input
+
+[[[ macros.required_version('4.0.0') ]]]
+[[[ macros.return_type('textinput') ]]]
+
+Create a new text ("short" or "paragraph") input with the given ID, name (label) and a possible pre-filled value. You can find more information about those in the [modal page](../interactions/modals.md#creating-a-modal). Those components can **only be used within a modal**.
+
+=== "Examples"
+
+    ```applescript
+    set {_input} to new text input with id "description" named "Description"
+    set {_input} to required new short text input with id "description" named "Description" with the value "Hello world!" #(1)
+    ```
+
+    1. Once the modal opens, that input will be required and pre-filled with "Hello world!"
+
+=== "Patterns"
+
+    ```applescript
+    [a] [new] [(:required)] text[( |-)]input [with] [the] [id] %string% (named|with name) %string% [with [the] value %-string%]
+    [a] [new] [(:required)] short text[( |-)]input [with] [the] [id] %string% (named|with name) %string% [with [the] value %-string%]
+    ```
 ## New Button
 
 [[[ macros.required_version('4.0.0') ]]]
@@ -4050,3 +4072,145 @@ No description provided.
     [(multiple|list|array)] event-<.+>
     ```
 
+## Automod Alert Message ID
+
+[[[ macros.required_version('4.22.0') ]]]
+[[[ macros.return_type('string') ]]]
+
+Returns the alert message id sent to the alert channel.. This can only be used inside the automod execution event!
+
+=== "Examples"
+
+    ```applescript
+    set {_alertmessageid} to alert message id of event-automod
+    ```
+=== "Patterns"
+
+    ```applescript
+    alert message id
+    ```
+
+## Automod Alert Rule ID
+
+[[[ macros.required_version('4.22.0') ]]]
+[[[ macros.return_type('string') ]]]
+
+Returns the id of the AutoMod Rule which has been triggered. This can only be used inside the automod execution event!
+
+=== "Examples"
+
+    ```applescript
+    set {_ruleid} to rule id of event-automod
+    ```
+=== "Patterns"
+
+    ```applescript
+    rule id
+    ```
+
+## Automod Moderated User
+
+[[[ macros.required_version('4.22.0') ]]]
+[[[ macros.return_type('user') ]]]
+
+Returns the moderated user that triggered the automod. This can only be used inside the automod execution event!
+
+=== "Examples"
+
+    ```applescript
+    set {_moderateduser} to moderated user of event-automod
+    ```
+=== "Patterns"
+
+    ```applescript
+    moderated user
+    ```
+
+## Automod Message Content
+
+[[[ macros.required_version('4.22.0') ]]]
+[[[ macros.return_type('string') ]]]
+
+Returns the message content that triggered the automod. This can only be used inside the automod execution event!
+
+=== "Examples"
+
+    ```applescript
+    set {_messagecontent} to message content of event-automod
+    ```
+=== "Patterns"
+
+    ```applescript
+    message content
+    ```
+
+## Automod Matched Content
+
+[[[ macros.required_version('4.22.0') ]]]
+[[[ macros.return_type('string') ]]]
+
+Returns the substring match of the message content which triggered this rule. This can only be used inside the automod execution event!
+
+=== "Examples"
+
+    ```applescript
+    set {_matchedcontent} to matched content of event-automod
+    ```
+=== "Patterns"
+
+    ```applescript
+    matched content
+    ```
+
+## Automod Matched Keyword
+
+[[[ macros.required_version('4.22.0') ]]]
+[[[ macros.return_type('string') ]]]
+
+Returns the keyword that was found in the message content. This can only be used inside the automod execution event!
+
+=== "Examples"
+
+    ```applescript
+    set {_matchedkeyword} to matched keyword of event-automod
+    ```
+=== "Patterns"
+
+    ```applescript
+    matched keyword
+    ```
+
+## Automod Response
+
+[[[ macros.required_version('4.22.0') ]]]
+[[[ macros.return_type('string') ]]]
+
+Returns the automod response that has been triggered by this event. This can only be used inside the automod execution event!
+
+=== "Examples"
+
+    ```applescript
+    set {_automodresponse} to automod response of event-automod
+    ```
+=== "Patterns"
+
+    ```applescript
+    automod response
+    ```
+
+## Automod Action Type
+
+[[[ macros.required_version('4.22.0') ]]]
+[[[ macros.return_type('string') ]]]
+
+Returns the action type of the automod. This can only be used inside the automod execution event! [Click here to see the automod trigger action types.](https://disky.me/docs/guild/automod/#triggers)
+
+=== "Examples"
+    ```applescript
+    set {_automodaction} to automod action of event-automod
+    ```
+
+=== "Patterns"
+    ```applescript
+    automod action [type]
+    ```

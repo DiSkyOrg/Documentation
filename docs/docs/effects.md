@@ -650,6 +650,24 @@ Starting DiSky v4.14.3, you can use `reply with premium message` to reply with a
     reply with premium [required] message
     ```
 
+## Retrieve Webhooks
+
+[[[ macros.required_version('4.20.0') ]]] 
+
+Retrieve all webhooks from a specific channel or guild.
+
+=== "Examples"
+
+    ```applescript
+    retrieve webhooks from event-channel and store them in {_webhooks::*}
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    retrieve [the] webhook[s] (from|of) [the] [channel] %channel/textchannel/guild% and store (them|the webhook[s]) in %objects%
+    ```
+
 ## Retrieve Start Message
 
 [[[ macros.required_version('4.17.2') ]]]
@@ -1246,3 +1264,40 @@ Make the specified webhook client post a message to its channel. More informatio
     ```applescript
     make [the] [webhook] client %string% (post|send) [the] [message] %string/messagecreatebuilder/embedbuilder/messagepollbuilder% [with [the] username %-string%] [[and] [with] [the] avatar [url] %-string%] [and store (it|the message) in %-~objects%]
     ```
+
+## Post Voice Message 
+
+[[[ macros.required_version('4.22.0') ]]]
+
+Post a voice message to a message channel. The voice message must follow Discord's specific requirements:
+
+- WAV file format only
+- Duration between 1-60 seconds 
+- 48000Hz sample rate
+- Mono channel only
+- Maximum file size of 25MB
+
+=== "Examples"
+
+    ```applescript
+    discord command voicemsg:
+        prefixes: !
+        trigger:
+            post voice message "plugins/MyBot/voice.wav" to event-channel and store it in {_msg}
+            reply with "Voice message sent! %{_msg}%"
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    (post|dispatch) voice message %string% (in|to) [the] %channel% [(using|with) [the] [bot] %-bot%] [and store (it|the message) in %-objects%]
+    ```
+
+??? failure "Possible Errors"
+    - `FILE_NOT_FOUND`: The provided file path doesn't exist
+    - `INVALID_FORMAT`: The file is not a WAV file
+    - `FILE_TOO_LARGE`: The file exceeds Discord's 25MB limit
+    - `INVALID_SAMPLE_RATE`: The audio sample rate is not 48000Hz
+    - `INVALID_CHANNELS`: The audio is not mono (1 channel)
+    - `INVALID_DURATION`: The audio duration is not between 1-60 seconds
+    - `UNSUPPORTED_CHANNEL`: The channel doesn't support voice messages
