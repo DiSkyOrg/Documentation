@@ -2191,22 +2191,23 @@ Fired when a channel is deleted.
 
 [[[ macros.required_version('4.22.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
-Fired when an automated automod response has been triggered through an automod rule.
-=== "Patterns"
 
+Fired when an automated automod response has been triggered through an automod rule.
+
+=== "Patterns"
     ```applescript
     [discord] automod (execution|execute)
     ```
-=== "Examples"
 
+=== "Examples"
     ```applescript
     on automod execute:
     on automod execution:
     on discord automod execute:
     on discord automod execution:
     ```
-=== "Event Values"
 
+=== "Event Values"
     ```applescript
     event-channel
     event-guild

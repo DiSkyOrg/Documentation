@@ -4206,12 +4206,11 @@ Returns the automod response that has been triggered by this event. This can onl
 Returns the action type of the automod. This can only be used inside the automod execution event! [Click here to see the automod trigger action types.](https://disky.me/docs/guild/automod/#triggers)
 
 === "Examples"
-
     ```applescript
     set {_automodaction} to automod action of event-automod
     ```
-=== "Patterns"
 
+=== "Patterns"
     ```applescript
     automod action [type]
     ```
