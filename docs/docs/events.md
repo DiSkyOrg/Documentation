@@ -2175,7 +2175,7 @@ Fired when a channel is deleted.
 === "Examples"
 
     ```applescript
-    on channel dele:
+    on channel delete:
     on channel deletion:
     on discord channel delete:
     on discord channel deletion:
@@ -2185,4 +2185,30 @@ Fired when a channel is deleted.
     ```applescript
     event-channel
     event-guild
+    ```
+
+## On Automod Execution Event
+
+[[[ macros.required_version('4.22.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+Fired when an automated automod response has been triggered through an automod rule.
+=== "Patterns"
+
+    ```applescript
+    [discord] automod (execution|execute)
+    ```
+=== "Examples"
+
+    ```applescript
+    on automod execute:
+    on automod execution:
+    on discord automod execute:
+    on discord automod execution:
+    ```
+=== "Event Values"
+
+    ```applescript
+    event-channel
+    event-guild
+    event-automodresponse
     ```
