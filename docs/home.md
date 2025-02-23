@@ -38,7 +38,7 @@ icon: material/list-box
 
     Check out our **Modules** list for even more functionalities! Music? Transcripts? We got you covered!
 
-    [:octicons-arrow-right-24: Modules](modules/0-getting-started.md)
+    [:octicons-arrow-right-24: Modules](modules/getting-started)
 
 </div>
 
