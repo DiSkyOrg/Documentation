@@ -4,8 +4,8 @@ icon: material/view-module
 
 # Modules
 
-!!! warning
-Modules are in beta! Any feedback is appreciated, from both users & developers!
+!!! warning 
+    Modules are in beta! Any feedback is appreciated, from both users & developers!
 
 ## Introduction
 
@@ -24,3 +24,8 @@ You can take a look at the enabled & loaded modules through the `/disky modules`
 ## How to get them?
 
 Only one module is free to download & use for DiSky. The others are paid additions to DiSky, obtainable by subscribing to a Patreon account. The minimum tier is enough to have access to all available modules and their updates for one month.
+
+!!! success "How to download?"
+    Most modules are only available for **Patreons** of [ItsTheSky](https://www.patreon.com/itsthesky).
+
+    [Access Patreon-only Resources](https://resources.disky.me/resources/modules?premium){ .md-button }
