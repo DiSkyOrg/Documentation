@@ -7,7 +7,7 @@ icon: material/book
 !!! success "How to download?"
     BooSK is only available for **Patreons** of [ItsTheSky](https://www.patreon.com/itsthesky).
 
-    [Access Patreon-only Resources](https://resources.disky.me/resources/modules/4){ .md-button }
+    [Access Patreon-only Resources](https://resources.disky.me/resources/4){ .md-button }
 
 
 **BooSK** is another Skript addon made for **book** manipulation, from 1.16.X to latest version. It supports legacy and **[MiniMessage's formatting](https://docs.advntr.dev/minimessage/format.html)**, so you can make clickable links, gradients, hover effect and more.

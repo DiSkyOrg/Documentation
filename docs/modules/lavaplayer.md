@@ -11,7 +11,7 @@ LavaPlayer is a DiSky module that allows developers to implement music loading &
 !!! success "How to download?"
     LavaPLayer is only available for **Patreons** of [ItsTheSky](https://www.patreon.com/itsthesky).
 
-    [Access Patreon-only Resources](https://resources.disky.me/resources/modules/1){ .md-button }
+    [Access Patreon-only Resources](https://resources.disky.me/resources/1){ .md-button }
 
 * Download the latest version from the [**Patreon**](https://patreon.com/itsthesky) page.
 * Put the downloaded file in `/plugins/DiSky/modules/`

@@ -361,6 +361,7 @@ This will force the interaction to be acknowledge, you have 3 seconds to do so, 
 Keep in mind that replying in an interaction event will automatically defer the interaction, and therefore you don't need to defer it.
 If you need to wait more than 3 seconds use the and wait pattern
 An interaction can only be deferred once!
+
 === "Examples"
 
     ```applescript
@@ -697,6 +698,7 @@ If you want to get the **first** message (first != start), you can simply use th
 [[[ macros.required_version('4.0.0') ]]]
 
 No description provided.
+
 === "Examples"
 
     ```applescript
@@ -800,12 +802,16 @@ Retrieve the audit logs of a guild.
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve a member from a specific ID **and** a guild.  As a member is a guild-specific entity, you need to specify the guild where the member is located!
+
+!!! warning "We recommend using `await set {_member} to member with id ...` instead of this effect, as retrieving won't check the bot's cache."
+
 === "Examples"
 
     ```applescript
     retrieve member with id "329999814546817024" in event-guild and store it in {_m}
     ```
+
 === "Patterns"
 
     ```applescript
@@ -834,7 +840,9 @@ No description provided.
 
 Retrieve last X messages from a specific message channel.
 You can retrieve up to 100 last messages, others will be ignored.
-Don't forget to use 'purge' effect to delete a lot of messages the most enhanced way ever.
+
+!!! warning "If you plan on deleting the messages, use the [`purge`](#purge-messages) effect instead of deleting each message one by one!"
+
 === "Examples"
 
     ```applescript
@@ -936,11 +944,13 @@ Retrieve every members (and cache them) from a specific thread.
 
 Retrieve every threads (and cache them) from a specific guild.
 This effect will only get back the ACTIVE thread, and will pass on the archived ones.
+
 === "Examples"
 
     ```applescript
     retrieve all threads from event-guild and store them in {_threads::*}
     ```
+
 === "Patterns"
 
     ```applescript
@@ -951,18 +961,20 @@ This effect will only get back the ACTIVE thread, and will pass on the archived 
 
 [[[ macros.required_version('4.0.0') ]]]
 
-No description provided.
+Retrieve a user from a specific ID. 
+
+!!! warning "We recommend using `await set {_user} to user with id ...` instead of this effect, as retrieving won't check the bot's cache."
+
 === "Examples"
 
     ```applescript
-    retrieve user with id "6516165135165135213" from event-bot and store it in {_user}
-    retrieve user with id "6516165135165135213" from event-bot and store the user in {_user}
+    retrieve user with id "6516165135165135213" using event-bot and store the user in {_user}
     retrieve user with id "6516165135165135213" with event-bot and store it in {_user}
     ```
 === "Patterns"
 
     ```applescript
-    retrieve user (with|from) id %string% (from|with|of|in) %bot% and store (it|the user) in %-object%
+    retrieve user (with|from) id %string% [(with|using) [bot] %-bot%] and store (it|the user) in %~objects%
     ```
 
 ## Retrieve Event Value
@@ -1040,8 +1052,9 @@ Without any specified user, it will be the bot's self user that removes the emot
 [[[ macros.required_version('4.0.0') ]]]
 
 Timeout a member (temporal exclusion) for a specific duration and with an optional reason.
-You can either timeout UNTIL a specific date (Skript date), or FOR a specific timespan (Skript timespan).
+You can either time out UNTIL a specific date (Skript date), or FOR a specific timespan (Skript timespan).
 This also can be used to remove the current time out, if the bot has the permission to do so.
+
 === "Examples"
 
     ```applescript

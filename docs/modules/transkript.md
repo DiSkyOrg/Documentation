@@ -7,7 +7,7 @@ icon: material/script-text
 !!! success "How to download?"
     TranSkript is only available for **Patreons** of [ItsTheSky](https://www.patreon.com/itsthesky).
 
-    [Access Patreon-only Resources](https://resources.disky.me/resources/modules/9){ .md-button }
+    [Access Patreon-only Resources](https://resources.disky.me/resources/6){ .md-button }
 
 ## Overview
 

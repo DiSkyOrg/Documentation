@@ -28,4 +28,4 @@ Only one module is free to download & use for DiSky. The others are paid additio
 !!! success "How to download?"
     Most modules are only available for **Patreons** of [ItsTheSky](https://www.patreon.com/itsthesky).
 
-    [Access Patreon-only Resources](https://resources.disky.me/resources/modules?premium){ .md-button }
+    [Access Patreon-only Resources](https://resources.disky.me/resources?premium){ .md-button }

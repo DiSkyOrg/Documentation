@@ -24,7 +24,7 @@ icon: material/security-network
 
 ## Installation
 
-1. Download the DiSkyOAuth module from [DiSky Resources](https://resources.disky.me/)
+1. Download the DiSkyOAuth module from [DiSky Resources](https://resources.disky.me/resources/7)
 2. Place the JAR file in your `plugins/DiSky/modules` folder
 3. Restart your server
 4. Configure the module in `plugins/DiSky/modules/DiSkyOAuth/config.yml`
@@ -65,9 +65,10 @@ Before using the module, you need to create and configure a Discord application:
 ### Registering an OAuth Client
 
 ```applescript
-on load:
+# In your define bot structure:
+on ready:
     # Register the OAuth client with Discord credentials
-    register oauth client named "test" with id "YOUR_CLIENT_ID" with secret "YOUR_CLIENT_SECRET" with scopes "identify", "email", "guilds" using the bot named "disky"
+    register oauth client named "test" with id "YOUR_CLIENT_ID" with secret "YOUR_CLIENT_SECRET" with scopes "identify", "email", "guilds" using event-bot
 ```
 
 ### Creating an Authorization Flow

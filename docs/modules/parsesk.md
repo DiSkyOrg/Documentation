@@ -13,7 +13,7 @@ and make it so it won't execute the given code (and only parse it).
 !!! success "How to download?"
     ParseSK is only available for **Patreons** of [ItsTheSky](https://www.patreon.com/itsthesky).
 
-    [Access Patreon-only Resources](https://resources.disky.me/resources/modules/5){ .md-button }
+    [Access Patreon-only Resources](https://resources.disky.me/resources/5){ .md-button }
 
 !!! warning "This is a separate Plugin, not a Module!"
 

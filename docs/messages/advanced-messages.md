@@ -19,6 +19,14 @@ create a new message and store it in {_msg}:
 reply with {_msg}
 ```
 
+??? tip "Want to create a message based on an existing one? (since DiSky v4.22.1)"
+    Specify your message in the section code:
+
+    ```applescript
+    create a new message based on {_msg} and store it in {_newMsg}:
+        # do something with the new message
+    ```
+
 Once our message will be created, it will be stored in the `{_msg}` variable, then replied in the event channel. We'll reference our **message builder** within the section as `last message builder` (but `message` can also work!).
 
 ## Add a content
