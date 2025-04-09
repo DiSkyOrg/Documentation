@@ -138,7 +138,8 @@ nav:
       - 'Data Structures': docs/ds.md
       - 'Types': docs/types.md
       - 'Effects': docs/effects.md
-      - 'Events': docs/events.md
+      - 'Events (old)': docs/events.md
+      - 'Events (new)': docs/events-rework.md
       - 'Expressions': docs/expressions.md
       - 'Conditions': docs/conditions.md
       - 'Sections': docs/sections.md

@@ -26,6 +26,12 @@ The **Member** type represent a Discord account that is in a guild. It holds mor
 
 The **Guild** type represent a Discord server. It holds information like the name, icon, owner, and the members.
 
+### `message`
+
+The **Message** type represent a message sent in a channel. It holds information like the content, the author, and the channel it was sent in. It can also hold attachments, embeds, and reactions.
+
+Most actions about a message may only be done by its owner (e.g. edit), but some actions can be done by anyone (e.g. delete).
+
 ### `invite`
 
 Represent a Discord invitation to a guild. It always points to a channel (that is of course in the guild), and can have a limited number of uses, and an expiration date.
@@ -45,34 +51,50 @@ Represent a Discord invitation to a guild. It always points to a channel (that i
 
 The **Channel** type is the base type for all channels, and is used to represent a channel in Discord. For instance, it can be a voice or text channel from a guild, or a private channel.
 
-### `guildchannel` (extends [`channel`](#channel))
+### `messagechannel`
+
+The **MessageChannel** type is the base type for all channels that can hold messages or files. For instance, it can be a text channel, or a private channel.
+
+### `guildchannel`
 
 The **GuildChannel** type is the base type for all channels that are in a guild, and is used to represent a channel in Discord.
 
 !!! info
     Don't forget that, for Discord, a **category** is a channel too! Therefore, a category is a **GuildChannel**.
 
-### `audiochannel` (extends [`guildchannel`](#guildchannel-extends-channel))
+### `audiochannel`
 
 The **AudioChannel** type is the base type for all channels that are in a guild and can be used to play audio. For instance, it can be a voice channel, or a stage channel. It can't be a text channel.
 
-### `textchannel` (extends [`guildchannel`](#guildchannel-extends-channel))
+### `textchannel`
 
 The **TextChannel** is a concrete type that represents a text channel in Discord. It holds several messages, and can be used to send messages. They have a topic, slow mode, and can be marked as NSFW.
 
-### `voicechannel` (extends [`guildchannel`](#guildchannel-extends-channel))
+### `voicechannel`
 
 The **VoiceChannel** is a concrete type that represents a voice channel in Discord. It can be used to play audio, and can have a bitrate, user limit, and a region. People can join and leave the channel, and it can be used to move people from one channel to another.
 
-### `stagechannel` (extends [`guildchannel`](#guildchannel-extends-channel))
+### `stagechannel`
 
 The **StageChannel** is a concrete type that represents a stage channel in Discord.  It can be used to play audio, and can have a bitrate, user limit, and a region. People can join and leave the channel, and it can be used to move people from one channel to another.
 
-### `category` (extends [`guildchannel`](#guildchannel-extends-channel))
+### `newschannel`
+
+The **NewsChannel** is a concrete type that represents a news channel in Discord. It can be used to send messages, and can have a topic, slow mode, and can be marked as NSFW. It can also be followed by other channels.
+
+### `threadchannel`
+
+The **ThreadChannel** is a concrete type that represents a thread channel in Discord. It can be used to send messages, and can have a topic, slow mode, and can be marked as NSFW. It can also be archived or unarchived.
+
+### `forumchannel`
+
+The **ForumChannel** is a concrete type that represents a forum channel in Discord. It can be used to send messages, and can have a topic, slow mode, and can be marked as NSFW. It can also be archived or unarchived.
+
+### `category`
 
 The **Category** is a concrete type that represents a category in Discord. It can be used to organize channels, and can have a name, position, and a topic. One category can hold several channels, and one channel can only be in one category or none.
 
-### `privatechannel` (extends [`channel`](#channel))
+### `privatechannel`
 
 The **PrivateChannel** type is the base type for all channels that are private, and is used to represent a channel in Discord. For instance, it can be a private text channel, or a private voice channel.
 
