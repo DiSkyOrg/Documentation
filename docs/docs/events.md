@@ -2213,3 +2213,555 @@ Fired when an automated automod response has been triggered through an automod r
     event-guild
     event-automodresponse
     ```
+
+# Channel Update Events Documentation
+
+## On Channel Applied Tags Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a forum channel's applied tags are changed.
+
+=== "Examples"
+    ```applescript
+    on channel tags change:
+        broadcast "Tags changed in %event-channel%!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel [applied] tags (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel) **+ subtypes**
+    * [`event-bot`](../docs/types.md#bot)
+    * `[(current|new)] channel flags` - The new applied tags (as a list of string)
+    * `(old|previous|past) channel flags` - The old applied tags (as a list of string)
+
+## On Channel Archived Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a thread channel's archived status is changed.
+
+=== "Examples"
+    ```applescript
+    on channel archived change:
+        broadcast "Thread %event-channel% archived status changed to %event-boolean%!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel archived (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-boolean`](../docs/types.md#boolean) - The new archived status
+    * [`past event-boolean`](../docs/types.md#boolean) - The old archived status
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Archive Timestamp Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a thread channel's archive timestamp is changed.
+
+=== "Examples"
+    ```applescript
+    on channel archive timestamp change:
+        broadcast "Thread %event-channel% archive timestamp has been updated!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel archive timestamp (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-date`](../docs/types.md#date) - The new archive timestamp
+    * [`past event-date`](../docs/types.md#date) - The old archive timestamp
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Auto Archive Duration Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a thread channel's auto archive duration is changed.
+
+=== "Examples"
+    ```applescript
+    on channel auto-archive duration change:
+        broadcast "Thread %event-channel% auto-archive duration changed to %event-number% minutes!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel auto[( |-)]archive duration (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-number`](../docs/types.md#number) - The new auto archive duration (in minutes)
+    * [`past event-number`](../docs/types.md#number) - The old auto archive duration (in minutes)
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Bitrate Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a voice channel's bitrate is changed.
+
+=== "Examples"
+    ```applescript
+    on channel bitrate change:
+        broadcast "Voice channel %event-channel% bitrate changed to %event-number% bps!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel bitrate (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-number`](../docs/types.md#number) - The new bitrate
+    * [`past event-number`](../docs/types.md#number) - The old bitrate
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Default Layout Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a forum channel's default layout is changed.
+
+=== "Examples"
+    ```applescript
+    on channel default layout change:
+        broadcast "Forum channel %event-channel% layout changed!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel default layout (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-forumlayouttype`](../docs/types.md#forumlayouttype) - The new layout type
+    * [`past event-forumlayouttype`](../docs/types.md#forumlayouttype) - The old layout type
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Default Reaction Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a forum channel's default reaction is changed.
+
+=== "Examples"
+    ```applescript
+    on channel default reaction change:
+        broadcast "Forum channel %event-channel% default reaction changed!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel default reaction (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-emoji`](../docs/types.md#emoji) - The new default reaction
+    * [`past event-emoji`](../docs/types.md#emoji) - The old default reaction
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Default Sort Order Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a forum channel's default sort order is changed.
+
+=== "Examples"
+    ```applescript
+    on channel default sort order change:
+        broadcast "Forum channel %event-channel% sort order changed!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel default sort order (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-sortorder`](../docs/types.md#sortorder) - The new sort order
+    * [`past event-sortorder`](../docs/types.md#sortorder) - The old sort order
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Default Thread Slowmode Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a forum channel's default thread slowmode is changed.
+
+=== "Examples"
+    ```applescript
+    on channel default thread slowmode change:
+        broadcast "Forum channel %event-channel% default thread slowmode changed to %event-number% seconds!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel default thread slowmode (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-number`](../docs/types.md#number) - The new default thread slowmode (in seconds)
+    * [`past event-number`](../docs/types.md#number) - The old default thread slowmode (in seconds)
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Flags Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a channel's flags are changed.
+
+=== "Examples"
+    ```applescript
+    on channel flags change:
+        broadcast "Channel %event-channel% flags have been updated!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel flags (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-number`](../docs/types.md#number) - The new flags value
+    * [`past event-number`](../docs/types.md#number) - The old flags value
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Invitable Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a thread channel's invitable status is changed.
+
+=== "Examples"
+    ```applescript
+    on channel invitable change:
+        broadcast "Thread %event-channel% is now %event-boolean ? 'invitable' : 'not invitable'%!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel invitable (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-boolean`](../docs/types.md#boolean) - The new invitable status
+    * [`past event-boolean`](../docs/types.md#boolean) - The old invitable status
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Locked Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a thread channel's locked status is changed.
+
+=== "Examples"
+    ```applescript
+    on channel locked change:
+        broadcast "Thread %event-channel% is now %event-boolean ? 'locked' : 'unlocked'%!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel locked (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-boolean`](../docs/types.md#boolean) - The new locked status
+    * [`past event-boolean`](../docs/types.md#boolean) - The old locked status
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Name Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a channel's name is changed.
+
+=== "Examples"
+    ```applescript
+    on channel name change:
+        broadcast "Channel renamed from %past event-string% to %event-string%!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel name (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-string`](../docs/types.md#string) - The new channel name
+    * [`past event-string`](../docs/types.md#string) - The old channel name
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel NSFW Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a channel's NSFW status is changed.
+
+=== "Examples"
+    ```applescript
+    on channel nsfw change:
+        broadcast "Channel %event-channel% NSFW status changed to %event-boolean%!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel nsfw (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-boolean`](../docs/types.md#boolean) - The new NSFW status
+    * [`past event-boolean`](../docs/types.md#boolean) - The old NSFW status
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Parent Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a channel's parent category is changed.
+
+=== "Examples"
+    ```applescript
+    on channel parent change:
+        broadcast "Channel %event-channel% moved to a different category!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel parent (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-channel`](../docs/types.md#channel) - The new parent channel
+    * [`past event-channel`](../docs/types.md#channel) - The old parent channel
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Position Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a channel's position in the guild is changed.
+
+=== "Examples"
+    ```applescript
+    on channel position change:
+        broadcast "Channel %event-channel% position changed from %past event-number% to %event-number%!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel position (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-number`](../docs/types.md#number) - The new position
+    * [`past event-number`](../docs/types.md#number) - The old position
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Region Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a voice channel's region is changed.
+
+=== "Examples"
+    ```applescript
+    on channel region change:
+        broadcast "Voice channel %event-channel% region changed from %past event-string% to %event-string%!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel region (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-string`](../docs/types.md#string) - The new region
+    * [`past event-string`](../docs/types.md#string) - The old region
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Slowmode Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a channel's slowmode setting is changed.
+
+=== "Examples"
+    ```applescript
+    on channel slowmode change:
+        broadcast "Channel %event-channel% slowmode changed to %event-number% seconds!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel slowmode (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-number`](../docs/types.md#number) - The new slowmode setting (in seconds)
+    * [`past event-number`](../docs/types.md#number) - The old slowmode setting (in seconds)
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Topic Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a text channel's topic is changed.
+
+=== "Examples"
+    ```applescript
+    on channel topic change:
+        broadcast "Channel %event-channel% topic changed from '%past event-string%' to '%event-string%'!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel topic (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-string`](../docs/types.md#string) - The new topic
+    * [`past event-string`](../docs/types.md#string) - The old topic
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Type Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a channel's type is changed.
+
+=== "Examples"
+    ```applescript
+    on channel type change:
+        broadcast "Channel %event-channel% type changed!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel type (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-channeltype`](../docs/types.md#channeltype) - The new channel type
+    * [`past event-channeltype`](../docs/types.md#channeltype) - The old channel type
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel User Limit Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a voice channel's user limit is changed.
+
+=== "Examples"
+    ```applescript
+    on channel user limit change:
+        broadcast "Voice channel %event-channel% user limit changed to %event-number%!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel user limit (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-number`](../docs/types.md#number) - The new user limit
+    * [`past event-number`](../docs/types.md#number) - The old user limit
+    * [`event-bot`](../docs/types.md#bot)
+
+## On Channel Voice Status Update Event
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a voice channel's status (video or voice) is changed.
+
+=== "Examples"
+    ```applescript
+    on channel voice status change:
+        broadcast "Voice channel %event-channel% status changed!"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] channel voice status (change|update)
+    ```
+
+=== "Event Values"
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-channel`](../docs/types.md#channel)
+    * [`event-string`](../docs/types.md#string) - The new voice status type
+    * [`past event-string`](../docs/types.md#string) - The old voice status type
+    * [`event-bot`](../docs/types.md#bot)
