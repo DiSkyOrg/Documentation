@@ -17,10 +17,10 @@ icon: material/book
 
 ## Requirements
 
-- Skript `v2.3.X` or higher
-- Spigot/Paper `1.16.X` or higher
+- Skript `v2.10.X` or higher
+- ~~Spigot~~/Paper `1.16.X` or higher
 
-!!! warning "We do not support CraftBukkit or any other fork that are not based on paper/spigot!"
+!!! warning "We do not support CraftBukkit or any other fork that are not based on Paper! Spigot will soon be dropped as well."
 
 ??? danger "Information related to Skript's manipulation"
     BooSK will change Skript's code using reflection, more specifically the `open book` effect (for obvious reasons).

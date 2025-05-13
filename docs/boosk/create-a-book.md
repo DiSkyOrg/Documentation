@@ -55,7 +55,7 @@ add "I am a <hover:show_text:'&cI am a hover effect!'>hover effect</hover>!" to 
 You can finally open the book to one or more players, using the following effect:
     
 ```applescript
-open book {_book} to player
+open boosk {_book} to player
 ```
 
 ## Result
