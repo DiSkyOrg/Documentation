@@ -63,7 +63,7 @@ SkImage2 uses a powerful 'text format' system, therefore you can easily change t
     ```
 
 === "Result"
-    ![text.png](../images/text-1.png)
+    ![text.png](../images_files/text-1.png)
 
 As you can see here, you can use `$` to change the color of the text (using Minecraft's color codes, or HEX codes), and `%nl%` to create a new line. Also, you can specify either the vertical or horizontal alignment of the text.
 
@@ -74,7 +74,7 @@ draw {_text} on {_graphics} at 0, 0
 ```
 
 !!! info
-    If you center the text, the input position will be considered as 'offset' from the center of the text.
+    If you **center the text**, the input position will be considered as 'offset' from the center of the text.
 
     Therefore, if you want your text perfectly centered, you'll have to set 0, 0 for the position when drawing the text!
 
@@ -104,5 +104,5 @@ The format is `$#000000` where `000000` is the HEX code.
 !!! note
     For drawing text with semi-transparent colors, you need:
     
-    * An image with RGBA format (see [image types](../images.md#loading-or-creating-an-image) for more information)
+    * An image with RGBA format (see [image types](../images/images.md#loading-or-creating-an-image) for more information)
     * The proper composite effect set (see [composite effects](customizations.md#composite-effects) for details)

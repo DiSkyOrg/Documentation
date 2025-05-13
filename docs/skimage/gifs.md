@@ -89,4 +89,4 @@ Let's create a gif that will display a random color every second. It'll contain 
     ```
 
 === "Result"
-    ![Gif](images/gif.gif) 
+    ![Gif](images_files/gif.gif) 

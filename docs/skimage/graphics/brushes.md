@@ -9,7 +9,7 @@ Instead of simple colors, you can use brushes to create more complex fills for y
 !!! note
     For drawing with semi-transparent colors using brushes, you need:
     
-    * An image with RGBA format (see [image types](../images.md#loading-or-creating-an-image) for more information)
+    * An image with RGBA format (see [image types](../images/images.md#loading-or-creating-an-image) for more information)
     * The proper composite effect set (see [composite effects](customizations.md#composite-effects) for details)
 
 ## Solid Color Brush

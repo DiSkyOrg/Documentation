@@ -148,8 +148,10 @@ nav:
           - 'TranSkript': docs/transkript.md
   - 'SkImage2':
       - 'Getting Started': skimage/getting-started.md
-      - 'Working with Images': skimage/images.md
       - 'GIFs': skimage/gifs.md
+      - 'Working with Images':
+          - 'Manipulation': skimage/images/images.md
+          - 'Image Effects': skimage/images/effects.md
       - 'Drawing (2D Graphics)':
           - 'Graphics Management': skimage/graphics/graphics.md
           - 'Customizations': skimage/graphics/customizations.md

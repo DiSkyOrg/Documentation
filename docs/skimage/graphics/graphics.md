@@ -54,35 +54,35 @@ For these example, we'll have a blank (transparent) image of 100x100 pixels. Als
     set {_shape} to new rectangle with width 80 and height 80 and color yellow
     ```
 
-    ![rectangle.png](../images/shape-1.png)
+    ![rectangle.png](../images_files/shape-1.png)
 
 === "Rounded rectangle"
     ```applescript
     new rounded rectangle with width 80 and height 80 and arc width 10 and arc height 10 and color yellow
     ```
 
-    ![rounded-rectangle.png](../images/shape-2.png)
+    ![rounded-rectangle.png](../images_files/shape-2.png)
 
 === "Arc"
     ```applescript
     set {_shape} to new arc with width 100 and height 100 and start angle 0 and arc angle 90 and color yellow
     ```
 
-    ![arc.png](../images/shape-3.png)
+    ![arc.png](../images_files/shape-3.png)
 
 === "Line"
     ```applescript
     set {_shape} to new line going to 90, 90 and color yellow
     ```
 
-    ![line.png](../images/shape-4.png)
+    ![line.png](../images_files/shape-4.png)
 
 === "Polygon"
     ```applescript
     set {_shape} to new polygon with x points (50, 20, 80, 50, 20, 50) and y points (20, 80, 80, 100, 80, 80) and color yellow
     ```
 
-    ![polygon.png](../images/shape-5.png)
+    ![polygon.png](../images_files/shape-5.png)
 
 ### Images
 
@@ -95,5 +95,5 @@ draw {_image} on {_graphics} at 0, 0
 !!! note
     For drawing with semi-transparent colors, you need:
     
-    * An image with RGBA format (see [image types](../images.md#loading-or-creating-an-image) for more information)
+    * An image with RGBA format (see [image types](../images/images.md#loading-or-creating-an-image) for more information)
     * The proper composite effect set (see [composite effects](customizations.md#composite-effects) for details)

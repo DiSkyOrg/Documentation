@@ -8,7 +8,7 @@ icon: material/tune
 
 Anti-aliasing is a technique used to make the edges of shapes smoother:
 
-![anti-aliases.png](../images/anti-aliases.png)
+![anti-aliases.png](../images_files/anti-aliases.png)
 
 __It is disabled by default.__ If you wish to enable it for both shapes & text, you can simply set the property to true, for instance:
 
@@ -41,21 +41,21 @@ Here's some example code when drawing a rectangle: (anti-aliasing is enabled)
     set stroke of {_graphics} to new stroke with width 5
     ```
     
-    ![stroke-1.png](../images/stroke-1.png)
+    ![stroke-1.png](../images_files/stroke-1.png)
 
 === "Width of 5, Dashed"
     ```applescript
     set stroke of {_graphics} to new basic stroke with width 5 and miter limit 10 and dash array (2, 7) and dash phase 0
     ```
 
-    ![stroke-2.png](../images/stroke-2.png)
+    ![stroke-2.png](../images_files/stroke-2.png)
 
 === "Width of 5, Dashed, Rounded"
     ```applescript
     set stroke of {_graphics} to new basic stroke with width 5 and cap "round" and join "round" and dash array (2, 7) and dash phase 0
     ```
 
-    ![stroke-3.png](../images/stroke-3.png)
+    ![stroke-3.png](../images_files/stroke-3.png)
 
 ## Composite Effects
 
@@ -107,7 +107,7 @@ draw filled shape (new circle with radius 50 and color black) on {_graphics} at 
     1. Your image must be created with RGBA support (use `TYPE_INT_ARGB` - type 1 when creating images)
     2. The composite effect needs to be set appropriately for the desired blending
     
-    See [image types](../images.md#loading-or-creating-an-image) for more information on creating images with transparency support.
+    See [image types](../images/images.md#loading-or-creating-an-image) for more information on creating images with transparency support.
 
 ### When to Use Different Composites
 
