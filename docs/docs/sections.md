@@ -77,51 +77,43 @@ A rich message can receive the following data:
 - Content
 - Embed[s] (default max is 1, webhooks can send up to 5)
 - Attachment(s) (supports images if SkImage is installed)
-- Components
-  This will be used to both post & edit a message.
-  Simply change what you want and pass the result of the section to the edit effect.
-  === "Examples"
+  - Components
+    This will be used to both post & edit a message.
+    Simply change what you want and pass the result of the section to the edit effect.
+    === "Examples"
 
-   ```applescript
-   create a new message and store it in {_message}:
-       set the content of the message to "hello world"
-   
-   
-       # we create a new component row that'll hold multiple buttons
-       create a new row and store it in {_row}:
-   
-           add new danger button with id "test" named "Hello World" with reaction "smile" to the components of the row
-           add new success button with id "test2" named "yuss" to the components of the row
-       # we add the row containing two buttons
-       add {_row} to the rows of message
-           
-       # row with one button only
-       add new secondary button with id "test3" named "Another row!" to the rows of message
-   
-       set {_dp} to new dropdown with id "selector"
-       set min range of {_dp} to 1
-       set max range of {_dp} to 2
-       set placeholder of {_dp} to "Dropdown"
-       loop "one", "two" and "three":
-           add new option with value (loop-value) named "Value: %loop-value%" with description "Click to select" with reaction "sparkles" to options of {_dp}
-       add {_dp} to the rows of message
-   
-       make embed:
-           set title of embed to "hello there!"
-           set embed color of embed to red
-           set image of embed to "attachment://image1.png"
-       add last embed to the embeds of message
-   
-       # SkImage's image. Images are named as: 'imageX.png' where X is the attachment's index.
-       set {_image} to new image with size 500, 500
-       set {_font} to new font style with name "Arial Black" and with size 60
-       set {_text} to new text "Hello World" with color from rgb 255, 255, 255 with font {_font} centered vertically centered horizontally
-       draw {_text} at 0, 0 on {_image}
-   
-       add {_image} to attachments of message
-   
-   reply with {_message}
-   ```
+     ```applescript
+    create a new message and store it in {_msg}:
+      set the content of the message to "Hello World!"
+
+      make embed:
+          set title of embed to "Amazing embeds :D"
+          set embed color of embed to orange
+          set footer of embed to "Created with DiSky v4!"
+      add last embed to the embeds of the message
+
+      add "plugins/Skript/scripts/msg.sk" to the attachments of the message
+
+      # simple button that'll take one row for itself
+      add new danger button with id "btn-1" named "RDR II" to rows of the message 
+      # mutliple buttons within the same row
+      make new component row and store it in {_row}:
+          add new success button with id "btn-2" named "Green lands!" with reaction "smile" to components of the row builder
+          add new link button with id "https://forum.itsthesky.info/discord/" named "DiSky's Discord" to components of the row builder
+      add {_row} to rows of the message
+
+      # dropdown/select menu
+      set {_dp} to new dropdown with id "selector"
+      set min range of {_dp} to 1
+      set max range of {_dp} to 2
+      set placeholder of {_dp} to "Dropdown"
+      add new option with value "one" named "One!" with description "Click to select" with reaction "sparkles" to options of {_dp}
+      add new option with value "two" named "Two!?" with description "Click to select" with reaction "sparkles" to options of {_dp}
+      add new option with value "three" named "THREE!!!" with description "Click to select" with reaction "sparkles" to options of {_dp}
+      add {_dp} to the rows of message
+
+    reply with {_msg}
+     ```
 
 === "Patterns"
 
