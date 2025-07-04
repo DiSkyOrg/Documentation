@@ -134,6 +134,7 @@ nav:
       - 'LavaPlayer': modules/lavaplayer.md
       - 'TranSkript': modules/transkript.md
       - 'Webhooks': modules/webhooks.md
+      - 'ConsoleLogs': modules/consolelogs.md
   - 'Documentation':
       - 'Data Structures': docs/ds.md
       - 'Types': docs/types.md
@@ -146,6 +147,7 @@ nav:
       - 'Modules':
           - 'LavaPlayer': docs/lavaplayer.md
           - 'TranSkript': docs/transkript.md
+          - 'ConsoleLogs': docs/consolelogs.md
   - 'SkImage2':
       - 'Getting Started': skimage/getting-started.md
       - 'GIFs': skimage/gifs.md
