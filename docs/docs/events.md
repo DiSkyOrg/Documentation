@@ -6,6 +6,8 @@ icon: material/check-all
 
 [[[% import 'macros.html' as macros %]]]
 
+!!! danger "Those events will only work with **DiSky v4.22.1** or lower!"
+
 ## Information: Retrieve-Values
 
 For some event, you can see a `retrieve values` section. Some values are given by Discord directly, and others needs another **request** to Discord to get the value (those are in as `retrieve values`).

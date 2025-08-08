@@ -1,5 +1,4 @@
 ---
-status: updated
 icon: material/key-chain
 ---
 

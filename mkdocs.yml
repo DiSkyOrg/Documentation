@@ -98,6 +98,14 @@ nav:
           - 'Asynchronous': concepts/async.md
           - 'Listen Once': concepts/listen-once.md
           - 'Rate Limits': concepts/ratelimit.md
+      - 'Interactions':
+          - 'Components V2': interactions/componentsv2.md
+          - 'Context Structure': interactions/context-structure.md
+          - 'Slash Structure': interactions/slash-structure.md
+          - 'Components': interactions/components.md
+          - 'Slash Commands': interactions/slash-commands.md
+          - 'Modals': interactions/modals.md
+          - 'Select Menus': interactions/selectmenu-dropdown.md
       - 'Bot':
           - 'Cache Policy & Flags': bot/policy.md
           - 'Presence & Status': bot/presence-and-status.md
@@ -108,6 +116,7 @@ nav:
             - 'Simple Messages': messages/simple-messages.md
             - 'Advanced Messages': messages/advanced-messages.md
             - 'Emojis': messages/emojis.md
+            - 'File Uploads': messages/file-uploads.md
             - 'Message Wrapper': messages/message-wrapper.md
             - 'Webhooks': messages/webhooks.md
             - 'Polls': messages/polls.md
@@ -117,13 +126,8 @@ nav:
           - 'Logs': guild/logs-manipulation.md
           - 'Forums': guild/forums.md
           - 'Welcome Screen': guild/guild-welcome-screen.md
-      - 'Interactions':
-            - 'Context Structure': interactions/context-structure.md
-            - 'Slash Structure': interactions/slash-structure.md
-            - 'Components': interactions/components.md
-            - 'Slash Commands': interactions/slash-commands.md
-            - 'Modals': interactions/modals.md
-            - 'Select Menus': interactions/selectmenu-dropdown.md
+      - 'Migrations':
+            - 'From DiSky v4.2X to v4.24': migrations/disky-v4-24.md
   - 'Examples':
       - 'Core': examples/core.md
       - 'Components': examples/components.md
@@ -158,6 +162,7 @@ nav:
           - 'Graphics Management': skimage/graphics/graphics.md
           - 'Customizations': skimage/graphics/customizations.md
           - 'Brushes': skimage/graphics/brushes.md
+          - 'Shape Effects': skimage/graphics/shape-effects.md
           - 'Texts': skimage/graphics/texts.md
   - 'BooSK':
       - 'Getting Started': boosk/getting-started.md

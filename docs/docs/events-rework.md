@@ -6,6 +6,8 @@ icon: material/check-all
 
 [[[% import 'macros.html' as macros %]]]
 
+!!! danger "Those events will only work with **DiSky v4.22.2** or higher!"
+
 ## Information: Retrieve-Values
 
 For some event, you can see a `retrieve values` section. Some values are given by Discord directly, and others needs another **request** to Discord to get the value (those are in as `retrieve values`).
@@ -23,7 +25,7 @@ For some event, you can see a `retrieve values` section. Some values are given b
 
 ## Bot Join Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the bot joins a new guild/server.
@@ -47,7 +49,7 @@ such as adding default roles, sending welcome messages, or initializing server-s
 
 ## Bot Leave Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the bot leaves a guild/server.
@@ -71,7 +73,7 @@ either by being kicked, the server being deleted, or the bot owner removing it m
 
 ## Bot Shutdown Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a bot is shutting down or being stopped.
@@ -95,7 +97,7 @@ It provides an opportunity to perform cleanup operations or save data before the
 
 ## Guild Ready Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a guild is fully loaded and all its data is accessible.
@@ -120,7 +122,7 @@ like members, channels, and roles have been loaded and are available for use.
 
 ## Bot Ready Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a bot is fully loaded and connected to Discord.
@@ -154,7 +156,7 @@ Refer to individual event documentation for more details.
 
 ### Slash Command
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user execute a specific slash command.
@@ -194,7 +196,7 @@ You can get value of arguments using 'argument "name" as string' for example.
 
 ### Message Command
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when someone click on a message application command.
@@ -235,7 +237,7 @@ Use `used command` to get the command name and `target message` for the targeted
 
 ### User Command
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when someone click on a user application command.
@@ -275,7 +277,7 @@ Use `used command` to get the command name and `target user` for the targeted us
 
 ### Slash Command Completion Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when Discord requests argument autocompletion for a slash command.
@@ -315,6 +317,174 @@ You can access the focused argument with 'current argument' and other argument v
     * [`event-string`](../docs/types.md#string)
 
 
+## Guild Sticker Events
+
+Events related to guild stickers.
+These events are triggered when certain actions occur with stickers, such as creation, deletion, or updates.
+
+!!! warning "For those events to work, the [`sticker` cache flag](https://disky.me/docs/bot/policy/#available-cache-flags) and `guild expressions` intent."
+
+### Guild Sticker Add
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when someone or something adds a sticker to a guild.
+
+=== "Examples"
+    ```applescript
+    on guild sticker add:
+    send "New sticker added in %event-guild%: %event-sticker%" to console
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] guild sticker add[ed] [seen by %-string%]
+    ```
+
+=== "Event Values"
+    * `sticker id` - Returns a `string`.
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-guildsticker`](../docs/types.md#guildsticker)
+
+=== "REST/Retrieve Event Values"
+
+    !!! info "Check the [retrieve values docs](#information-retrieve-values)!"
+
+    * `author`
+
+
+### Guild Sticker Remove
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when someone or something removes a sticker from a guild
+
+=== "Examples"
+    ```applescript
+    on guild sticker remove:
+    broadcast "%event-user% removed %event-sticker% from %event-guild%"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] guild sticker remove[d] [seen by %-string%]
+    ```
+
+=== "Event Values"
+    * `sticker id` - Returns a `string`.
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-guildsticker`](../docs/types.md#guildsticker)
+
+=== "REST/Retrieve Event Values"
+
+    !!! info "Check the [retrieve values docs](#information-retrieve-values)!"
+
+    * `sticker`
+    * `author`
+
+
+### Guild Sticker Description Update
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when the Description of a sticker is updated.
+
+=== "Examples"
+    ```applescript
+    on guild sticker Description update:
+    broadcast "Description of %event-sticker% changed! %old description% -> %new description%"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] guild sticker description update[d] [seen by %-string%]
+    ```
+
+=== "Event Values"
+    * `[(new|current)] description` - Returns a `string`.
+    * `(old|past|previous) description` - Returns a `string`.
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-guildsticker`](../docs/types.md#guildsticker)
+
+
+### Guild Sticker Name Update
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when the Name of a sticker is updated.
+
+=== "Examples"
+    ```applescript
+    on guild sticker Name update:
+    broadcast "Name of %event-sticker% changed! %old name% -> %new name%"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] guild sticker name update[d] [seen by %-string%]
+    ```
+
+=== "Event Values"
+    * `[(new|current)] name` - Returns a `string`.
+    * `(old|past|previous) name` - Returns a `string`.
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-guildsticker`](../docs/types.md#guildsticker)
+
+
+### Guild Sticker Available State Update
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when the Available State of a sticker is updated.
+
+=== "Examples"
+    ```applescript
+    on guild sticker Available State update:
+    broadcast "Available State of %event-sticker% changed! %old available state% -> %new available state%"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] guild sticker available state update[d] [seen by %-string%]
+    ```
+
+=== "Event Values"
+    * `[(new|current)] available state` - Returns a `boolean`.
+    * `(old|past|previous) available state` - Returns a `boolean`.
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-guildsticker`](../docs/types.md#guildsticker)
+
+
+### Guild Sticker Tags Update
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when the tags of a sticker is updated.
+
+=== "Examples"
+    ```applescript
+    on guild sticker tags update:
+    broadcast "Tags of %event-sticker% changed! %old tags% -> %new tags%"
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] guild sticker tags update[d] [seen by %-string%]
+    ```
+
+=== "Event Values"
+    * `[(new|current)] tags` - Returns a list of `string`.
+    * `(old|past|previous) tags` - Returns a list of `string`.
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-guildsticker`](../docs/types.md#guildsticker)
+
+
 ## Channel Events
 
 These events are fired when a channel is created, deleted, or updated.
@@ -322,7 +492,7 @@ This include all types of channels, including text, voice, forum, private, ... c
 
 ### Channel Create Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel is created.
@@ -355,7 +525,7 @@ Fired when a channel is created.
 
 ### Channel Delete Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel is deleted.
@@ -388,7 +558,7 @@ Fired when a channel is deleted.
 
 ### Channel Name Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel's name is changed.
@@ -423,7 +593,7 @@ Fired when a channel's name is changed.
 
 ### Channel Topic Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel's topic is changed.
@@ -458,7 +628,7 @@ Fired when a channel's topic is changed.
 
 ### Channel NSFW Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel's NSFW status is changed.
@@ -493,7 +663,7 @@ Fired when a channel's NSFW status is changed.
 
 ### Channel Position Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel's position is changed.
@@ -528,7 +698,7 @@ Fired when a channel's position is changed.
 
 ### Channel Parent Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel's parent category is changed.
@@ -563,7 +733,7 @@ Fired when a channel's parent category is changed.
 
 ### Channel Slowmode Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel's slowmode setting is changed.
@@ -598,7 +768,7 @@ Fired when a channel's slowmode setting is changed.
 
 ### Channel Type Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel's type is changed.
@@ -633,7 +803,7 @@ Fired when a channel's type is changed.
 
 ### Channel User Limit Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a voice channel's user limit is changed.
@@ -668,7 +838,7 @@ Fired when a voice channel's user limit is changed.
 
 ### Channel Bitrate Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a voice channel's bitrate is changed.
@@ -703,7 +873,7 @@ Fired when a voice channel's bitrate is changed.
 
 ### Channel Region Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a voice channel's region is changed.
@@ -738,7 +908,7 @@ Fired when a voice channel's region is changed.
 
 ### Channel Voice Status Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a voice channel's status (video or voice) is changed.
@@ -773,7 +943,7 @@ Fired when a voice channel's status (video or voice) is changed.
 
 ### Channel Applied Tags Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a forum channel's applied tags are changed.
@@ -808,7 +978,7 @@ Fired when a forum channel's applied tags are changed.
 
 ### Channel Archived Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a thread channel's archived status is changed.
@@ -843,7 +1013,7 @@ Fired when a thread channel's archived status is changed.
 
 ### Channel Archive Timestamp/Date Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a thread channel's archive timestamp is changed.
@@ -878,7 +1048,7 @@ Fired when a thread channel's archive timestamp is changed.
 
 ### Channel Auto Archive Duration Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a thread channel's auto archive duration is changed.
@@ -913,7 +1083,7 @@ Fired when a thread channel's auto archive duration is changed.
 
 ### Channel Default Layout Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a forum channel's default layout is changed.
@@ -948,7 +1118,7 @@ Fired when a forum channel's default layout is changed.
 
 ### Channel Default Reaction Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a forum channel's default reaction is changed.
@@ -983,7 +1153,7 @@ Fired when a forum channel's default reaction is changed.
 
 ### Channel Default Sort Order Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a forum channel's default sort order is changed.
@@ -1018,7 +1188,7 @@ Fired when a forum channel's default sort order is changed.
 
 ### Channel Default Thread Slowmode Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a forum channel's default thread slowmode is changed.
@@ -1053,7 +1223,7 @@ Fired when a forum channel's default thread slowmode is changed.
 
 ### Channel Flags Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a channel's flags are changed.
@@ -1088,7 +1258,7 @@ Fired when a channel's flags are changed.
 
 ### Channel Invitable Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a thread channel's invitable status is changed.
@@ -1123,7 +1293,7 @@ Fired when a thread channel's invitable status is changed.
 
 ### Channel Locked Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a thread channel's locked status is changed.
@@ -1156,6 +1326,111 @@ Fired when a thread channel's locked status is changed.
     * [`event-forumchannel`](../docs/types.md#forumchannel)
 
 
+## Guild Emoji Events
+
+Events related to guild emojis.
+These events are triggered when certain actions occur with emojis, such as creation, deletion, or updates.
+
+!!! warning "For those events to work, the [`emoji` cache flag](https://disky.me/docs/bot/policy/#available-cache-flags) and `guild expressions` intent."
+
+### Emoji Add
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when a new emoji is added to a guild.
+
+=== "Examples"
+    ```applescript
+    on guild sticker add:
+    send "New sticker added in %event-guild%: %event-sticker%" to console
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] emoji add[ed] [seen by %-string%]
+    ```
+
+=== "Event Values"
+    * `managed [state]` - Returns a `boolean`.
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-emote`](../docs/types.md#emote)
+
+
+### Emoji Remove
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when an emoji is removed from a guild.
+
+=== "Examples"
+    ```applescript
+    on guild sticker remove:
+    send "Sticker %event-sticker% removed from %event-guild%" to console
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] emoji remove[d] [seen by %-string%]
+    ```
+
+=== "Event Values"
+    * `managed [state]` - Returns a `boolean`.
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-emote`](../docs/types.md#emote)
+
+
+### Emoji Roles Update
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when the roles of an emoji are updated.
+
+=== "Examples"
+    ```applescript
+    on guild sticker roles update:
+    send "Sticker %event-sticker% roles updated in %event-guild%" to console
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] emoji roles update[d] [seen by %-string%]
+    ```
+
+=== "Event Values"
+    * `[(new|current)] roles` - Returns a list of `role`.
+    * `(old|past|previous) roles` - Returns a list of `role`.
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-emote`](../docs/types.md#emote)
+
+
+### Emoji Name Update
+
+[[[ macros.required_version('4.23.0') ]]]
+[[[ macros.is_cancellable('No') ]]]
+
+Fired when the name of an emoji is updated.
+
+=== "Examples"
+    ```applescript
+    on guild sticker name update:
+    send "Sticker %event-sticker% name updated in %event-guild%" to console
+    ```
+
+=== "Patterns"
+    ```applescript
+    [discord] emoji name update[d] [seen by %-string%]
+    ```
+
+=== "Event Values"
+    * `[(new|current)] name` - Returns a `string`.
+    * `(old|past|previous) name` - Returns a `string`.
+    * [`event-guild`](../docs/types.md#guild)
+    * [`event-emote`](../docs/types.md#emote)
+
+
 ## Role Events
 
 These events are triggered when a role is created, deleted, or updated in a Discord server.
@@ -1164,7 +1439,7 @@ These events are useful for tracking changes to roles, managing permissions, and
 
 ### Role Create Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a new role is created in a guild.
@@ -1189,7 +1464,7 @@ It's useful for tracking administrative changes or implementing role management 
 
 ### Role Delete Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a role is deleted from a guild.
@@ -1214,7 +1489,7 @@ It can be used for auditing purposes or to trigger cleanup actions in your bot.
 
 ### Role Color Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the color of a role changes.
@@ -1241,7 +1516,7 @@ It can be used for tracking aesthetic changes to roles or for synchronization sy
 
 ### Role Name Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the name of a role changes.
@@ -1268,7 +1543,7 @@ It's useful for tracking role identity changes or updating external systems that
 
 ### Role Hoisted Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the hoisted status of a role changes.
@@ -1299,7 +1574,7 @@ It's useful for tracking changes to role visibility in the member sidebar.
 
 ### Role Icon Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the icon of a role changes.
@@ -1326,7 +1601,7 @@ It can be used for tracking visual changes to roles or updating external systems
 
 ### Role Position Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the position of a role changes in the role hierarchy.
@@ -1353,7 +1628,7 @@ It's useful for tracking changes to the role hierarchy that may affect permissio
 
 ### Role Permissions Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the permissions of a role change.
@@ -1380,7 +1655,7 @@ It's crucial for security monitoring, permission auditing, and tracking administ
 
 ### Role Mentionable Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the mentionable status of a role changes.
@@ -1416,7 +1691,7 @@ These events are triggered when certain actions occur within a guild, such as ch
 
 ### AutoMod Execution
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when an automated automod response has been triggered through an automod Rule. Can be used to get the channel, user content, keyword that was found, the automod response and the id of the automod rule, the user, the id of the message which triggered the rule, the guild it occurred in, and the id of the alert message sent to the alert channel (if configured).
@@ -1444,7 +1719,7 @@ Fired when an automated automod response has been triggered through an automod R
 
 ### Guild Ban Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user is banned from a guild. A member doesn't exist here because the member is not in the guild anymore! Can be used to get the banned user, the author and the guild.
@@ -1467,7 +1742,7 @@ Fired when a user is banned from a guild. A member doesn't exist here because th
 
 ### Guild Join Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the bot joins a guild. Use this to set up initial configurations or welcome messages.
@@ -1489,7 +1764,7 @@ Fired when the bot joins a guild. Use this to set up initial configurations or w
 
 ### Guild Log Entry Create Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a new log entry is created in a guild. Can be used to monitor administrative actions within a guild.
@@ -1518,7 +1793,7 @@ Fired when a new log entry is created in a guild. Can be used to monitor adminis
 
 ### Guild Unban Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user is unbanned from a guild. Can be used to get the unbanned user, the author and the guild.
@@ -1541,7 +1816,7 @@ Fired when a user is unbanned from a guild. Can be used to get the unbanned user
 
 ### Invite Create Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when an invite is created in a guild. Can be used to get the invite properties, the channel, the author and the guild.
@@ -1565,7 +1840,7 @@ Fired when an invite is created in a guild. Can be used to get the invite proper
 
 ### Invite Delete Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when an invite is deleted from a guild. Can be used to get the invite code, the channel, the author and the guild.
@@ -1588,7 +1863,7 @@ Fired when an invite is deleted from a guild. Can be used to get the invite code
 
 ### Guild AFK Channel Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the AFK channel of a guild changes. Can be used to get the old/new channel, the author and the guild.
@@ -1612,7 +1887,7 @@ Fired when the AFK channel of a guild changes. Can be used to get the old/new ch
 
 ### Guild AFK Timeout Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the AFK timeout of a guild changes. Can be used to get the old/new timeout value, the author and the guild.
@@ -1636,7 +1911,7 @@ Fired when the AFK timeout of a guild changes. Can be used to get the old/new ti
 
 ### Guild Banner Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the banner of a guild changes. Can be used to get the old/new banner URL, the author and the guild.
@@ -1660,7 +1935,7 @@ Fired when the banner of a guild changes. Can be used to get the old/new banner 
 
 ### Guild Boost Count Update
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the boost count of a guild changes. Can be used to get the old/new count, and the guild.
@@ -1684,7 +1959,7 @@ Fired when the boost count of a guild changes. Can be used to get the old/new co
 
 ### Guild Boost Tier Update
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the boost tier of a guild changes. Can be used to get the old/new tier, and the guild.
@@ -1708,7 +1983,7 @@ Fired when the boost tier of a guild changes. Can be used to get the old/new tie
 
 ### Guild Icon Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the icon of a guild changes. Can be used to get the old/new icon URL, the author and the guild.
@@ -1732,7 +2007,7 @@ Fired when the icon of a guild changes. Can be used to get the old/new icon URL,
 
 ### Guild Name Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the name of a guild is changed. Can be used to get the old/new name, the author and the guild.
@@ -1756,7 +2031,7 @@ Fired when the name of a guild is changed. Can be used to get the old/new name, 
 
 ### Guild Owner Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the owner of a guild changes. Can be used to get the old/new owner, the author and the guild.
@@ -1780,7 +2055,7 @@ Fired when the owner of a guild changes. Can be used to get the old/new owner, t
 
 ### Guild Splash Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when the splash image of a guild changes. Can be used to get the old/new splash URL, the author and the guild.
@@ -1804,7 +2079,7 @@ Fired when the splash image of a guild changes. Can be used to get the old/new s
 
 ### Guild Voice Deafen Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member is deafened or undeafened by the guild. Can be used to track moderation actions in voice channels.
@@ -1831,7 +2106,7 @@ Fired when a member is deafened or undeafened by the guild. Can be used to track
 
 ### Guild Voice Mute Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member is muted or unmuted by the guild. Can be used to track moderation actions in voice channels.
@@ -1858,7 +2133,7 @@ Fired when a member is muted or unmuted by the guild. Can be used to track moder
 
 ### Guild Voice Mute Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member is muted or unmuted by the guild. Can be used to track moderation actions in voice channels.
@@ -1885,7 +2160,7 @@ Fired when a member is muted or unmuted by the guild. Can be used to track moder
 
 ### Guild Voice Request To Speak Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member requests to speak in a stage channel. Can be used to track moderation actions in voice channels.
@@ -1915,7 +2190,7 @@ You may use `event-boolean` to check if the state is true (user requested to spe
 
 ### Guild Voice Stream Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member starts or stops streaming in a voice channel. Can be used to track moderation actions in voice channels.
@@ -1945,7 +2220,7 @@ You may use `event-boolean` to check if the state is true (user started streamin
 
 ### Guild Voice Video Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member starts or stops its camera in a voice channel. Can be used to track moderation actions in voice channels.
@@ -1975,7 +2250,7 @@ You may use `event-boolean` to check if the state is true (user started its came
 
 ### Thread Join Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member joins a tread, either by joining itself or by a moderator can be used to get the thread, the guild and the member.
@@ -2008,7 +2283,7 @@ Fired when a member joins a tread, either by joining itself or by a moderator ca
 
 ### Thread Leave Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member leaves a thread, either by leaving itself or by a moderator can be used to get the thread, the guild and the member.
@@ -2048,7 +2323,7 @@ This includes buttons, select menus, and modals.
 
 ### Button Click
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when any button sent by the button is clicked.
@@ -2093,7 +2368,7 @@ You can use the `clicked id` to get the clicked button id.
 
 ### Modal Received
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a modal has been sent to the bot from any user.
@@ -2135,7 +2410,7 @@ Use 'received modal' to get the modal id. Don't forget to either reply or defer 
 
 ### String Dropdown Click Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user selects one or more choices in a string dropdown menu.
@@ -2180,7 +2455,7 @@ You can show a modal in response to this interaction.
 
 ### Entity Dropdown Click Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user selects one or more entities in an entity dropdown menu.
@@ -2230,7 +2505,7 @@ This will be fired, by default, both guild & private messages, use the `event is
 
 ### Message Receive
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when any bot receive an actual message.
@@ -2270,7 +2545,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
 
 ### Message Delete
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when any message is deleted.
@@ -2307,7 +2582,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
 
 ### Message Edit
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when any message is edited / updated.
@@ -2343,7 +2618,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
 
 ### Poll Vote Add
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user adds their vote to a poll in a message.
@@ -2384,7 +2659,7 @@ Fired when a user adds their vote to a poll in a message.
 
 ### Poll Vote Remove
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user removes their vote from a poll in a message.
@@ -2425,7 +2700,7 @@ Fired when a user removes their vote from a poll in a message.
 
 ### Reaction Add
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a message, that can be seen by the bot, receive a reaction.
@@ -2469,7 +2744,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
 
 ### Reaction Remove
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when an user remove a reaction from a specific message.
@@ -2511,7 +2786,7 @@ This will be fired, by default, both guild & private messages, use the 'event is
 
 ### Reaction Remove All
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when an user remove every reactions from a message.
@@ -2555,7 +2830,7 @@ Keep in mind most user update events requires a member to be seen by the bot in 
 
 ### Member Join Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member joins a guild.
@@ -2578,7 +2853,7 @@ Fired when a member joins a guild.
 
 ### Member Leave Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member is removed from a guild either by leaving or being punished. Use the ban/kick event instead to check the exact reason.
@@ -2601,7 +2876,7 @@ Fired when a member is removed from a guild either by leaving or being punished.
 
 ### Role Add Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member receives new roles. This is a log action, so event-author returns who made the action and event-roles returns a list of added roles.
@@ -2625,7 +2900,7 @@ Fired when a member receives new roles. This is a log action, so event-author re
 
 ### Role Remove Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when roles are removed from a member. This is a log action, so event-author returns who made the action and event-roles returns a list of removed roles.
@@ -2649,7 +2924,7 @@ Fired when roles are removed from a member. This is a log action, so event-autho
 
 ### Member Nickname Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member changes their nickname in a guild.
@@ -2674,7 +2949,7 @@ Fired when a member changes their nickname in a guild.
 
 ### Member Avatar Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member changes their server-specific avatar.
@@ -2699,7 +2974,7 @@ Fired when a member changes their server-specific avatar.
 
 ### Member Accept Screen Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member has agreed to membership screen requirements. This can be useful for adding roles since the member is not fully available until they've accepted the screen requirements.
@@ -2724,7 +2999,7 @@ Fired when a member has agreed to membership screen requirements. This can be us
 
 ### Member Boost Time Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member's boost time is updated, which can happen when they start or stop boosting a server.
@@ -2750,7 +3025,7 @@ Fired when a member's boost time is updated, which can happen when they start or
 
 ### Member Boost Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member boosts a server, which is detected through a system message in the server.
@@ -2785,7 +3060,7 @@ Fired when a member boosts a server, which is detected through a system message 
 
 ### Member Timeout Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member is timed out (temporarily restricted from interacting with the server).
@@ -2793,7 +3068,7 @@ Fired when a member is timed out (temporarily restricted from interacting with t
 === "Examples"
     ```applescript
     on member timeout:
-    broadcast "%event-member% has been timed out until %event-date%"
+    broadcast "%event-member% has been timed out until %timeout end%."
     ```
 
 === "Patterns"
@@ -2811,7 +3086,7 @@ Fired when a member is timed out (temporarily restricted from interacting with t
 
 ### Member Self Mute Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member mutes or unmutes themselves in a voice channel.
@@ -2819,7 +3094,7 @@ Fired when a member mutes or unmutes themselves in a voice channel.
 === "Examples"
     ```applescript
     on member mute:
-    if event-boolean is true:
+    if member mute state is true:
         broadcast "%event-member% muted themselves"
     else:
         broadcast "%event-member% unmuted themselves"
@@ -2839,7 +3114,7 @@ Fired when a member mutes or unmutes themselves in a voice channel.
 
 ### Member Self Deafen Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member deafens or undeafens themselves in a voice channel.
@@ -2847,7 +3122,7 @@ Fired when a member deafens or undeafens themselves in a voice channel.
 === "Examples"
     ```applescript
     on member deafen:
-    if event-boolean is true:
+    if member deafen state is true:
         broadcast "%event-member% deafened themselves"
     else:
         broadcast "%event-member% undeafened themselves"
@@ -2867,7 +3142,7 @@ Fired when a member deafens or undeafens themselves in a voice channel.
 
 ### Member Voice Join Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member joins a voice or stage channel. This event also fires when a member moves from one voice channel to another.
@@ -2875,7 +3150,7 @@ Fired when a member joins a voice or stage channel. This event also fires when a
 === "Examples"
     ```applescript
     on voice channel join:
-    broadcast "%event-member% joined voice channel %event-voice-channel%"
+    broadcast "%event-member% joined voice channel %joined voice channel%"
     ```
 
 === "Patterns"
@@ -2896,7 +3171,7 @@ Fired when a member joins a voice or stage channel. This event also fires when a
 
 ### Member Voice Leave Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a member leaves a voice or stage channel. This includes both disconnecting completely and moving to another channel.
@@ -2904,7 +3179,7 @@ Fired when a member leaves a voice or stage channel. This includes both disconne
 === "Examples"
     ```applescript
     on voice channel leave:
-    broadcast "%event-member% left voice channel %event-voice-channel%"
+    broadcast "%event-member% left voice channel %left voice channel%"
     ```
 
 === "Patterns"
@@ -2925,7 +3200,7 @@ Fired when a member leaves a voice or stage channel. This includes both disconne
 
 ### User Activity Order Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user changes their activity order.
@@ -2935,7 +3210,7 @@ Activities include playing games, listening to music, streaming, or custom statu
 === "Examples"
     ```applescript
     on user activity change:
-    broadcast "%event-user% is now %event-user's activities%"
+    broadcast "%event-user% is now %first element of user activities%"
     ```
 
 === "Patterns"
@@ -2952,7 +3227,7 @@ Activities include playing games, listening to music, streaming, or custom statu
 
 ### User Avatar Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user changes their avatar.
@@ -2978,7 +3253,7 @@ It can be used for monitoring profile changes or updating cached user informatio
 
 ### User Discriminator Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user changes their discriminator.
@@ -3005,7 +3280,7 @@ Note: With Discord's migration to the new username system, this event may become
 
 ### User Name Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user changes their username (not nickname).
@@ -3031,7 +3306,7 @@ It can be used for monitoring identity changes or updating user databases.
 
 ### User Online Status Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user changes their online status.
@@ -3060,7 +3335,7 @@ It can be used for tracking user presence, activity patterns, or triggering acti
 
 ### User Typing Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user starts typing in a channel.
@@ -3098,7 +3373,7 @@ It can be used to detect activity in channels or for interactive bot responses.
 
 ### User Global Name Update Event
 
-[[[ macros.required_version('4.23.0-alpha2') ]]]
+[[[ macros.required_version('4.23.0') ]]]
 [[[ macros.is_cancellable('No') ]]]
 
 Fired when a user changes their global display name.
@@ -3120,5 +3395,3 @@ With Discord's new username system, this tracks the display name shown across al
     * `[(new|current)] global name` - Returns a `string`.
     * `(old|past|previous) global name` - Returns a `string`.
     * [`event-user`](../docs/types.md#user)
-
-

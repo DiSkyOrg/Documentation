@@ -43,24 +43,16 @@
 
 /* END mkdocs Badge elements (version) */
 
-.md-nav--primary .md-nav__link[href*="messages/webhooks"] svg {
+.md-nav--primary .md-nav__link[href*="messages/file-uploads"] svg {
     color: limegreen;
 }
 
-.md-nav--primary .md-nav__link[href*="concepts/context-structure"] svg {
+.md-nav--primary .md-nav__link[href*="interactions/componentsv2"] svg {
     color: limegreen;
 }
 
-.md-nav--primary .md-nav__link[href*="interactions/slash-structure"] svg {
-    color: limegreen;
-}
-
-.md-nav--primary .md-nav__link[href*="concepts/ds"] svg {
-    color: limegreen;
-}
-
-.md-nav--primary .md-nav__link[href*="messages/discord-commands"] svg {
-    color: rgba(128, 128, 128, 0.75);
+.md-nav--primary .md-nav__link[href*="migrations"] svg {
+    color: #ab47bd;
 }
 
 .correct {
