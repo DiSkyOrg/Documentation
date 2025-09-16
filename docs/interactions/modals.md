@@ -4,9 +4,8 @@ icon: material/order-alphabetical-ascending
 
 # Modals
 
-Modals are a great way to ask for user input via Discord itself. It works like a form, and it's integrated into Discord's UI. We can currently only add **text inputs** to modals, but soon we'll be able to configure checkboxes, dropdowns, and more. 
 
-In this page, we'll see how to create a modal, and handle the user's input.
+new way?!
 
 ## Creating a modal
 
