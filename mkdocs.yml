@@ -1,4 +1,5 @@
 site_name: DiSky Wiki
+homepage: home.md
 theme:
   name: material
   custom_dir: overrides
