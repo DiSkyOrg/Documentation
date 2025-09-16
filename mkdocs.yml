@@ -1,5 +1,4 @@
 site_name: DiSky Wiki
-homepage: home.md
 theme:
   name: material
   custom_dir: overrides
@@ -85,6 +84,9 @@ plugins:
       j2_block_end_string: "%]]]"
       j2_variable_start_string: "[[["
       j2_variable_end_string: "]]]"
+  - redirects:
+      redirect_maps:
+        'index.md': 'home.md'
 
 nav:
   - 'Wiki':
