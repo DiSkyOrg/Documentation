@@ -65,6 +65,8 @@ extra:
   status:
     new: 'Recently added'
     deprecated: 'Deprecated'
+  version:
+    provider: mike
   social:
     - icon: simple/discord
       link: https://disky.me/discord
