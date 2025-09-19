@@ -132,7 +132,8 @@ nav:
           - 'Forums': guild/forums.md
           - 'Welcome Screen': guild/guild-welcome-screen.md
       - 'Migrations':
-            - 'From DiSky v4.2X to v4.24': migrations/disky-v4-24.md
+          - 'From DiSky v4.2X to v4.24': migrations/disky-v4-24.md
+          - 'From DiSky v4.2X to v4.25': migrations/disky-v4-25.md
   - 'Examples':
       - 'Core': examples/core.md
       - 'Components': examples/components.md
