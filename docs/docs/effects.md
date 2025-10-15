@@ -410,8 +410,17 @@ Edit a message with new content:
             edit direct event-message with "I by-passed the interaction!"
     ```
 
-!!! info "Anywhere Else"
-    This will simply edit the message with the new desired content. By default, it overrides all the message content (text content, components, embeds, etc...).
+!!! info "Partial vs Full Replacement (since v4.26.0)"
+    By default, editing a message will **keep unchanged elements** (embeds, components, etc.). If you want to replace the entire message content (old behavior), use the `replace` or `by replacing` modifier:
+
+    ```applescript
+    # Partial update - keeps existing embeds, components, etc.
+    edit event-message with "New content only"
+    
+    # Full replacement - removes everything not specified
+    edit and replace event-message with "New content only"
+    edit by replacing event-message with "New content only"
+    ```
 
 === "Examples"
 
@@ -419,13 +428,17 @@ Edit a message with new content:
     # We are in a slash command event!
     reply with hidden "Wanna see a magic trick? ..." and store it in {_msg}
     wait a second
-    # The variable does not contains a 'real' message, it contains the interaction hook.edit {_msg} to show "Abracadabra!"
+    # The variable does not contains a 'real' message, it contains the interaction hook.
+    edit {_msg} to show "Abracadabra!"
+    
+    # Replace entire message (removes embeds, components, etc.)
+    edit and replace {_msg} with "Only this text will remain"
     ```
 
 === "Patterns"
 
     ```applescript
-    edit [:direct] [the] [message] %message% (with|to show) %string/messagecreatebuilder/embedbuilder%
+    edit [replace:([and] replace|[by] replacing)] [:direct] [the] [message] %message% (with|to show) %string/messagecreatebuilder/embedbuilder/container%
     ```
 
 === "See Also"
@@ -1164,6 +1177,40 @@ No description provided.
     ```applescript
     add field (named|with name) %string% [and] with [the] value %string% to [fields of] %embedbuilder%
     add inline field (named|with name) %string% [and] with [the] value %string% to [fields of] %embedbuilder%
+    ```
+
+## Register Embed Template
+
+[[[ macros.required_version('4.26.0') ]]]
+
+Register an embed template that can be reused throughout your code. This brings back the embed templates feature from DiSky v3!
+
+Once registered, you can use the template with the `embed template` expression.
+
+=== "Examples"
+
+    ```applescript
+    # Register a success embed template
+    register embed "success":
+        set title of embed to "Success!"
+        set embed color of embed to green
+        set footer of embed to "Operation completed"
+    
+    # Register an error embed template
+    register embed "error":
+        set title of embed to "Error!"
+        set embed color of embed to red
+        set footer of embed to "Something went wrong"
+    
+    # Use the templates
+    reply with embed template "success"
+    reply with embed template "error"
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    register [embed] template %string%
     ```
 
 ## Add Welcome Screen Channel
