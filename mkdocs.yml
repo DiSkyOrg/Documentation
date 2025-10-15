@@ -134,6 +134,7 @@ nav:
       - 'Migrations':
           - 'From DiSky v4.2X to v4.24': migrations/disky-v4-24.md
           - 'From DiSky v4.2X to v4.25': migrations/disky-v4-25.md
+          - 'From DiSky v4.2X to v4.26': migrations/disky-v4-26.md
   - 'Examples':
       - 'Core': examples/core.md
       - 'Components': examples/components.md

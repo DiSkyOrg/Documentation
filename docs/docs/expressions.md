@@ -3007,6 +3007,57 @@ No description provided.
     %embedbuilder%'[s] title url
     ```
 
+## Embed Fields
+
+[[[ macros.required_version('4.26.0') ]]]
+[[[ macros.return_type('object') ]]]
+
+Get or set the fields of an embed as a list. This allows you to manipulate embed fields more easily.
+
+=== "Examples"
+
+    ```applescript
+    # Get all fields from an embed
+    set {_fields::*} to embed fields of {_embed}
+    
+    # Clear all fields
+    clear embed fields of {_embed}
+    
+    # Get number of fields
+    set {_count} to size of embed fields of {_embed}
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [embed] fields of %embedbuilder%
+    %embedbuilder%'[s] [embed] fields
+    ```
+
+## Embed Template
+
+[[[ macros.required_version('4.26.0') ]]]
+[[[ macros.return_type('embedbuilder') ]]]
+
+Get a registered embed template by its name. Templates must be registered first using the `register embed template` effect.
+
+=== "Examples"
+
+    ```applescript
+    # Use a registered template
+    reply with embed template "success"
+    
+    # Store template in a variable
+    set {_embed} to embed template "error"
+    reply with {_embed}
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [embed] template %string%
+    ```
+
 ## Emote Name
 
 [[[ macros.required_version('4.0.0') ]]]
@@ -3555,6 +3606,30 @@ This is a specific element of the bot, so it can be used in the bots event.
     ```applescript
     [the] [member] [member] join date of %member%
     %member%'[s] [member] [member] join date
+    ```
+
+## Member Boost Time
+
+[[[ macros.required_version('4.26.0') ]]]
+[[[ macros.return_type('date') ]]]
+
+Get the date when a member started boosting the guild. Returns none if the member is not currently boosting.
+
+=== "Examples"
+
+    ```applescript
+    set {_boostTime} to boost time of event-member
+    if {_boostTime} is set:
+        reply with "You've been boosting since %{_boostTime}%!"
+    else:
+        reply with "You're not currently boosting this server."
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [member] boost[ing] (time|date) of %member%
+    %member%'[s] [member] boost[ing] (time|date)
     ```
 
 ## Member Nickname

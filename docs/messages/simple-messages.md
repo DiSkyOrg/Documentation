@@ -95,3 +95,21 @@ Once the section is run, you can post/reply with the newly stored embed, such as
         ...
     post {_embed} to text channel with id "000"
     ```
+
+??? tip "Want to reuse embeds? Use Embed Templates! (since v4.26.0)"
+    **DiSky v4.26.0** brings back embed templates from DiSky v3! Instead of recreating the same embed multiple times, you can register a template and reuse it:
+
+    ```applescript
+    # Register a template once
+    register embed "welcome":
+        set title of embed to "Welcome!"
+        set embed color of embed to blue
+        set description of embed to "Thanks for joining our server!"
+        set footer of embed to "We hope you enjoy your stay"
+    
+    # Use it anywhere
+    reply with embed template "welcome"
+    post embed template "welcome" to text channel with id "000"
+    ```
+    
+    See the [Register Embed Template](../docs/effects.md#register-embed-template) effect and [Embed Template](../docs/expressions.md#embed-template) expression for more details.
