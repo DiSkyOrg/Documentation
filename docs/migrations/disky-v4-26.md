@@ -43,38 +43,6 @@ edit [replace:([and] replace|[by] replacing)] [:direct] [the] [message] %message
 
 ## New Features
 
-### Embed Templates
-
-DiSky v4.26.0 brings back the embed templates feature from DiSky v3! You can now register embed templates and reuse them throughout your code.
-
-```applescript
-# Register an embed template
-register embed "success" with:
-    title: "Success!"
-    color: green
-    
-# Use the template
-reply with embed template "success"
-```
-
-### Better Variable Handling for Discord Objects
-
-Discord objects with IDs (channels, messages, members, roles, etc.) can now be used directly as variable indices, similar to how Skript handles entities.
-
-#### Before 4.26:
-
-```applescript
-set {data::%discord id of {_member}%} to "value"
-```
-
-#### Since 4.26:
-
-```applescript
-set {data::%{_member}%} to "value"
-```
-
-This works for any Discord object with an ID, making your code cleaner and more intuitive.
-
 ### Embed Fields as Expressions
 
 You can now get and manipulate embed fields as expressions, making it easier to work with existing embeds.
@@ -88,7 +56,8 @@ set {_fields} to embed fields of {_embed}
 Added support for checking how long a member has been boosting a server.
 
 ```applescript
-set {_boostTime} to time boosted of {_member}
+set {_boostTime} to time since (boost date of {_member}) # as a timespan
+set {_boostDate} to boost date of {_member} # as a date
 ```
 
 ## Bug Fixes

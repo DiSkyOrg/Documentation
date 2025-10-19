@@ -1185,32 +1185,28 @@ No description provided.
 
 Register an embed template that can be reused throughout your code. This brings back the embed templates feature from DiSky v3!
 
-Once registered, you can use the template with the `embed template` expression.
+Once registered, you can use the template when creating a new embed using its section or data structure.
 
 === "Examples"
 
     ```applescript
-    # Register a success embed template
-    register embed "success":
-        set title of embed to "Success!"
-        set embed color of embed to green
-        set footer of embed to "Operation completed"
-    
-    # Register an error embed template
-    register embed "error":
-        set title of embed to "Error!"
-        set embed color of embed to red
-        set footer of embed to "Something went wrong"
-    
-    # Use the templates
-    reply with embed template "success"
-    reply with embed template "error"
+    # Register the embed
+    register embed template with {_embed} with name "embed_name"
+
+    # When re-creating an embed for instance:
+    make a new embed using template named "embed_name" and store it in {_new_embed}:
+        # make changes
+
+    # Or with a data structure:
+    set {_embed} to new embed:
+        template: "embed_name"
+        color: orange # edited property!
     ```
 
 === "Patterns"
 
     ```applescript
-    register [embed] template %string%
+    register [new] [embed] template (with|based on) [the] [embed] %embedbuilder% [and] with [the] (name|id) %string%
     ```
 
 ## Add Welcome Screen Channel

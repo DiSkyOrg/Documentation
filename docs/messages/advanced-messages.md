@@ -87,27 +87,6 @@ reply with {_msg}
         set {_embed} to embed from json {_json}
         ```
 
-??? tip "Want to reuse embeds with templates? (since v4.26.0)"
-    **DiSky v4.26.0** brings back embed templates from DiSky v3! You can register reusable embed templates and use them throughout your code:
-
-    ```applescript
-    # Register a template
-    register embed "success":
-        set title of embed to "Success!"
-        set embed color of embed to green
-        set footer of embed to "Operation completed"
-    
-    # Use the template
-    reply with embed template "success"
-    
-    # Or add it to a message
-    create a new message and store it in {_msg}:
-        set content of message to "Check this out!"
-        add embed template "success" to embeds of message
-    ```
-    
-    See the [Register Embed Template](../docs/effects.md#register-embed-template) effect and [Embed Template](../docs/expressions.md#embed-template) expression for more details.
-
 ## Add attachments
 
 Attachments are files that you can link to your message. If **SkImage** is installed, you can pass an image to the attachments. By default, you provide the file's local path to your file:

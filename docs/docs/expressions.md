@@ -3034,30 +3034,6 @@ Get or set the fields of an embed as a list. This allows you to manipulate embed
     %embedbuilder%'[s] [embed] fields
     ```
 
-## Embed Template
-
-[[[ macros.required_version('4.26.0') ]]]
-[[[ macros.return_type('embedbuilder') ]]]
-
-Get a registered embed template by its name. Templates must be registered first using the `register embed template` effect.
-
-=== "Examples"
-
-    ```applescript
-    # Use a registered template
-    reply with embed template "success"
-    
-    # Store template in a variable
-    set {_embed} to embed template "error"
-    reply with {_embed}
-    ```
-
-=== "Patterns"
-
-    ```applescript
-    [the] [embed] template %string%
-    ```
-
 ## Emote Name
 
 [[[ macros.required_version('4.0.0') ]]]
@@ -3066,6 +3042,7 @@ Get a registered embed template by its name. Templates must be registered first 
 Get the name of this emote.
 This, instead of 'discord name of %emote%' will return the name of an emote, and not an emoji.
 You can change this property to change the emote's name itself.
+
 === "Examples"
 
     ```applescript
@@ -3620,7 +3597,7 @@ Get the date when a member started boosting the guild. Returns none if the membe
     ```applescript
     set {_boostTime} to boost time of event-member
     if {_boostTime} is set:
-        reply with "You've been boosting since %{_boostTime}%!"
+        reply with "You've been boosting since %time since {_boostTime}%!"
     else:
         reply with "You're not currently boosting this server."
     ```
@@ -3628,8 +3605,8 @@ Get the date when a member started boosting the guild. Returns none if the membe
 === "Patterns"
 
     ```applescript
-    [the] [member] boost[ing] (time|date) of %member%
-    %member%'[s] [member] boost[ing] (time|date)
+    [discord] boost[ing] (time|date) of %member%
+    %member%'[s] [discord] boost[ing] (time|date)
     ```
 
 ## Member Nickname
