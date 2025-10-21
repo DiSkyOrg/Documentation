@@ -3585,7 +3585,7 @@ This is a specific element of the bot, so it can be used in the bots event.
     %member%'[s] [member] [member] join date
     ```
 
-## Member Boost Time
+## Member Boost Date
 
 [[[ macros.required_version('4.26.0') ]]]
 [[[ macros.return_type('date') ]]]
@@ -3595,9 +3595,9 @@ Get the date when a member started boosting the guild. Returns none if the membe
 === "Examples"
 
     ```applescript
-    set {_boostTime} to boost time of event-member
-    if {_boostTime} is set:
-        reply with "You've been boosting since %time since {_boostTime}%!"
+    set {_boostDate} to boost date of event-member
+    if {_boostDate} is set:
+        reply with "You've been boosting since %time since {_boostDate}%!"
     else:
         reply with "You're not currently boosting this server."
     ```
