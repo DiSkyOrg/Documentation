@@ -2872,6 +2872,7 @@ Fired when a member is removed from a guild either by leaving or being punished.
 === "Event Values"
     * [`event-guild`](../docs/types.md#guild)
     * [`event-member`](../docs/types.md#member)
+    * [`event-user`](../docs/types.md#user)
 
 
 ### Role Add Event
