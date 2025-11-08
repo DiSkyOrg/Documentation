@@ -23,7 +23,7 @@ set {_threads::*} to threads of forum with id "000"
 * As a thread channel, you can use the `retrieve messages` effect to get the messages
 * As a member container, `members of` expression is available to get active members of the post
 * You can get the tags of a thread using `tags of <thread>`. Keep in mind this will only work with **posts' threads!**
-* You can get the **owner** of a thread using [`owner of <thread>`](../docs/expressions.md#thread-owner) - useful to know who created the post
+* You can get the **owner** of a thread using [`thread owner of <thread>`](../docs/expressions.md#thread-owner) - useful to know who created the post
 * You can get the **message count** using [`message count of <thread>`](../docs/expressions.md#thread-message-count) - helpful for tracking post activity
 
 ## Tags
