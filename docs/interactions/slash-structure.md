@@ -50,6 +50,32 @@ This is the list of arguments your slash command will have. It works the same as
 
 An argument format is `<type="name">`, and can be surrounded by `[]` to make it optional.
 
+!!! success "Hyphen Support (v4.27.0+)"
+    Since DiSky v4.27.0, argument names can now include hyphens (`-`) for better readability! This is especially useful when you want to use multi-word argument names that follow Discord's naming conventions.
+
+    **Examples:**
+    ```applescript
+    # Before v4.27.0 - You had to use underscores or camelCase
+    slash command userinfo <user="target_user">:
+        # ...
+
+    # Since v4.27.0 - You can use hyphens for clearer names
+    slash command userinfo <user="target-user">:
+        description: Get information about a user
+        arguments:
+            target-user: The user to get information about
+        trigger:
+            reply with "Info for %discord name of arg-1%"
+
+    # More examples with hyphens
+    slash command config <string="server-name"> <integer="max-members">:
+        arguments:
+            server-name: The name of the server
+            max-members: Maximum number of members
+    ```
+
+    For more details, see the [migration guide](../migrations/disky-v4-27.md#hyphen-support-in-slash-structure-arguments).
+
 ## Command Groups and Subcommands
 
 DiSky supports organizing commands into groups and subcommands using a space-separated naming convention. You can create up to three levels of command hierarchy:
