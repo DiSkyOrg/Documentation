@@ -69,7 +69,7 @@ discord command threadinfo <text>:
             reply with ":x: Thread not found!"
             stop
 
-        set {_owner} to owner of {_thread}
+        set {_owner} to thread owner of {_thread}
         set {_count} to message count of {_thread}
         set {_tags::*} to tags of {_thread}
         set {_members::*} to members of {_thread}
