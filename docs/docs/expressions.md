@@ -40,6 +40,77 @@ Get the URL of the user's avatar decoration URL. This will return none if the us
     %user%'[s] [user] (decoration[s] avatar|avatar decoration[s])
     ```
 
+## User's Equipped Server Tag
+
+[[[ macros.required_version('4.27.0') ]]]
+[[[ macros.return_type('rolecountobject') ]]]
+
+Get the server tag that a user has equipped (also called "primary guild tag"). This represents the tag that the user has chosen to display on their profile for a specific server.
+
+Server tags are a Discord feature that allows users to choose a tag representing their identity or role in a server. The equipped tag is the one displayed prominently on their profile.
+
+=== "Examples"
+
+    ```applescript
+    set {_tag} to user tag of event-user
+    set {_primaryTag} to user primary guild tag of {_member}
+
+    # Example: Display user's equipped tag
+    discord command mytag:
+        prefixes: !
+        trigger:
+            set {_tag} to user tag of event-user
+            if {_tag} is set:
+                reply with "Your equipped server tag: %discord name of {_tag}%"
+            else:
+                reply with "You don't have an equipped server tag."
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [user] [primary] [guild] tag of %user%
+    %user%'[s] [user] [primary] [guild] tag
+    ```
+
+## User's Server Tag Icon
+
+[[[ macros.required_version('4.27.0') ]]]
+[[[ macros.return_type('string') ]]]
+
+Get the icon URL of a user's equipped server tag. Returns none if the user doesn't have an equipped tag or if the tag has no icon.
+
+=== "Examples"
+
+    ```applescript
+    set {_icon} to user tag icon of event-user
+    set {_iconUrl} to user primary guild tag icon url of {_member}
+
+    # Example: Show tag with icon in embed
+    discord command profile [<user>]:
+        prefixes: !
+        trigger:
+            set {_user} to arg-1 ? event-user
+            set {_tag} to user tag of {_user}
+            set {_icon} to user tag icon url of {_user}
+
+            make embed:
+                set title of embed to "%discord name of {_user}%'s Profile"
+                if {_tag} is set:
+                    set description of embed to "Equipped Tag: %discord name of {_tag}%"
+                    set thumbnail of embed to {_icon} if {_icon} is set
+                else:
+                    set description of embed to "No equipped server tag"
+            reply with last embed
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [user] [primary] [guild] tag icon [url] of %user%
+    %user%'[s] [user] [primary] [guild] tag icon [url]
+    ```
+
 ## Discord Command Argument
 
 [[[ macros.required_version('4.0.0') ]]]
@@ -1031,6 +1102,63 @@ Get the parent channel of a thread channel. It can return a text, news or forum 
     ```applescript
     [the] thread parent [channel] of %guildchannel%
     %guildchannel%'[s] thread parent [channel]
+    ```
+
+## Thread Owner
+
+[[[ macros.required_version('4.27.0') ]]]
+[[[ macros.return_type('member') ]]]
+
+Get the member who created (owns) a thread channel. This works with regular threads and forum posts.
+
+=== "Examples"
+
+    ```applescript
+    set {_owner} to owner of event-threadchannel
+    set {_creator} to thread owner of {_thread}
+
+    # Example: Send a message to the thread owner
+    on thread create:
+        set {_owner} to owner of event-threadchannel
+        send "Thank you for creating this thread!" to {_owner}
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [thread] owner of %threadchannel%
+    %threadchannel%'[s] [thread] owner
+    ```
+
+## Thread Message Count
+
+[[[ macros.required_version('4.27.0') ]]]
+[[[ macros.return_type('integer') ]]]
+
+Get the total number of messages in a thread channel. This includes all messages, not just visible ones.
+
+=== "Examples"
+
+    ```applescript
+    set {_count} to message count of event-threadchannel
+    set {_total} to thread message count of {_thread}
+
+    # Example: Display thread statistics
+    discord command threadstats <text>:
+        prefixes: !
+        trigger:
+            set {_thread} to thread channel with id arg-1
+            set {_count} to message count of {_thread}
+            set {_owner} to owner of {_thread}
+
+            reply with "Thread has %{_count}% messages and was created by %discord name of {_owner}%"
+    ```
+
+=== "Patterns"
+
+    ```applescript
+    [the] [thread] message count of %threadchannel%
+    %threadchannel%'[s] [thread] message count
     ```
 
 ## Guild Bot's Role
