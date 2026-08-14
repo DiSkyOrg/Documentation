@@ -103,11 +103,14 @@ add {_gallery} to content of the container
 Visual dividers between content:
 
 ```applescript
-# Small separator
-add new small separator to content of the container
-
-# Large separator (default)
+# Small separator (default)
 add new separator to content of the container
+
+# Large separator
+add new large separator to content of the container
+
+# Invisible separator (no divider line)
+add new invisible separator to content of the container
 ```
 
 ### Thumbnails
